@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Note/测试啊.md",
+                "file": "hexo/source/_posts/测试啊.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Note/测试啊.md",
+                "file": "hexo/source/_posts/测试啊.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Note/测试啊.md",
+                "file": "hexo/source/_posts/测试啊.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Note/测试啊.md"
+                "file": "hexo/source/_posts/测试啊.md"
               }
             }
           },
@@ -154,10 +154,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ee98e8bb63708394",
+  "active": "4d1b9e7ede908599",
   "lastOpenFiles": [
     "Resource/Template/Front-matter.md",
-    "Note/测试啊.md",
+    "hexo/source/_posts/测试啊.md",
     "新建 文本文档.txt",
     "source/_posts/hello-world.md",
     "Resource/Template",
