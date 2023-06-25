@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "16a09712ebb06369",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "source/_posts/自动化部署测试2222.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/自动部署测试.md",
+                "file": "source/_posts/自动化部署测试2222.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/自动部署测试.md",
+                "file": "source/_posts/自动化部署测试2222.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/自动部署测试.md"
+                "file": "source/_posts/自动化部署测试2222.md"
               }
             }
           },
@@ -155,11 +168,13 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "0751fcabe1bca4ee",
+  "active": "16a09712ebb06369",
   "lastOpenFiles": [
+    "source/images/82add534bc31d19c6d4c55510ebfde8b24647436.jpg@180w_!web-comment-note.webp",
+    "source/_posts/自动部署测试.md",
+    "source/_posts/自动化部署测试2222.md",
     "source/images/artworks-000203903994-rqqrn7-t500x500.jpg",
     "source/_posts/测试啊.md",
-    "source/_posts/自动部署测试.md",
     "source/_posts/算法学习.md",
     "scaffolds/page.md",
     "source/images/108162230.png",
@@ -181,7 +196,6 @@
     "img/60006073.jpg",
     "img/376611.png",
     "img/108068975.jpg",
-    "img/104923272.jpg",
     "source/_posts/英语学习 - 母语者思考.md",
     "scaffolds/Template/Front-matter.md",
     "source/_posts/Pasted image 20230414014304.png.md",
