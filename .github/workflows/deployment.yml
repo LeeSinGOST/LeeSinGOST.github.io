@@ -27,7 +27,6 @@ jobs:
         node -v
         npm i -g hexo-cli
         npm i
-	npm install hexo-renderer-pug hexo-renderer-stylus --save
         hexo clean
         hexo g
     - name: Deploy to Github Pages
