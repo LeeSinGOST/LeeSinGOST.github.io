@@ -11,11 +11,10 @@
             "id": "0751fcabe1bca4ee",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "diff-view",
               "state": {
-                "file": "source/_posts/测试啊.md",
-                "mode": "source",
-                "source": false
+                "file": "themes/butterfly",
+                "staged": false
               }
             }
           }
@@ -85,7 +84,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/测试啊.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/测试啊.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +121,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "source/_posts/测试啊.md"
-              }
+              "state": {}
             }
           },
           {
@@ -157,8 +152,8 @@
   },
   "active": "0751fcabe1bca4ee",
   "lastOpenFiles": [
-    "source/_posts/算法学习.md",
     "source/_posts/测试啊.md",
+    "source/_posts/算法学习.md",
     "source/images/108162230.png",
     "tags/算法/index.html",
     "tags/算法",
