@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/算法学习.md",
+                "file": "source/_posts/hello-world.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4bf6b77bc6452082",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "source/_posts/重来.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/算法学习.md",
+                "file": "source/_posts/重来.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/算法学习.md",
+                "file": "source/_posts/重来.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/算法学习.md"
+                "file": "source/_posts/重来.md"
               }
             }
           },
@@ -155,39 +168,41 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "16a09712ebb06369",
+  "active": "4bf6b77bc6452082",
   "lastOpenFiles": [
-    "source/_posts/自动部署测试.md",
+    "source/images/artworks-000168908697-np6ras-t500x500.jpg",
+    "source/_posts/hello-world.md",
+    "source/_posts/重来.md",
+    "scaffolds/page.md",
+    "scaffolds/post.md",
+    "db.json",
+    "public/images/QQ图片20221210194333.png",
+    "public/images/108162230.png",
+    "public/img/376611.png",
+    "public/images/Pasted image 20230414143738.png",
+    "public/images/Pasted image 20230415033033.png",
+    "public/images/Pasted image 20230414141847.png",
+    "public/images/Pasted image 20230414142508.png",
+    "public/images/Pasted image 20230414142045.png",
+    "public/images/Pasted image 20230414015855.png",
+    "public/images/Pasted image 20221104201408.png",
+    "public/2023/06/25/英语学习 - 母语者思考/index.html",
+    "public/2023/06/24/测试啊/index.html",
+    "public/2023/06/11/算法学习/index.html",
+    "public/2023/06/25/英语学习 - 母语者思考",
+    "public/2023/06/24/测试啊",
+    "public/2023/06/11/算法学习",
+    "public/2023/06/25",
+    "public/2023/06/24",
+    "public/2023/06/11",
+    "scaffolds/draft.md",
     "source/_posts/算法学习.md",
+    "source/_posts/自动部署测试.md",
     "source/_posts/自动化部署测试2222.md",
     "source/_posts/英语学习 - 母语者思考.md",
-    "source/_posts/hello-world.md",
-    "source/images/82add534bc31d19c6d4c55510ebfde8b24647436.jpg@180w_!web-comment-note.webp",
-    "source/images/artworks-000203903994-rqqrn7-t500x500.jpg",
     "source/_posts/测试啊.md",
-    "scaffolds/page.md",
-    "source/images/108162230.png",
-    "tags/算法/index.html",
-    "tags/算法",
-    "tags",
-    "js/search/local-search.js",
-    "js/search/algolia.js",
-    "js/utils.js",
-    "js/tw_cn.js",
-    "js/main.js",
-    "js/search",
-    "js",
-    "img/friend_404.gif",
-    "img/favicon.png",
-    "img/98646512.jpg",
-    "img/404.jpg",
-    "img/61961754.jpg",
-    "img/60006073.jpg",
-    "img/376611.png",
     "scaffolds/Template/Front-matter.md",
     "source/_posts/Pasted image 20230414014304.png.md",
-    "scaffolds/draft.md",
-    "scaffolds/post.md",
     "hexo/source/_posts/测试啊.md"
   ]
 }
