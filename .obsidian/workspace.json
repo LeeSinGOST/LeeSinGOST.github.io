@@ -8,28 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "624c401eec9022d6",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "source/images/108162230.png"
-              }
-            }
-          },
-          {
             "id": "0751fcabe1bca4ee",
             "type": "leaf",
             "state": {
-              "type": "diff-view",
+              "type": "markdown",
               "state": {
-                "file": "themes/butterfly",
-                "staged": false
+                "file": "source/_posts/测试啊.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -95,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "source/_posts/测试啊.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "source/_posts/测试啊.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -132,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "source/_posts/测试啊.md"
+              }
             }
           },
           {
@@ -163,31 +157,31 @@
   },
   "active": "0751fcabe1bca4ee",
   "lastOpenFiles": [
-    "source/_posts/英语学习 - 母语者思考.md",
-    "public",
-    "source/images/108162230.png",
-    "scaffolds/Template/Front-matter.md",
     "source/_posts/算法学习.md",
-    "Note",
-    "source/img/376611.png",
-    "source/img/3b84f4806e003a878a4d1c89ebe19216.jpg",
-    "source/img",
-    "source/新建文件夹",
-    "db.json",
-    "public/images/Pasted image 20221002050250.png",
-    "public/images/QQ图片20221210194333.png",
-    "public/images/108162230.png",
-    "public/images/Pasted image 20221106213133.png",
-    "public/images/Pasted image 20221002054355.png",
-    "public/images/Pasted image 20221003061520.png",
-    "public/images/Pasted image 20230415035248.png",
-    "public/css/var.css",
-    "public/css/index.css",
-    "public/css",
-    "public/2023/05/11/hello-world/index.html",
-    "public/2023/05/11/hello-world",
-    "source/_posts/Pasted image 20230414014304.png.md",
     "source/_posts/测试啊.md",
+    "source/images/108162230.png",
+    "tags/算法/index.html",
+    "tags/算法",
+    "tags",
+    "js/search/local-search.js",
+    "js/search/algolia.js",
+    "js/utils.js",
+    "js/tw_cn.js",
+    "js/main.js",
+    "js/search",
+    "js",
+    "img/friend_404.gif",
+    "img/favicon.png",
+    "img/98646512.jpg",
+    "img/404.jpg",
+    "img/61961754.jpg",
+    "img/60006073.jpg",
+    "img/376611.png",
+    "img/108068975.jpg",
+    "img/104923272.jpg",
+    "source/_posts/英语学习 - 母语者思考.md",
+    "scaffolds/Template/Front-matter.md",
+    "source/_posts/Pasted image 20230414014304.png.md",
     "source/_posts/hello-world.md",
     "scaffolds/page.md",
     "scaffolds/draft.md",
