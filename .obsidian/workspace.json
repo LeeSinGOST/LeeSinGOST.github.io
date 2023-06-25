@@ -11,11 +11,25 @@
             "id": "624c401eec9022d6",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "image",
+              "state": {
+                "file": "source/images/108162230.png"
+              }
+            }
+          },
+          {
+            "id": "0751fcabe1bca4ee",
+            "type": "leaf",
+            "state": {
+              "type": "diff-view",
+              "state": {
+                "file": "themes/butterfly",
+                "staged": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -65,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 402.5
   },
   "right": {
     "id": "fe0f88239cd99485",
@@ -143,18 +157,41 @@
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "command-palette:打开命令面板": false,
+      "remotely-save:Remotely Save": false
     }
   },
-  "active": "4d1b9e7ede908599",
+  "active": "0751fcabe1bca4ee",
   "lastOpenFiles": [
-    "Resource/Template/Front-matter.md",
-    "hexo/source/_posts/测试啊.md",
-    "新建 文本文档.txt",
-    "source/_posts/hello-world.md",
-    "Resource/Template",
-    "Resource",
+    "source/_posts/英语学习 - 母语者思考.md",
+    "public",
+    "source/images/108162230.png",
+    "scaffolds/Template/Front-matter.md",
+    "source/_posts/算法学习.md",
     "Note",
-    "source/_posts/potest.md"
+    "source/img/376611.png",
+    "source/img/3b84f4806e003a878a4d1c89ebe19216.jpg",
+    "source/img",
+    "source/新建文件夹",
+    "db.json",
+    "public/images/Pasted image 20221002050250.png",
+    "public/images/QQ图片20221210194333.png",
+    "public/images/108162230.png",
+    "public/images/Pasted image 20221106213133.png",
+    "public/images/Pasted image 20221002054355.png",
+    "public/images/Pasted image 20221003061520.png",
+    "public/images/Pasted image 20230415035248.png",
+    "public/css/var.css",
+    "public/css/index.css",
+    "public/css",
+    "public/2023/05/11/hello-world/index.html",
+    "public/2023/05/11/hello-world",
+    "source/_posts/Pasted image 20230414014304.png.md",
+    "source/_posts/测试啊.md",
+    "source/_posts/hello-world.md",
+    "scaffolds/page.md",
+    "scaffolds/draft.md",
+    "scaffolds/post.md",
+    "hexo/source/_posts/测试啊.md"
   ]
 }

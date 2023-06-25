@@ -1,11 +1,15 @@
 {
+  "newFileLocation": "folder",
+  "newFileFolderPath": "source/_posts",
+  "attachmentFolderPath": "source/images",
+  "showFrontmatter": true,
+  "useMarkdownLinks": true,
+  "newLinkFormat": "relative",
+  "alwaysUpdateLinks": true,
   "userIgnoreFilters": [
     "node_modules/",
+    "themes/",
     "public/",
-    "scaffolds/",
-    "themes/"
-  ],
-  "newFileLocation": "folder",
-  "newFileFolderPath": "Note",
-  "attachmentFolderPath": "Resource"
+    "scaffolds/"
+  ]
 }
