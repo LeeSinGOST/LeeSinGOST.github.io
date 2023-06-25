@@ -32,9 +32,9 @@ jobs:
     - name: Deploy to Github Pages
       env:
         GIT_NAME: LeeSinGOST
-        GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
+        GIT_EMAIL: 729076660@qq.com
         REPO: github.com/LeeSinGOST/LeeSinGOST.github.io
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         cd ./public && git init && git add .
         git config --global user.name $GIT_NAME
