@@ -26,7 +26,6 @@ jobs:
       run: |
         node -v
         npm i -g hexo-cli
-	
         npm i
 	npm install hexo-renderer-pug hexo-renderer-stylus --save
         hexo clean
