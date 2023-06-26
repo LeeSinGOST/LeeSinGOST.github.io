@@ -109,7 +109,7 @@ _multiconfig.yml
 
 不出意外的话就能推送了。
 
-## 配置GitHub Actions自动部署
+## Step 5 - 配置GitHub Actions自动部署
 
 ### 前置设置
 
