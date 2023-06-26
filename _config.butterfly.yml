@@ -157,7 +157,7 @@ toc:
 post_copyright:
   enable: true
   decode: false
-  author_href:
+  author_href: https://kokutou.space/
   license: CC BY-NC-SA 4.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
@@ -231,10 +231,10 @@ aside:
       enable: true
       icon: fab fa-github
       text: Follow Me
-      link: https://github.com/xxxxxx
+      link: https://github.com/LeeSinGOST
   card_announcement:
     enable: true
-    content: This is my Blog
+    content: Welcomeeee!
   card_recent_post:
     enable: true
     limit: 5 # if set 0 will show all
