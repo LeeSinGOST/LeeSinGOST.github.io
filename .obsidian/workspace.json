@@ -20,31 +20,19 @@
             }
           },
           {
-            "id": "4bf6b77bc6452082",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/重来.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "872f72692363db19",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Obisidian与Hexo的同步维护方案.md",
+                "file": "source/_posts/测试啊.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -110,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/Obisidian与Hexo的同步维护方案.md",
+                "file": "source/_posts/测试啊.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/Obisidian与Hexo的同步维护方案.md",
+                "file": "source/_posts/测试啊.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Obisidian与Hexo的同步维护方案.md"
+                "file": "source/_posts/测试啊.md"
               }
             }
           },
@@ -181,16 +169,16 @@
   },
   "active": "872f72692363db19",
   "lastOpenFiles": [
+    "source/_posts/Obisidian与Hexo的同步维护方案.md",
+    "source/_posts/重来.md",
     "source/_posts/算法学习.md",
     "source/_posts/英语学习 - 母语者思考.md",
-    "source/_posts/Obisidian与Hexo的同步维护方案.md",
     "source/images/Pasted image 20230626141125.png",
     "source/images/Pasted image 20230626140650.png",
     "source/images/Pasted image 20230626140508.png",
     "source/images/Pasted image 20230626140323.png",
     "source/images/Pasted image 20230626131934.png",
     "source/_posts/测试啊.md",
-    "source/_posts/重来.md",
     "source/_posts/hello-world.md",
     "source/images/QQ图片20230406125152.jpg",
     "source/images/image003.jpg",
