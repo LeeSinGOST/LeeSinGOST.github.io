@@ -10,23 +10,23 @@ tags:
 
 > Obisidian是一个本地笔记软件，可用于构建自己的知识体系，以下简称Ob。Hexo是使用很广泛的博客框架，属于静态页面。本文将记录如何实现Ob在本地写文档，然后一键发送并自动部署到Hexo。
 
-## 实现思路
+# 实现思路
 
 在Ob上Git提交Hexo项目到自己GitHub Page仓库的一个(Hexo)分支中，GitHub随即自动触发Actions将编译好的Hexo静态文件提交到以上仓库的主分支，也就是说Hexo分支保存项目，主分支保存Page页面访问所需要的静态文件。
 
-## 前置条件
+# 前置条件
 
 - npm 12+环境
 
-## 整体步骤
+# 整体步骤
 
 - Hexo 和 Obsidian 的安装
 - Git 和 GitHub 的准备
 - Obsidian Git （Obisidian插件市场）
 
-## 详细步骤
+# 详细步骤
 
-### Step 1 - Hexo安装
+## Step 1 - Hexo安装
 
 > 已经搭建好Hexo的可以跳过这一步！
 
@@ -34,7 +34,7 @@ Hexo的安装网上教程很多而且文档也很详细了，主要涉及**Git�
 
 如果能成功实现Hexo本地预览即可进入下一步。
 
-### Step 2 - Git初始化配置
+## Step 2 - Git初始化配置
 
 配置Git以及设置与GitHub的SSH连接具体操作参考教程里部署到GitHub处 ：[2022【保姆级教程】含泪搭建hexo博客](https://zhuanlan.zhihu.com/p/552639819)
 教程包括：
@@ -55,7 +55,7 @@ hexo d      # 部署到Github
 
 成功部署到GitHub Page之后进入下一步。
 
-### step 3 - 仓库双分支配置
+## step 3 - 仓库双分支配置
 
 在Hexo根目录输入
 ```shell
@@ -77,7 +77,7 @@ git push origin HEAD -u
 
 GitHub如期生成Hexo分支并存在项目即可进入下一步
 
-### Step 4 - Obisidian 以及 Obisidian Git插件
+## Step 4 - Obisidian 以及 Obisidian Git插件
 
 > 看这个教程的应该都是Obsidian用户，软件安装就不说了，也没什么好讲，装就是了。
 > Git插件主要用于将文档上传到GitHub。
@@ -109,9 +109,9 @@ _multiconfig.yml
 
 不出意外的话就能推送了。
 
-### 配置GitHub Actions自动部署
+## 配置GitHub Actions自动部署
 
-#### 前置设置
+### 前置设置
 
 在GitHub里设置密钥Secrets，包括`GIT_EMAIL`和`ACCESS_TOKEN`, 在下面自动部署配置里需要用到这两个参数，所以要先设置。
 `GIT_EMAIL` 可直接设置，在值那里输入自己github邮箱。
@@ -119,7 +119,7 @@ _multiconfig.yml
 操作详情参考 [【搭建博客】在GitHub上使用vitepress快速搭建博客](https://juejin.cn/post/7035473521480302629)
 
 
-#### Actions 设置
+### Actions 设置
 
 在根目录下新建 `.github`，在其下面再新建 `workflows`，最后在其下新建任务文件（该任务是关于部署的，于是命名为 `deployment.yml`）就 OK 了。
 
@@ -201,9 +201,9 @@ git push origin hexo
 > ![成功提交](../images/Pasted%20image%2020230626140650.png)
 > ![成功部署](../images/Pasted%20image%2020230626141125.png)
 
-## 遇到的问题
+# 遇到的问题
 
-### 重新部署完GitHub自定义域名丢失
+## 重新部署完GitHub自定义域名丢失
 
 如果有需要使用自己的域名的，每次重新部署完可能会出现404，这是因为创建完自定义域名之后会在项目新增一个CNAME文件，文件里存着域名，如图：
 ![](../images/Pasted%20image%2020230626140508.png)
