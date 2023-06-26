@@ -1,5 +1,5 @@
 ---
-title: OBS与HEXO的同步方案
+title: OBSidian与HEXO的同步维护方案
 date: 2023-06-26 11:37:27
 categories:
 	- 技术手册
@@ -14,11 +14,7 @@ tags:
 
 在Ob上Git提交Hexo项目到自己GitHub Page仓库的一个(Hexo)分支中，GitHub随即自动触发Actions将编译好的Hexo静态文件提交到以上仓库的主分支，也就是说Hexo分支保存项目，主分支保存Page页面访问所需要的静态文件。
 
-# 前置条件
-
-- npm 12+环境
-
-# 整体步骤
+# 所需条件
 
 - Hexo 和 Obsidian 的安装
 - Git 和 GitHub 的准备
@@ -55,7 +51,7 @@ hexo d      # 部署到Github
 
 成功部署到GitHub Page之后进入下一步。
 
-## step 3 - 仓库双分支配置
+## Step 3 - 仓库双分支配置
 
 在Hexo根目录输入
 ```shell
@@ -197,9 +193,9 @@ git push origin hexo
 若部署失败，请自行进入失败的任务项目，浏览部署日志，查找问题所在！
 
 > 若成功，那以后就可以直接在Obsidian插件处git提交了，提交之后自动会触发部署。
-> 
-> ![成功提交](../images/Pasted%20image%2020230626140650.png)
-> ![成功部署](../images/Pasted%20image%2020230626141125.png)
+ 
+ ![成功提交](../images/Pasted%20image%2020230626140650.png)
+ ![成功部署](../images/Pasted%20image%2020230626141125.png)
 
 # 遇到的问题
 
