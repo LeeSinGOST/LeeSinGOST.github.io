@@ -197,6 +197,9 @@ git push origin hexo
 若部署失败，请自行进入失败的任务项目，浏览部署日志，查找问题所在！
 
 > 若成功，那以后就可以直接在Obsidian插件处git提交了，提交之后自动会触发部署。
+> 
+> ![成功提交](../images/Pasted%20image%2020230626140650.png)
+> ![成功部署](../images/Pasted%20image%2020230626141125.png)
 
 ## 遇到的问题
 
@@ -206,3 +209,4 @@ git push origin hexo
 ![](../images/Pasted%20image%2020230626140508.png)
 所以只要把CNAME文件放到Hexo根目录的source文件夹即可，这样部署完就会一起发送到静态页面处。
 ![](../images/Pasted%20image%2020230626140323.png)
+
