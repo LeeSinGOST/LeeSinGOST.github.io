@@ -1,6 +1,7 @@
 ---
 title: Hello 
 date: 2023-05-11 15:34:03
+update: 2023-06-27 20:18:39
 top_img: https://pan.kokutou.top/d/pic_/light/light-back10.png
 ---
 Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).

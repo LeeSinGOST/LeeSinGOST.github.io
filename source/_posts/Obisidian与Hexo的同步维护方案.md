@@ -1,6 +1,7 @@
 ---
 title: OBSidian与HEXO的同步维护方案
 date: 2023-06-26 11:37:27
+update: 2023-06-27 20:18:39
 categories:
 	- 技术手册
 tags: 
