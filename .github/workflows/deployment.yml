@@ -25,7 +25,7 @@ jobs:
     - name: install gulp
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        npm install gulp-cli -g
+        npm install gulp -g
         npm install --save
         npm i gulp-replace --save
 

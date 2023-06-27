@@ -47,11 +47,10 @@
             "id": "04d2ab338a50b35f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "diff-view",
               "state": {
-                "file": "source/_posts/测试啊.md",
-                "mode": "source",
-                "source": false
+                "file": ".github/workflows/deployment.yml",
+                "staged": true
               }
             }
           }
@@ -123,7 +122,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/测试啊.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +138,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/测试啊.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,9 +159,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "source/_posts/测试啊.md"
-              }
+              "state": {}
             }
           },
           {
@@ -192,10 +187,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "7c545d2649404667",
+  "active": "04d2ab338a50b35f",
   "lastOpenFiles": [
-    "source/_posts/英语学习 - 母语者思考.md",
     "source/_posts/测试啊.md",
+    "source/_posts/英语学习 - 母语者思考.md",
     "qulpfile.js",
     "新建 文本文档.txt",
     "source/images/108267453.png",
