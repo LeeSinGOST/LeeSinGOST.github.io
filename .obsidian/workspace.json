@@ -191,8 +191,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "04d2ab338a50b35f",
+  "active": "ee98e8bb63708394",
   "lastOpenFiles": [
+    "qulpfile.js",
+    "新建 文本文档.txt",
     "source/images/108267453.png",
     "source/images/artworks-000203903994-rqqrn7-t500x500 1.jpg",
     "source/_posts/算法学习.md",
@@ -222,13 +224,11 @@
     "public/js/search/algolia.js",
     "public/js/utils.js",
     "public/js/tw_cn.js",
-    "public/js/search",
     "public/images/82add534bc31d19c6d4c55510ebfde8b24647436.jpg@180w_!web-comment-note.webp",
     "public/img/404.jpg",
     "themes/butterfly/source/img/favicon - 副本.png",
     "source/_posts/重来.md",
     "source/images/Pasted image 20230626141125.png",
-    "source/images/Pasted image 20230626140650.png",
     "scaffolds/post.md",
     "source/_posts/自动部署测试.md",
     "source/_posts/自动化部署测试2222.md",
