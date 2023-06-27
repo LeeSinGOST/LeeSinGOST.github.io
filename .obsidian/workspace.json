@@ -85,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "108",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -102,7 +102,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -191,15 +192,15 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ee98e8bb63708394",
+  "active": "04d2ab338a50b35f",
   "lastOpenFiles": [
+    "source/_posts/英语学习 - 母语者思考.md",
+    "source/_posts/测试啊.md",
     "qulpfile.js",
     "新建 文本文档.txt",
     "source/images/108267453.png",
     "source/images/artworks-000203903994-rqqrn7-t500x500 1.jpg",
     "source/_posts/算法学习.md",
-    "source/_posts/英语学习 - 母语者思考.md",
-    "source/_posts/测试啊.md",
     "source/_posts/hello-world.md",
     "source/_posts/Obisidian与Hexo的同步维护方案.md",
     "source/_posts/未命名 1.md",
@@ -223,7 +224,6 @@
     "public/js/search/local-search.js",
     "public/js/search/algolia.js",
     "public/js/utils.js",
-    "public/js/tw_cn.js",
     "public/images/82add534bc31d19c6d4c55510ebfde8b24647436.jpg@180w_!web-comment-note.webp",
     "public/img/404.jpg",
     "themes/butterfly/source/img/favicon - 副本.png",
