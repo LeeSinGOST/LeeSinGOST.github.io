@@ -153,9 +153,9 @@ jobs:
         hexo g
     - name: Deploy to Github Pages
       env:
-        GIT_NAME: WillCAI2020
+        GIT_NAME:              #设置自己的用户名！！！！！！！！！！！！！！
         GIT_EMAIL: ${{ secrets.GIT_EMAIL }} 
-        REPO: xxx.github.io #设置自己的仓库路径！！
+        REPO: xxx.github.io   #设置自己的仓库路径！！！！！！！！！！！！！
         GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
         cd ./public && git init && git add .
