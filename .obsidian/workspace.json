@@ -37,25 +37,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Obisidian与Hexo的同步维护方案.md",
+                "file": "source/_posts/英语学习 - 母语者思考.md",
                 "mode": "source",
                 "source": false
               }
             }
-          },
-          {
-            "id": "04d2ab338a50b35f",
-            "type": "leaf",
-            "state": {
-              "type": "diff-view",
-              "state": {
-                "file": ".github/workflows/deployment.yml",
-                "staged": true
-              }
-            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -84,7 +73,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "git config --global http.https://github.com.proxy https://127.0.0.1:17890",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -101,12 +90,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 233.5
+    "width": 232.5
   },
   "right": {
     "id": "fe0f88239cd99485",
@@ -122,6 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "source/_posts/英语学习 - 母语者思考.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -138,6 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "source/_posts/英语学习 - 母语者思考.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -159,7 +149,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "source/_posts/英语学习 - 母语者思考.md"
+              }
             }
           },
           {
@@ -187,18 +179,18 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ee98e8bb63708394",
+  "active": "e031806bffbe8e24",
   "lastOpenFiles": [
-    "gulpfile.js",
-    "source/_posts/测试啊.md",
+    "source/_posts/算法学习.md",
+    "source/_posts/hello-world.md",
     "source/_posts/英语学习 - 母语者思考.md",
+    "source/_posts/测试啊.md",
+    "source/_posts/Obisidian与Hexo的同步维护方案.md",
+    "gulpfile.js",
     "qulpfile.js",
     "新建 文本文档.txt",
     "source/images/108267453.png",
     "source/images/artworks-000203903994-rqqrn7-t500x500 1.jpg",
-    "source/_posts/算法学习.md",
-    "source/_posts/hello-world.md",
-    "source/_posts/Obisidian与Hexo的同步维护方案.md",
     "source/_posts/未命名 1.md",
     "source/_posts/未命名.md",
     "public/test.md",
@@ -219,7 +211,6 @@
     "public/2023/05",
     "public/js/search/local-search.js",
     "public/js/search/algolia.js",
-    "public/js/utils.js",
     "public/images/82add534bc31d19c6d4c55510ebfde8b24647436.jpg@180w_!web-comment-note.webp",
     "public/img/404.jpg",
     "themes/butterfly/source/img/favicon - 副本.png",
