@@ -22,12 +22,8 @@ jobs:
       with:
         node-version: '14.x'
 
-    - name: install gulp
-      if: steps.cache.outputs.cache-hit != 'true'
-      run: |
-        npm install gulp -g
-        npm install --save
-        npm i gulp-replace --save
+
+
 
 
     - name: Install dependencies & Generate static files
@@ -35,6 +31,9 @@ jobs:
         node -v
         npm i -g hexo-cli
         npm i
+        npm install -g gulp
+        npm install --save
+        npm i gulp-replace --save
         hexo clean
         hexo g
         gulp
