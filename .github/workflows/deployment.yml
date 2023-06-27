@@ -38,7 +38,7 @@ jobs:
         hexo clean
         hexo g
         npm link gulp
-        gulp ts
+        gulp
 
     - name: Deploy to Github Pages
       env:
