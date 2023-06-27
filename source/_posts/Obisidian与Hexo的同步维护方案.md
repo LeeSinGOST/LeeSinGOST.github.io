@@ -64,7 +64,6 @@ git push -u origin master                               #推送至远程的maste
 git checkout -b hexo             #该命令相当于 git branch hexo 以及 git checkout hexo，前者是创建分支 hexo，后者是切换到 hexo分支。
 
 git push origin HEAD -u
-
 ```
 
 推送后会发现仓库中有两个分支，一个为默认的`master`分支，另一个新建的`hexo`分支，且由于之前命令为`git add .` ，即把根目录中所有文件提交到暂缓区中，故而最终 `push`的文件是根目录中所有未被`git`忽视的文件。（之后自动化任务中的`git push --force --quiet "https://$GH_TOKEN@$REPO" master:master`能让生成的文件覆盖`master`分支中的文件，这样`master`分支中便是我们需要的`public`内的文件了）
