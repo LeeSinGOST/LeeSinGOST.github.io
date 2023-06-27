@@ -85,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "108",
+                "query": "git config --global http.https://github.com.proxy https://127.0.0.1:17890",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -192,7 +192,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "04d2ab338a50b35f",
+  "active": "7c545d2649404667",
   "lastOpenFiles": [
     "source/_posts/英语学习 - 母语者思考.md",
     "source/_posts/测试啊.md",
