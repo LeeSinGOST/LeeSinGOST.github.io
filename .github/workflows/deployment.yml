@@ -37,8 +37,9 @@ jobs:
         npm i
         npm install hexo-bilibili-bangumi --save
         hexo clean
-        hexo g
         hexo bangumi -u
+        hexo g
+
     # npm link gulp
     # gulp
 
