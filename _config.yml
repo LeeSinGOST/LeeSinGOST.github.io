@@ -15,8 +15,8 @@ timezone: 'Asia/Shanghai'
 # 追番设置
 bangumi: 
   enable: true
-  source: bgm
-  bgmInfoSource: 'bgmSub'
+  source: bangumi
+  bgmInfoSource: 'bgmApi'
   path:
   vmid: 544956
   title: '追番列表'
