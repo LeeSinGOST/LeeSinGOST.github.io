@@ -100,7 +100,7 @@ _multiconfig.yml
 9. 设置模版，以及Obsidian Git的配置和使用，参考[Obsidian+Git完美维护Hexo博客](https://zhuanlan.zhihu.com/p/554333805)里4-Obsidian Git插件的使用章节，模版参考3.2-快速插入Front-matter模板，位置不限。
 
 
-![可参考我的](../images/Pasted%20image%2020230626131934.png)
+![可参考我的](../images/learn/Pasted%20image%2020230626131934.png)
 
 
 不出意外的话就能推送了。
@@ -194,15 +194,15 @@ git push origin hexo
 
 > 若成功，那以后就可以直接在Obsidian插件处git提交了，提交之后自动会触发部署。
  
- ![成功提交](../images/Pasted%20image%2020230626140650.png)
- ![成功部署](../images/Pasted%20image%2020230626141125.png)
+ ![成功提交](../images/learn/Pasted%20image%2020230626140650.png)
+ ![成功部署](../images/learn/Pasted%20image%2020230626141125.png)
 
 # 遇到的问题
 
 ## 重新部署完GitHub自定义域名丢失
 
 如果有需要使用自己的域名的，每次重新部署完可能会出现404，这是因为创建完自定义域名之后会在项目新增一个CNAME文件，文件里存着域名，如图：
-![](../images/Pasted%20image%2020230626140508.png)
+![](../images/learn/Pasted%20image%2020230626140508.png)
 所以只要把CNAME文件放到Hexo根目录的source文件夹即可，这样部署完就会一起发送到静态页面处。
-![](../images/Pasted%20image%2020230626140323.png)
+![](../images/learn/Pasted%20image%2020230626140323.png)
 
