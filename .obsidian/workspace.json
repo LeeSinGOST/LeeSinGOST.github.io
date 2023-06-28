@@ -35,9 +35,11 @@
             "id": "e031806bffbe8e24",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "source/images/learn/image003.jpg"
+                "file": "source/_posts/英语学习 - 母语者思考.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -92,7 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 354.5
+    "width": 541.5
   },
   "right": {
     "id": "fe0f88239cd99485",
@@ -108,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/images/learn/image003.jpg",
+                "file": "source/_posts/英语学习 - 母语者思考.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/images/learn/image003.jpg",
+                "file": "source/_posts/英语学习 - 母语者思考.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/images/learn/image003.jpg"
+                "file": "source/_posts/英语学习 - 母语者思考.md"
               }
             }
           },
@@ -179,27 +181,29 @@
   },
   "active": "e031806bffbe8e24",
   "lastOpenFiles": [
-    "source/images/82add534bc31d19c6d4c55510ebfde8b24647436.jpg@180w_!web-comment-note.webp",
-    "source/images/108162230.png",
-    "source/images/108267453.png",
-    "source/images/artworks-000168908697-np6ras-t500x500.jpg",
-    "source/images/QQ图片20221210194333.png",
-    "source/images/QQ图片20230406125152.jpg",
-    "source/images/artworks-000203903994-rqqrn7-t500x500 1.jpg",
-    "source/images/artworks-000203903994-rqqrn7-t500x500.jpg",
-    "source/_posts/算法学习.md",
-    "public/images/Pasted image 20230414014304.png",
     "source/_posts/英语学习 - 母语者思考.md",
-    "source/images/learn/image003.jpg",
-    "source/images/bilinote/f6822454-9257-45c6-9e77-90efe2a62a75-2.png",
-    "source/images/learn",
-    "source/_posts/基操.md",
-    "source/images/bilinote",
+    "source/_posts/算法学习.md",
+    "source/_posts/Obisidian与Hexo的同步维护方案.md",
+    "source/_posts/hello-world.md",
+    "source/images/beauty/108162230.png",
     "source/_posts/测试啊.md",
+    "source/images/beauty/108267453.png",
+    "source/images/artworks-000168908697-np6ras-t500x500.jpg",
+    "source/images/artworks-000203903994-rqqrn7-t500x500.jpg",
+    "source/images/artworks-000203903994-rqqrn7-t500x500 1.jpg",
+    "source/images/beauty/QQ图片20221210194333.png",
+    "source/images/QQ图片20230406125152.jpg",
+    "source/images/82add534bc31d19c6d4c55510ebfde8b24647436.jpg@180w_!web-comment-note.webp",
+    "source/images/beauty",
+    "source/images/新建文件夹",
+    "source/images/cover",
+    "source/_posts/基操.md",
+    "source/images/learn/image003.jpg",
+    "public/images/Pasted image 20230414014304.png",
+    "source/images/learn",
+    "source/images/bilinote",
     "images/f6822454-9257-45c6-9e77-90efe2a62a75-4.png.md",
     "images",
-    "source/_posts/hello-world.md",
-    "source/_posts/Obisidian与Hexo的同步维护方案.md",
     "qulpfile.js",
     "gulpfile.js",
     "新建 文本文档.txt",
@@ -213,9 +217,6 @@
     "scaffolds/draft.md",
     "source/_posts/dd.md",
     "public/categories/英语/index.html",
-    "public/2023/05/11/hello-world/index.html",
-    "public/2023/05/11/hello-world",
-    "public/2023/05/11",
     "source/_posts/重来.md",
     "scaffolds/post.md",
     "source/_posts/自动部署测试.md",
