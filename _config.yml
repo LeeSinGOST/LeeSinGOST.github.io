@@ -33,13 +33,10 @@ bangumi:
   webp:
   progress:
   extraOrder:
-  proxy:
-    host: '代理host'
-    port: '代理端口'
   extra_options:
     key: value
 cinema: # 追剧设置
-  enable: true
+  enable: false
   path:
   vmid:
   title: '追剧列表'
