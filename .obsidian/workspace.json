@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/测试啊.md",
+                "file": "source/_posts/基操.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/测试啊.md",
+                "file": "source/_posts/基操.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/测试啊.md",
+                "file": "source/_posts/基操.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/测试啊.md"
+                "file": "source/_posts/基操.md"
               }
             }
           },
@@ -179,14 +179,19 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "4d1b9e7ede908599",
+  "active": "e031806bffbe8e24",
   "lastOpenFiles": [
+    "source/images/f6822454-9257-45c6-9e77-90efe2a62a75-4.png",
+    "source/_posts/基操.md",
     "source/_posts/算法学习.md",
     "source/_posts/测试啊.md",
+    "images/f6822454-9257-45c6-9e77-90efe2a62a75-4.png.md",
+    "images",
+    "source/images/f6822454-9257-45c6-9e77-90efe2a62a75-1.png",
+    "source/_posts/hello-world.md",
     "source/_posts/Obisidian与Hexo的同步维护方案.md",
     "qulpfile.js",
     "source/_posts/英语学习 - 母语者思考.md",
-    "source/_posts/hello-world.md",
     "gulpfile.js",
     "新建 文本文档.txt",
     "source/images/108267453.png",
@@ -210,12 +215,9 @@
     "public/2023/05/11",
     "public/2023/05",
     "public/js/search/local-search.js",
-    "public/js/search/algolia.js",
     "public/images/82add534bc31d19c6d4c55510ebfde8b24647436.jpg@180w_!web-comment-note.webp",
     "public/img/404.jpg",
-    "themes/butterfly/source/img/favicon - 副本.png",
     "source/_posts/重来.md",
-    "source/images/Pasted image 20230626141125.png",
     "scaffolds/post.md",
     "source/_posts/自动部署测试.md",
     "source/_posts/自动化部署测试2222.md",
