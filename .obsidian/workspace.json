@@ -37,7 +37,7 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "source/images/bilinote/f6822454-9257-45c6-9e77-90efe2a62a75-15.png"
+                "file": "source/images/bilinote/f6822454-9257-45c6-9e77-90efe2a62a75-6.png"
               }
             }
           }
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/images/bilinote/f6822454-9257-45c6-9e77-90efe2a62a75-15.png",
+                "file": "source/_posts/hello-world.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +125,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/images/bilinote/f6822454-9257-45c6-9e77-90efe2a62a75-15.png",
+                "file": "source/_posts/hello-world.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/images/bilinote/f6822454-9257-45c6-9e77-90efe2a62a75-15.png"
+                "file": "source/_posts/hello-world.md"
               }
             }
           },
@@ -177,8 +177,9 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "e031806bffbe8e24",
+  "active": "4d1b9e7ede908599",
   "lastOpenFiles": [
+    "source/images/bilinote/f6822454-9257-45c6-9e77-90efe2a62a75-15.png",
     "source/images/bilinote/f6822454-9257-45c6-9e77-90efe2a62a75-4.png",
     "source/images/bilinote/f6822454-9257-45c6-9e77-90efe2a62a75-1.png",
     "source/images/beauty/QQ图片20221210194333.png",
@@ -198,7 +199,6 @@
     "source/images/新建文件夹",
     "source/images/cover",
     "source/_posts/基操.md",
-    "source/images/learn/image003.jpg",
     "source/images/learn",
     "source/images/bilinote",
     "images/f6822454-9257-45c6-9e77-90efe2a62a75-4.png.md",
