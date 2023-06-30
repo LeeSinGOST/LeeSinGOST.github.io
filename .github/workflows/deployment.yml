@@ -36,6 +36,8 @@ jobs:
         npm i -g hexo-cli
         npm i
         npm install hexo-bilibili-bangumi --save
+        npm install hexo-abbrlink --save
+        npm install hexo-wordcount --save
         hexo clean
         hexo bangumi -u
         hexo g
