@@ -985,8 +985,3 @@ CDN:
     # artalk_css:
     # busuanzi:
     # abcjs_basic_js:
-wordcount:
-  enable: true
-  post_wordcount: true
-  min2read: true
-  total_wordcount: true
