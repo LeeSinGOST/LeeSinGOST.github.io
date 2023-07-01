@@ -8,43 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "16a09712ebb06369",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/hello-world.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "872f72692363db19",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/测试啊.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e031806bffbe8e24",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/c_Git 常用命令.md",
+                "file": "source/_posts/学习/英语学习 - 母语者思考.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -110,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/c_Git 常用命令.md",
+                "file": "source/_posts/学习/英语学习 - 母语者思考.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/c_Git 常用命令.md",
+                "file": "source/_posts/学习/英语学习 - 母语者思考.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/c_Git 常用命令.md"
+                "file": "source/_posts/学习/英语学习 - 母语者思考.md"
               }
             }
           },
@@ -179,35 +154,42 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ee98e8bb63708394",
+  "active": "872f72692363db19",
   "lastOpenFiles": [
-    "source/images/cover/cover14.jpg",
-    "source/images/cover/cover13.jpg",
-    "source/images/cover/色のダンス.jpg",
-    "source/images/cover/dabfbd8c-7407-40ea-8606-e8b4b1d3bca1.jfif",
-    "source/images/cover/cover12.jpg",
-    "source/images/cover/cover11.jpg",
-    "source/images/cover/cover10.jpg",
-    "source/images/cover/cover9.jpg",
-    "source/images/cover/cover8.jpg",
-    "source/images/cover/a542cef8ec01585c88ac6229d22970c2.jpg",
-    "source/images/cover/96f8baee127a33f458f1954cb3e007fb.jpg",
-    "source/images/cover/6a477b8093ae3a4530a7001ae58368f3.jpg",
-    "db.json",
-    "public/images/beauty",
-    "public/js/search/local-search.js",
-    "public/js/search/algolia.js",
-    "public/js/utils.js",
-    "public/js/tw_cn.js",
-    "public/js/nav.js",
-    "public/js/search",
-    "public/js/main.js",
-    "source/_posts/hello-world.md",
-    "source/_posts/英语学习 - 母语者思考.md",
+    "source/_posts/C sharp.md",
+    "source/images/326d1e3ab076fe89ef7f0d8de035f315.jpg",
+    "source/_posts/UGUI 学习.md",
+    "source/_posts/04 hexo 美化.md",
     "source/_posts/算法学习.md",
-    "source/_posts/Obisidian与Hexo的同步维护方案.md",
-    "source/_posts/测试啊.md",
     "source/_posts/基操.md",
+    "source/tags/index.md",
+    "source/tags",
+    "source/img/banner.jpg",
+    "source/img/98646512.jpg",
+    "source/img/60006073.jpg",
+    "source/img/376611.png",
+    "source/img/108068975.jpg",
+    "source/img/104923272.jpg",
+    "source/img/102257565.jpg",
+    "source/img",
+    "source/images/learn/Pasted image 20230416174701.png",
+    "source/images/learn/Pasted image 20230416174604.png",
+    "source/images/learn",
+    "source/images/cover",
+    "source/images/bilinote",
+    "source/images/beauty",
+    "source/images",
+    "source/categories/index.md",
+    "source/categories",
+    "source/_posts/技术手册/d_回退版本.md",
+    "source/_posts/学习/英语学习 - 母语者思考.md",
+    "source/_posts/测试啊.md",
+    "source/_posts/技术手册",
+    "source/_posts/学习",
+    "source/_posts/Obisidian与Hexo的同步维护方案.md",
+    "source/_posts/hello-world.md",
+    "source/_posts/c_Git 常用命令.md",
+    "source/_posts/英语学习 - 母语者思考.md",
     "images/f6822454-9257-45c6-9e77-90efe2a62a75-4.png.md",
     "source/_posts/未命名 1.md",
     "source/_posts/未命名.md",
@@ -219,10 +201,6 @@
     "scaffolds/draft.md",
     "source/_posts/dd.md",
     "source/_posts/重来.md",
-    "scaffolds/post.md",
-    "source/_posts/自动部署测试.md",
-    "source/_posts/自动化部署测试2222.md",
-    "source/_posts/Pasted image 20230414014304.png.md",
-    "hexo/source/_posts/测试啊.md"
+    "scaffolds/post.md"
   ]
 }
