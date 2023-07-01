@@ -1,12 +1,13 @@
 ---
 title: OBSidian与HEXO的同步维护方案
+categories:
+  - 技术手册
+tags:
+  - HEXO
+  - Obisidian
+abbrlink: 24083
 date: 2023-06-26 11:37:27
 updated: 2023-06-27 20:18:39
-categories:
-	- 技术手册
-tags: 
-	- HEXO
-	- Obisidian
 ---
 
 > Obisidian是一个本地笔记软件，可用于构建自己的知识体系，以下简称Ob。Hexo是使用很广泛的博客框架，属于静态页面。本文将记录如何实现Ob在本地写文档，然后一键发送并自动部署到Hexo。
