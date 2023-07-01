@@ -904,8 +904,13 @@ css_prefix: true
 inject:
   head:
     - <link rel="stylesheet" href="/css/myStyle.css">
+    - <link rel="stylesheet" href="/css/nav.css">
+    - <script src="/js/nav.js"></script>
+    - <script src="/js/jquery.js"></script>
   bottom:
     - <script src="/js/font.js"></script>
+
+
 
 # CDN
 # Don't modify the following settings unless you know how they work
