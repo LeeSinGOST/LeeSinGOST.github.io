@@ -310,7 +310,7 @@ newest_comments:
 translate:
   enable: false
   # The text of a button
-  default: 繁
+  default: 简
   # the language of website (1 - Traditional Chinese/ 2 - Simplified Chinese）
   defaultEncoding: 2
   # Time delay
@@ -764,7 +764,7 @@ hr_icon:
 
 # the subtitle on homepage (主頁subtitle)
 subtitle:
-  enable: false
+  enable: true
   # Typewriter Effect (打字效果)
   effect: true
   # Customize typed.js (配置typed.js)
@@ -778,7 +778,7 @@ subtitle:
   # subtitle 會先顯示 source , 再顯示 sub 的內容
   source: false
   # 如果關閉打字效果，subtitle 只會顯示 sub 的第一行文字
-  sub:
+  sub: "Let there be light again"
 
 # Loading Animation (加載動畫)
 preloader:
