@@ -35,9 +35,11 @@
             "id": "e031806bffbe8e24",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "source/images/bilinote/f6822454-9257-45c6-9e77-90efe2a62a75-6.png"
+                "file": "source/_posts/c_Git 常用命令.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -108,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/hello-world.md",
+                "file": "source/_posts/c_Git 常用命令.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/hello-world.md",
+                "file": "source/_posts/c_Git 常用命令.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/hello-world.md"
+                "file": "source/_posts/c_Git 常用命令.md"
               }
             }
           },
@@ -177,8 +179,9 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "4d1b9e7ede908599",
+  "active": "e031806bffbe8e24",
   "lastOpenFiles": [
+    "source/_posts/hello-world.md",
     "source/images/bilinote/f6822454-9257-45c6-9e77-90efe2a62a75-15.png",
     "source/images/bilinote/f6822454-9257-45c6-9e77-90efe2a62a75-4.png",
     "source/images/bilinote/f6822454-9257-45c6-9e77-90efe2a62a75-1.png",
@@ -188,13 +191,11 @@
     "source/_posts/英语学习 - 母语者思考.md",
     "source/_posts/算法学习.md",
     "source/_posts/Obisidian与Hexo的同步维护方案.md",
-    "source/_posts/hello-world.md",
     "source/_posts/测试啊.md",
     "source/images/artworks-000168908697-np6ras-t500x500.jpg",
     "source/images/artworks-000203903994-rqqrn7-t500x500.jpg",
     "source/images/artworks-000203903994-rqqrn7-t500x500 1.jpg",
     "source/images/QQ图片20230406125152.jpg",
-    "source/images/82add534bc31d19c6d4c55510ebfde8b24647436.jpg@180w_!web-comment-note.webp",
     "source/images/beauty",
     "source/images/新建文件夹",
     "source/images/cover",
