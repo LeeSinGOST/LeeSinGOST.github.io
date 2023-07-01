@@ -90,6 +90,22 @@ cover:
   default_cover:
     - https://pan.kokutou.top/d/pic_/light/light-back18.png
     - https://pan.kokutou.top/d/pic_/light/light-back15.png
+    - /images/cover/cover1.png
+    - /images/cover/cover2.png
+    - /images/cover/cover3.png
+    - /images/cover/cover4.jpg
+    - /images/cover/cover5.jpg
+    - /images/cover/cover6.jpg
+    - /images/cover/cover7.jpg
+    - /images/cover/cover8.jpg
+    - /images/cover/cover9.jpg
+    - /images/cover/cover10.jpg
+    - /images/cover/cover11.jpg
+    - /images/cover/cover12.jpg
+    - /images/cover/cover13.jpg
+    - /images/cover/cover14.jpg
+
+
 # Replace Broken Images (替換無法顯示的圖片)
 error_img:
   flink: /img/friend_404.gif
