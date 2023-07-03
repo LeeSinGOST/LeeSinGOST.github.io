@@ -152,3 +152,9 @@ deploy:
   type: 'git'
   repo: 'https://github.com/LeeSinGOST/LeeSinGOST.github.io.git'
   branch: 'master'
+
+# APlayer
+# https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md
+aplayer:
+  meting: true
+  asset_inject: false
