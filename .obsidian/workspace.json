@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/timelines/未命名.md",
+                "file": "source/timelines.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 541.5
+    "width": 278.5
   },
   "right": {
     "id": "fe0f88239cd99485",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/timelines/未命名.md",
+                "file": "source/timelines.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/timelines/未命名.md",
+                "file": "source/timelines.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/timelines/未命名.md"
+                "file": "source/timelines.md"
               }
             }
           },
@@ -156,8 +156,9 @@
   },
   "active": "872f72692363db19",
   "lastOpenFiles": [
-    "source/_posts/学习/英语学习 - 母语者思考.md",
     "source/_posts/timelines/未命名.md",
+    "source/timelines.md",
+    "source/_posts/学习/英语学习 - 母语者思考.md",
     "source/_posts/timelines",
     "source/_posts/UGUI 学习.md",
     "source/_posts/C sharp.md",
@@ -200,7 +201,6 @@
     "themes/butterfly/README.md",
     "scaffolds/page.md",
     "scaffolds/draft.md",
-    "source/_posts/dd.md",
-    "source/_posts/重来.md"
+    "source/_posts/dd.md"
   ]
 }
