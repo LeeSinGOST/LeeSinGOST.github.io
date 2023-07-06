@@ -13,12 +13,18 @@ menu:
   归档: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
-  班固米: /bangumis || fas fa-archive
   休闲||fas fa-list:
+    追番: /bangumis || fas fa-archive
     音乐: /music/ || fas fa-music
     电影: /movies/ || fas fa-video
   #Link: /link/ || fas fa-link
-  关于: /about/ || fas fa-heart
+  时间线: /posts/36514/
+  关于||fas fa-heart:
+    更新: /posts/36514/ || fas fa-heart
+    动态: /posts/0 || fas fa-heart
+    关于: /about/ || fas fa-heart
+    
+
 
 # Code Blocks (代碼相關)
 # --------------------------------------
