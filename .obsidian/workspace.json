@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/hello-world.md",
+                "file": "source/_posts/算法学习.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/hello-world.md",
+                "file": "source/_posts/算法学习.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/hello-world.md",
+                "file": "source/_posts/算法学习.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/hello-world.md"
+                "file": "source/_posts/算法学习.md"
               }
             }
           },
@@ -156,13 +156,13 @@
   },
   "active": "872f72692363db19",
   "lastOpenFiles": [
+    "source/_posts/hello-world.md",
     "source/_posts/算法学习.md",
     "source/_posts/修改哔哩哔哩视频笔记插件.md",
     "source/_posts/测试啊.md",
     "source/_posts/04 hexo 美化.md",
     "source/_posts/学习/英语学习 - 母语者思考.md",
     "source/_posts/c_Git 常用命令.md",
-    "source/_posts/hello-world.md",
     "source/_posts/Obisidian与Hexo的同步维护方案.md",
     "source/tags/index.md",
     "source/img/banner.jpg",
