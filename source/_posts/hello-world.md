@@ -1,7 +1,6 @@
 ---
 title: Hello
-top_img: 'https://pan.kokutou.top/d/pic_/light/light-back10.png'
-abbrlink: 62291
+abbrlink: 00001
 date: 2023-05-11 15:34:03
 update: 2023-06-27 20:18:39
 ---
