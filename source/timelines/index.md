@@ -3,7 +3,7 @@ categories:
 tags: 
 title: 更新日志
 date: 2023-07-06 14:08:27
-updated: 2023-07-06 16:18:51
+updated: 2023-07-06 16:29:07
 ---
 # 更新日志
 {% timeline 2023,purple %}
@@ -25,6 +25,6 @@ updated: 2023-07-06 16:18:51
 配置Hexo与Obisidian同步更新维护
 <!-- endtimeline -->
 <!-- timeline 06-11 -->
-Hexo + Butterfly 建站
+Hexo-6.3.0 + Butterfly-4.9.0 建站
 <!-- endtimeline -->
 {% endtimeline %}
