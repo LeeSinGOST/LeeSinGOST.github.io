@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/timelines/更新日志.md",
+                "file": "source/timelines/index.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/timelines/更新日志.md",
+                "file": "source/timelines/index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/timelines/更新日志.md",
+                "file": "source/timelines/index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/timelines/更新日志.md"
+                "file": "source/timelines/index.md"
               }
             }
           },
@@ -154,11 +154,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "872f72692363db19",
+  "active": "ee98e8bb63708394",
   "lastOpenFiles": [
     "source/_posts/算法学习.md",
     "source/tags/index.md",
-    "source/timelines/更新日志.md",
+    "source/timelines/index.md",
     "source/_posts/timelines.md",
     "source/timelines",
     "source/categories/index.md",
