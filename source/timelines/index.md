@@ -3,22 +3,20 @@ categories:
 tags: 
 title: 更新日志
 date: 2023-07-06 14:08:27
-updated: 2023-07-06 14:35:04
+updated: 2023-07-06 16:18:51
 ---
 # 更新日志
 {% timeline 2023,purple %}
 <!-- timeline 07-06 -->
-**新增** 更新日志
+**新增** 更新日志、RSS订阅、bing sitemap
 <!-- endtimeline -->
 <!-- timeline 07-03 -->
-pjax
-aplayer音乐
+启动pjax、aplayer底部音乐
 <!-- endtimeline -->
 <!-- timeline 07-01 -->
-一图流界面
-双栏首页
+一图流界面、双栏首页
 **新增** twikoo评论系统
-从github page到vercel
+从github pages到vercel
 <!-- endtimeline -->
 <!-- timeline 06-29 -->
 **新增** bangumi追番页
