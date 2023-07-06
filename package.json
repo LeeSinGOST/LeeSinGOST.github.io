@@ -29,5 +29,9 @@
     "hexo-tag-aplayer": "^3.0.4",
     "hexo-theme-landscape": "^1.0.0",
     "hexo-wordcount": "^6.0.1"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-replace": "^1.1.4"
   }
 }
