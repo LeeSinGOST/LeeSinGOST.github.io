@@ -21,6 +21,8 @@ menu:
   关于||fas fa-heart:
     更新: /timelines/ || fas fa-heart
     动态: /talking/ || fas fa-heart
+    订阅: /atom.xml || fas fa-heart
+    地图: /sitemap.xml
     关于: /about/ || fas fa-heart
     
 
