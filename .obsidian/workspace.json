@@ -156,6 +156,7 @@
   },
   "active": "ee98e8bb63708394",
   "lastOpenFiles": [
+    "source/BingSiteAuth.xml",
     "node_modules/lodash/flake.nix",
     "node_modules/lodash/release.md",
     "node_modules/lodash/README.md",
@@ -168,7 +169,6 @@
     "node_modules/lodash/values.js",
     "node_modules/lodash/valueOf.js",
     "node_modules/lodash/unescape.js",
-    "node_modules/lodash/unary.js",
     "node_modules/hexo-generator-baidu-sitemap/node_modules/highlight.js/scss/school-book.png",
     "node_modules/hexo-generator-baidu-sitemap/node_modules/highlight.js/scss/pojoaque.jpg",
     "node_modules/hexo-generator-baidu-sitemap/node_modules/highlight.js/scss/brown-papersq.png",
