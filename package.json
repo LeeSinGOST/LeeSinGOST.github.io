@@ -17,6 +17,7 @@
     "hexo-bilibili-bangumi": "^1.8.8",
     "hexo-butterfly-article-double-row": "^1.0.2",
     "hexo-deployer-git": "^4.0.0",
+    "hexo-filter-nofollow": "^2.0.2",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-baidu-sitemap": "^0.1.9",
     "hexo-generator-category": "^2.0.0",
