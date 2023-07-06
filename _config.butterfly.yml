@@ -10,7 +10,7 @@ nav:
 # Menu 目錄
 menu:
   首页: / || fas fa-home
-  时间线: /archives/ || fas fa-archive
+  归档: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
   班固米: /bangumis || fas fa-archive
