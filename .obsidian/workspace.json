@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/timelines/index.md",
+                "file": "source/_posts/学习/英语学习 - 母语者思考.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/timelines/index.md",
+                "file": "source/_posts/学习/英语学习 - 母语者思考.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/timelines/index.md",
+                "file": "source/_posts/学习/英语学习 - 母语者思考.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/timelines/index.md"
+                "file": "source/_posts/学习/英语学习 - 母语者思考.md"
               }
             }
           },
@@ -154,8 +154,16 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ee98e8bb63708394",
+  "active": "872f72692363db19",
   "lastOpenFiles": [
+    "source/_posts/修改哔哩哔哩视频笔记插件.md",
+    "source/_posts/e_深入理解merge.md",
+    "source/_posts/Obisidian与Hexo的同步维护方案.md",
+    "themes/butterfly/source/img/404.jpg",
+    "themes/butterfly/source/img/favicon - 副本.png",
+    "themes/butterfly/source/img/favicon.png",
+    "themes/butterfly/source/img/friend_404.gif",
+    "source/timelines/index.md",
     "node_modules/hexo-generator-baidu-sitemap/node_modules/ejs/lib/utils.js",
     "node_modules/hexo-generator-baidu-sitemap/node_modules/ejs/lib/ejs.js",
     "node_modules/hexo-generator-baidu-sitemap/node_modules/ejs/lib",
@@ -167,7 +175,6 @@
     "node_modules/hexo-filter-nofollow/LICENSE",
     "node_modules/hexo-filter-nofollow/index.js",
     "node_modules/hexo-filter-nofollow/package.json",
-    "node_modules/glob-watcher/node_modules/fsevents",
     "source/_posts/测试啊.md",
     "node_modules/lodash/release.md",
     "node_modules/lodash/README.md",
@@ -194,13 +201,6 @@
     "node_modules/hexo-generator-baidu-sitemap/node_modules/array-unique/README.md",
     "node_modules/hexo-generator-baidu-sitemap/node_modules/which/CHANGELOG.md",
     "node_modules/hexo-generator-baidu-sitemap/node_modules/no-case/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/to-regex-range/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/fill-range/node_modules/extend-shallow/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/arr-diff/README.md",
-    "node_modules/hexo-generator-sitemap/README.md",
-    "themes/butterfly/source/img/favicon.png",
-    "source/img/banner.jpg",
-    "source/img/108068975.jpg",
-    "source/img/102257565.jpg"
+    "node_modules/hexo-generator-baidu-sitemap/node_modules/to-regex-range/README.md"
   ]
 }
