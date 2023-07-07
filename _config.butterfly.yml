@@ -95,8 +95,8 @@ cover:
   position: both
   # When cover is not set, the default cover is displayed (當沒有設置cover時，默認的封面顯示)
   default_cover:
-    - https://fastly.jsdelivr.net/gh/LeeSinGOST/Pictory/img/202307071759457.png
-    - https://fastly.jsdelivr.net/gh/LeeSinGOST/Pictory/img/202307071759448.png
+    - https://pic.kokutou.space/img/202307071759457.png
+    - https://pic.kokutou.space/img/202307071759448.png
     - /images/cover/cover1.png
     - /images/cover/cover2.png
     - /images/cover/cover3.png
@@ -123,7 +123,7 @@ error_img:
 error_404:
   enable: false
   subtitle: 'Page Not Found'
-  background: https://fastly.jsdelivr.net/gh/LeeSinGOST/Pictory/img/202307071800862.png
+  background: https://pic.kokutou.space/img/202307071800862.png
 
 post_meta:
   page: # Home Page

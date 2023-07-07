@@ -1,8 +1,8 @@
 ---
 title: frp使用教程，实现无公网稳定远程桌面
 date: 2023-07-06 19:47:11
-updated: 2023-07-07 21:13:36
-cover: 'https://fastly.jsdelivr.net/gh/LeeSinGOST/Pictory/img/202307071755649.png'
+updated: 2023-07-07 21:59:28
+cover: 'https://pic.kokutou.space/img/202307071755649.png'
 categories:
 	- 使用教程
 tags: 
