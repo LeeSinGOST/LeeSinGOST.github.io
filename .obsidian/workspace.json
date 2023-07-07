@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/frp 实现无公网稳定远程桌面.md",
+                "file": "source/about/index.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/frp 实现无公网稳定远程桌面.md",
+                "file": "source/about/index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/frp 实现无公网稳定远程桌面.md",
+                "file": "source/about/index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/frp 实现无公网稳定远程桌面.md"
+                "file": "source/about/index.md"
               }
             }
           },
@@ -154,8 +154,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "4d1b9e7ede908599",
+  "active": "872f72692363db19",
   "lastOpenFiles": [
+    "source/_posts/frp 实现无公网稳定远程桌面.md",
+    "source/about/index.md",
+    "source/about",
     "source/_posts/04 hexo 美化.md",
     "source/_posts/测试啊.md",
     "source/_posts/算法学习.md",
@@ -163,7 +166,6 @@
     "source/_posts/修改哔哩哔哩视频笔记插件.md",
     "source/_posts/学习/英语学习 - 母语者思考.md",
     "source/_posts/Obisidian与Hexo的同步维护方案.md",
-    "source/_posts/frp 实现无公网稳定远程桌面.md",
     "source/_posts/e_深入理解merge.md",
     "themes/butterfly/source/img/404.jpg",
     "themes/butterfly/source/img/favicon - 副本.png",
@@ -180,7 +182,6 @@
     "node_modules/hexo-filter-nofollow/README.md",
     "node_modules/hexo-filter-nofollow/LICENSE",
     "node_modules/hexo-filter-nofollow/index.js",
-    "node_modules/hexo-filter-nofollow/package.json",
     "node_modules/lodash/release.md",
     "node_modules/lodash/README.md",
     "node_modules/hexo-generator-baidu-sitemap/node_modules/highlight.js/scss/school-book.png",
@@ -200,7 +201,6 @@
     "node_modules/hexo-generator-baidu-sitemap/node_modules/anymatch/README.md",
     "node_modules/hexo-generator-baidu-sitemap/node_modules/glob-parent/node_modules/is-glob/README.md",
     "node_modules/hexo-generator-baidu-sitemap/node_modules/glob-parent/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/fill-range/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/is-number/README.md"
+    "node_modules/hexo-generator-baidu-sitemap/node_modules/fill-range/README.md"
   ]
 }
