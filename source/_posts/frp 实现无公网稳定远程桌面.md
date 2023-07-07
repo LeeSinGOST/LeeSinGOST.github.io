@@ -7,7 +7,7 @@ categories:
 	- 使用教程
 tags: 
 ---
-# frp使用教程，通过云服务器搭建稳定远程桌面
+# 使用frp通过云服务器搭建稳定远程桌面
 
 >通过配置端口映射让处于无公网环境下的电脑随时随地通过服务器反向代理被控制端。
 >[frp官方文档 | frp (gofrp.org)](https://gofrp.org/docs/overview/)
