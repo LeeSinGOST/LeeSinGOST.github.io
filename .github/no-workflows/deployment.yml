@@ -35,15 +35,12 @@ jobs:
         node -v
         npm i -g hexo-cli
         npm i
-        npm install hexo-bilibili-bangumi --save
-        npm install hexo-abbrlink --save
-        npm install hexo-wordcount --save
         hexo clean
         hexo bangumi -u
         hexo g
+        gulp
 
-    # npm link gulp
-    # gulp
+
 
     - name: Deploy to Github Pages
       env:

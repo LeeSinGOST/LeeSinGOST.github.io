@@ -1,13 +1,13 @@
 ---
-title: frp使用教程，实现无公网稳定远程桌面
+title: frp使用教程，通过云服务器搭建稳定远程桌面
 date: 2023-07-06 19:47:11
-updated: 2023-07-07 21:59:28
+updated: 2023-07-07 23:09:31
 cover: 'https://pic.kokutou.space/img/202307071755649.png'
 categories:
 	- 使用教程
 tags: 
 ---
-# frp使用教程，实现无公网稳定远程桌面
+# frp使用教程，通过云服务器搭建稳定远程桌面
 
 >通过配置端口映射让处于无公网环境下的电脑随时随地通过服务器反向代理被控制端。
 >[frp官方文档 | frp (gofrp.org)](https://gofrp.org/docs/overview/)
