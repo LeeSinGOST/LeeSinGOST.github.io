@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/about/index.md",
+                "file": "source/_posts/测试啊.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e031806bffbe8e24",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "source/_posts/订阅式自动追番1.0 - Flexget + Aria2.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -69,7 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 278.5
+    "width": 541.5
   },
   "right": {
     "id": "fe0f88239cd99485",
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/about/index.md",
+                "file": "source/_posts/订阅式自动追番1.0 - Flexget + Aria2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/about/index.md",
+                "file": "source/_posts/订阅式自动追番1.0 - Flexget + Aria2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/about/index.md"
+                "file": "source/_posts/订阅式自动追番1.0 - Flexget + Aria2.md"
               }
             }
           },
@@ -154,53 +167,53 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "872f72692363db19",
+  "active": "e031806bffbe8e24",
   "lastOpenFiles": [
     "source/_posts/frp 实现无公网稳定远程桌面.md",
-    "source/about/index.md",
-    "source/about",
-    "source/_posts/04 hexo 美化.md",
+    "source/_posts/订阅式自动追番1.0 - Flexget + Aria2.md",
     "source/_posts/测试啊.md",
     "source/_posts/算法学习.md",
-    "source/_posts/c_Git 常用命令.md",
     "source/_posts/修改哔哩哔哩视频笔记插件.md",
-    "source/_posts/学习/英语学习 - 母语者思考.md",
-    "source/_posts/Obisidian与Hexo的同步维护方案.md",
+    "source/_posts/c_Git 常用命令.md",
     "source/_posts/e_深入理解merge.md",
-    "themes/butterfly/source/img/404.jpg",
-    "themes/butterfly/source/img/favicon - 副本.png",
-    "themes/butterfly/source/img/favicon.png",
-    "themes/butterfly/source/img/friend_404.gif",
-    "source/timelines/index.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/ejs/lib/utils.js",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/ejs/lib/ejs.js",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/ejs/lib",
-    "node_modules/hexo-generator-baidu-sitemap/lib/generator.js",
-    "node_modules/hexo-generator-baidu-sitemap/lib",
-    "node_modules/hexo-filter-nofollow/lib/filter.js",
-    "node_modules/hexo-filter-nofollow/lib",
-    "node_modules/hexo-filter-nofollow/README.md",
-    "node_modules/hexo-filter-nofollow/LICENSE",
-    "node_modules/hexo-filter-nofollow/index.js",
-    "node_modules/lodash/release.md",
-    "node_modules/lodash/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/highlight.js/scss/school-book.png",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/highlight.js/scss/pojoaque.jpg",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/highlight.js/scss/brown-papersq.png",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/highlight.js/styles/school-book.png",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/highlight.js/styles/pojoaque.jpg",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/highlight.js/styles/brown-papersq.png",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/micromatch/node_modules/kind-of/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/extglob/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/argparse/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/ejs/README.md",
-    "node_modules/lodash.merge/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/braces/node_modules/extend-shallow/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/anymatch/node_modules/normalize-path/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/micromatch/CHANGELOG.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/anymatch/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/glob-parent/node_modules/is-glob/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/glob-parent/README.md",
-    "node_modules/hexo-generator-baidu-sitemap/node_modules/fill-range/README.md"
+    "source/_posts/Obisidian与Hexo的同步维护方案.md",
+    "source/_posts/Unity基操.md",
+    "source/_posts/hello-world.md",
+    "source/images/cover/cover14.jpg",
+    "source/images/cover/cover13.jpg",
+    "source/images/cover/色のダンス.jpg",
+    "source/images/cover/dabfbd8c-7407-40ea-8606-e8b4b1d3bca1.jfif",
+    "source/images/cover/cover12.jpg",
+    "source/images/cover/cover11.jpg",
+    "source/images/cover/cover10.jpg",
+    "source/images/cover/cover9.jpg",
+    "source/images/cover/cover8.jpg",
+    "source/images/cover/a542cef8ec01585c88ac6229d22970c2.jpg",
+    "source/images/cover/96f8baee127a33f458f1954cb3e007fb.jpg",
+    "db.json",
+    "public/images/beauty",
+    "public/js/search/local-search.js",
+    "public/js/search/algolia.js",
+    "public/js/utils.js",
+    "public/js/tw_cn.js",
+    "public/js/nav.js",
+    "public/js/search",
+    "public/js/main.js",
+    "source/_posts/英语学习 - 母语者思考.md",
+    "images/f6822454-9257-45c6-9e77-90efe2a62a75-4.png.md",
+    "source/_posts/未命名 1.md",
+    "source/_posts/未命名.md",
+    "public/test.md",
+    "scaffolds/Template/Front-matter.md",
+    "themes/butterfly/README_CN.md",
+    "themes/butterfly/README.md",
+    "scaffolds/page.md",
+    "scaffolds/draft.md",
+    "source/_posts/dd.md",
+    "source/_posts/重来.md",
+    "scaffolds/post.md",
+    "source/_posts/自动部署测试.md",
+    "source/_posts/自动化部署测试2222.md",
+    "source/_posts/Pasted image 20230414014304.png.md"
   ]
 }
