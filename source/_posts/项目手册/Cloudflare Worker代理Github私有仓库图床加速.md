@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Worker代理Github图床加速
 date: 2023-07-10 10:56:03
-updated: 2023-07-10 11:44:11
+updated: 2023-07-10 12:59:46
 categories:
 	- 项目手册
 tags: 
@@ -12,6 +12,14 @@ tags:
 # Cloudflare Worker代理Github图床加速
 
 >使用自己的域名访问Github私有仓库包括图片在内的文件。
+
+# 效果测试
+如下
+8m
+![像这样 8M](https://pic.kokutou.space/img/202307101245813.jpg)
+
+2m
+![](https://pic.kokutou.space/img/202307101258093.jpg)
 
 # 前置条件
 

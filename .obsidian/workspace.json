@@ -11,8 +11,12 @@
             "id": "e031806bffbe8e24",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "source/_posts/Cloudflare Worker代理Github私有仓库图床加速.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "source/_posts/Cloudflare Worker代理Github私有仓库图床加速.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "source/_posts/Cloudflare Worker代理Github私有仓库图床加速.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "source/_posts/Cloudflare Worker代理Github私有仓库图床加速.md"
+              }
             }
           },
           {
@@ -130,7 +138,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -146,12 +154,19 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "e031806bffbe8e24",
+  "active": "4d1b9e7ede908599",
   "lastOpenFiles": [
     "source/_posts/Cloudflare Worker代理Github私有仓库图床加速.md",
     "source/images/4c6b08a81a897e59564ed0d7a7ed6a17.png",
     "source/images/b4c46739a836c6a598afc803345d0479.png",
     "source/images/487ded4093d1fcee10226579963c56b2.png",
+    "source/同步/source/images/4c6b08a81a897e59564ed0d7a7ed6a17.png",
+    "source/同步/source/images/b4c46739a836c6a598afc803345d0479.png",
+    "source/同步/source/images/487ded4093d1fcee10226579963c56b2.png",
+    "source/同步/source/images",
+    "source/同步/source",
+    "source/同步",
+    "source/_posts/项目手册/Cloudflare Worker代理Github私有仓库图床加速.md",
     "source/_posts/项目手册/04 hexo 美化.md",
     "source/_posts/日常手痒",
     "source/_posts/未命名",
@@ -169,7 +184,6 @@
     "source/images/0defd78c49e62d570fef34945fb501c0.png",
     "source/images/0592bcf89f8c5d347e37f2c4f0ce3606.png",
     "source/images/c31e35a0ace45fd6b4f62d89aae706ac.png",
-    "source/images/91fc1e789b27e45235df893e541612a7.png",
     "source/_posts/e_深入理解merge.md",
     "source/about/index.md",
     "source/_posts/测试啊.md",
@@ -181,18 +195,11 @@
     "source/_posts/Obisidian与Hexo的同步维护方案.md",
     "source/_posts/Unity基操.md",
     "source/_posts/hello-world.md",
-    "source/images/cover/cover14.jpg",
-    "source/images/cover/cover13.jpg",
     "source/images/cover/dabfbd8c-7407-40ea-8606-e8b4b1d3bca1.jfif",
     "db.json",
     "public/images/beauty",
     "public/js/search/local-search.js",
-    "public/js/search/algolia.js",
-    "public/js/utils.js",
-    "public/js/tw_cn.js",
     "source/_posts/英语学习 - 母语者思考.md",
-    "images/f6822454-9257-45c6-9e77-90efe2a62a75-4.png.md",
-    "source/_posts/未命名 1.md",
-    "source/_posts/未命名.md"
+    "images/f6822454-9257-45c6-9e77-90efe2a62a75-4.png.md"
   ]
 }
