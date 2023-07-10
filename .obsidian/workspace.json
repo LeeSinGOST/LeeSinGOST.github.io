@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/订阅式自动追番1.0 - Flexget + Aria2.md",
+                "file": "source/_posts/测试啊.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/订阅式自动追番1.0 - Flexget + Aria2.md",
+                "file": "source/_posts/测试啊.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/订阅式自动追番1.0 - Flexget + Aria2.md",
+                "file": "source/_posts/测试啊.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/订阅式自动追番1.0 - Flexget + Aria2.md"
+                "file": "source/_posts/测试啊.md"
               }
             }
           },
@@ -155,7 +155,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 488.5
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -169,13 +169,14 @@
   },
   "active": "e031806bffbe8e24",
   "lastOpenFiles": [
-    "source/_posts/算法学习.md",
-    "source/_posts/修改哔哩哔哩视频笔记插件.md",
-    "source/_posts/订阅式自动追番1.0 - Flexget + Aria2.md",
-    "source/_posts/frp 实现无公网稳定远程桌面.md",
+    "source/_posts/04 hexo 美化.md",
     "source/_posts/测试啊.md",
+    "source/_posts/算法学习.md",
+    "source/_posts/订阅式自动追番1.0 - Flexget + Aria2.md",
     "source/_posts/c_Git 常用命令.md",
+    "source/_posts/修改哔哩哔哩视频笔记插件.md",
     "source/_posts/e_深入理解merge.md",
+    "source/_posts/frp 实现无公网稳定远程桌面.md",
     "source/_posts/Obisidian与Hexo的同步维护方案.md",
     "source/_posts/Unity基操.md",
     "source/_posts/hello-world.md",
@@ -213,7 +214,6 @@
     "source/_posts/重来.md",
     "scaffolds/post.md",
     "source/_posts/自动部署测试.md",
-    "source/_posts/自动化部署测试2222.md",
-    "source/_posts/Pasted image 20230414014304.png.md"
+    "source/_posts/自动化部署测试2222.md"
   ]
 }
