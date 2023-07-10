@@ -8,31 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "872f72692363db19",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/测试啊.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "e031806bffbe8e24",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "diff-view",
               "state": {
-                "file": "source/_posts/测试啊.md",
-                "mode": "source",
-                "source": false
+                "file": "source/images/beauty/108267453.png",
+                "staged": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +84,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/测试啊.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +100,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/测试啊.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,9 +121,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "source/_posts/测试啊.md"
-              }
+              "state": {}
             }
           },
           {
@@ -151,11 +133,11 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 356.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -167,10 +149,17 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "e031806bffbe8e24",
+  "active": "ee98e8bb63708394",
   "lastOpenFiles": [
-    "source/_posts/04 hexo 美化.md",
+    "source/about/index.md",
+    "source/_posts/订阅式自动追番1.1 - Flexget + Aria2 + Emby.md",
     "source/_posts/测试啊.md",
+    "source/images/e9094d01c0d597f17ca0c093cb941c60.png",
+    "source/images/0defd78c49e62d570fef34945fb501c0.png",
+    "source/images/0592bcf89f8c5d347e37f2c4f0ce3606.png",
+    "source/images/c31e35a0ace45fd6b4f62d89aae706ac.png",
+    "source/images/91fc1e789b27e45235df893e541612a7.png",
+    "source/_posts/04 hexo 美化.md",
     "source/_posts/算法学习.md",
     "source/_posts/订阅式自动追番1.0 - Flexget + Aria2.md",
     "source/_posts/c_Git 常用命令.md",
@@ -186,11 +175,6 @@
     "source/images/cover/dabfbd8c-7407-40ea-8606-e8b4b1d3bca1.jfif",
     "source/images/cover/cover12.jpg",
     "source/images/cover/cover11.jpg",
-    "source/images/cover/cover10.jpg",
-    "source/images/cover/cover9.jpg",
-    "source/images/cover/cover8.jpg",
-    "source/images/cover/a542cef8ec01585c88ac6229d22970c2.jpg",
-    "source/images/cover/96f8baee127a33f458f1954cb3e007fb.jpg",
     "db.json",
     "public/images/beauty",
     "public/js/search/local-search.js",
@@ -212,8 +196,6 @@
     "scaffolds/draft.md",
     "source/_posts/dd.md",
     "source/_posts/重来.md",
-    "scaffolds/post.md",
-    "source/_posts/自动部署测试.md",
-    "source/_posts/自动化部署测试2222.md"
+    "scaffolds/post.md"
   ]
 }
