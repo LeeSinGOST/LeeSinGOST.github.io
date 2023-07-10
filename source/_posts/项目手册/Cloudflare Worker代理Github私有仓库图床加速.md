@@ -1,12 +1,12 @@
 ---
 title: Cloudflare Worker代理Github图床加速
 date: 2023-07-10 10:56:03
-updated: 2023-07-10 12:59:46
+updated: 2023-07-10 22:06:17
 categories:
 	- 项目手册
 tags: 
-	- github
-	- cloudflare
+	- Github
+	- Cloudflare
 	- 图床
 ---
 # Cloudflare Worker代理Github图床加速
