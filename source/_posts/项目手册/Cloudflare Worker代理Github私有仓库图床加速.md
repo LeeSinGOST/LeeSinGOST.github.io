@@ -14,12 +14,12 @@ tags:
 >使用自己的域名访问Github私有仓库包括图片在内的文件。
 
 # 效果测试
-如下
-8m
-![像这样 8M](https://pic.kokutou.space/img/202307101245813.jpg)
 
-2m
-![](https://pic.kokutou.space/img/202307101258093.jpg)
+如下
+![8MB](https://pic.kokutou.space/img/202307101245813.jpg)
+
+
+![2MB](https://pic.kokutou.space/img/202307101258093.jpg)
 
 # 前置条件
 
