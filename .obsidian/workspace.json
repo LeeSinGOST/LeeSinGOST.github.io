@@ -11,10 +11,11 @@
             "id": "e031806bffbe8e24",
             "type": "leaf",
             "state": {
-              "type": "diff-view",
+              "type": "markdown",
               "state": {
-                "file": "source/images/beauty/108267453.png",
-                "staged": false
+                "file": "source/_posts/c_Git 常用命令.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -84,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "source/_posts/c_Git 常用命令.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "source/_posts/c_Git 常用命令.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -121,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "source/_posts/c_Git 常用命令.md"
+              }
             }
           },
           {
@@ -149,22 +154,22 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ee98e8bb63708394",
+  "active": "e031806bffbe8e24",
   "lastOpenFiles": [
-    "source/about/index.md",
     "source/_posts/订阅式自动追番1.1 - Flexget + Aria2 + Emby.md",
-    "source/_posts/测试啊.md",
     "source/images/e9094d01c0d597f17ca0c093cb941c60.png",
     "source/images/0defd78c49e62d570fef34945fb501c0.png",
     "source/images/0592bcf89f8c5d347e37f2c4f0ce3606.png",
     "source/images/c31e35a0ace45fd6b4f62d89aae706ac.png",
     "source/images/91fc1e789b27e45235df893e541612a7.png",
+    "source/_posts/e_深入理解merge.md",
+    "source/about/index.md",
+    "source/_posts/测试啊.md",
     "source/_posts/04 hexo 美化.md",
     "source/_posts/算法学习.md",
     "source/_posts/订阅式自动追番1.0 - Flexget + Aria2.md",
     "source/_posts/c_Git 常用命令.md",
     "source/_posts/修改哔哩哔哩视频笔记插件.md",
-    "source/_posts/e_深入理解merge.md",
     "source/_posts/frp 实现无公网稳定远程桌面.md",
     "source/_posts/Obisidian与Hexo的同步维护方案.md",
     "source/_posts/Unity基操.md",
@@ -195,7 +200,6 @@
     "scaffolds/page.md",
     "scaffolds/draft.md",
     "source/_posts/dd.md",
-    "source/_posts/重来.md",
-    "scaffolds/post.md"
+    "source/_posts/重来.md"
   ]
 }
