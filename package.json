@@ -12,6 +12,7 @@
     "version": "6.3.0"
   },
   "dependencies": {
+    "artplayer": "^5.0.9",
     "hexo": "^6.3.0",
     "hexo-abbrlink": "^2.2.1",
     "hexo-bilibili-bangumi": "^1.8.8",

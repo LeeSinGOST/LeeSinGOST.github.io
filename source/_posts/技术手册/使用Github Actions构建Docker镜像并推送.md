@@ -1,13 +1,14 @@
 ---
 title: 使用Github Actions构建Docker并推送镜像
+categories:
+  - 技术手册
+tags:
+  - Github
+  - SpringBoot
+  - Docker
+abbrlink: 16811
 date: 2023-07-10 15:43:46
 updated: 2023-07-10 21:58:55
-categories:
-	- 技术手册
-tags: 
-	- Github
-	- SpringBoot
-	- Docker
 ---
 # 使用Github Actions构建Docker并推送镜像
 

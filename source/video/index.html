@@ -6,23 +6,380 @@
     <title>视频点播页面</title>
         <style>
             .artplayer-app {
-                width: 400px;
-                height: 300px;
-            }
+            width: 1200px;
+            height: 650px;
+            margin: 20px auto;
+            }            
+   /*Design Inspired by @ykadosh on Codepen*/
+
+.wrap {
+  --black: #000000;
+  --ch-black: #141414;
+  --eer-black: #1b1b1b;
+  --night-rider: #2e2e2e;
+  --white: #ffffff;
+  --af-white: #f3f3f3;
+  --ch-white: #e1e1e1;
+  font-family: Helvetica, sans-serif;
+
+}
+
+.back {
+  position: absolute;
+  width: 16em;
+  height: 5em;
+  margin-top: -0.8em;
+  margin-left: -0.77em;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+  background-color: #171717;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+.main {
+  display: flex;
+  width: 240px;
+  height: 100px;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.switch {
+  display: block;
+  position: relative;
+  background-color: black;
+  width: 30px;
+  height: 30px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2), 0 0 1px 2px  var(--black), inset 0 2px 2px -2px  var(--white), inset 0 0 2px 5px var(--night-rider), inset 0 0 2px 22px  var(--black);
+  border-radius: 50%;
+  padding: 20px;
+  margin: 5px;
+}
+
+.switch input {
+  display: none;
+}
+
+.switch input:checked + .button .light {
+  animation: flicker 0.2s infinite 0.3s;
+}
+
+.switch input:checked + .button .shine {
+  opacity: 1;
+}
+
+.switch input:checked + .button .shadow {
+  opacity: 0;
+}
+
+.switch .button {
+  transition: all 0.3s cubic-bezier(1, 0, 1, 1);
+  background-color: var(--night-rider);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  position: relative;
+  left: -0.75em;
+  top: -0.79em;
+  cursor: pointer;
+}
+
+.switch .light {
+  opacity: 0;
+  animation: light-off 1s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(var(--ch-white), var(--white) 70%, transparent 72%);
+}
+
+.switch .dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(transparent 30%, var(--black) 70%);
+  background-size: 10px 10px;
+  border-radius: 50%;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes light-off {
+  0% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0;
+  }
+}
+
+.switch1 {
+  display: block;
+  position: relative;
+  background-color: var(--black);
+  width: 30px;
+  height: 30px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2), 0 0 1px 2px  var(--black), inset 0 2px 2px -2px  var(--white), inset 0 0 2px 5px var(--night-rider), inset 0 0 2px 22px  var(--black);
+  border-radius: 50%;
+  padding: 20px;
+  margin: 5px;
+}
+
+.switch1 input {
+  display: none;
+}
+
+.switch1 input:checked + .button .light {
+  animation: flicker 0.2s infinite 0.3s;
+}
+
+.switch1 input:checked + .button .shine {
+  opacity: 1;
+}
+
+.switch1 input:checked + .button .shadow {
+  opacity: 0;
+}
+
+.switch1 .button {
+  transition: all 0.3s cubic-bezier(1, 0, 1, 1);
+  background-color: var(--night-rider);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  position: relative;
+  left: -0.75em;
+  top: -0.79em;
+  cursor: pointer;
+}
+
+.switch1 .light {
+  opacity: 0;
+  animation: light-off 1s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(var(--ch-white), var(--white) 70%, transparent 72%);
+}
+
+.switch1 .dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(transparent 30%, var(--black) 70%);
+  background-size: 10px 10px;
+  border-radius: 50%;
+}
+
+.switch2 {
+  display: block;
+  position: relative;
+  background-color: var(--black);
+  width: 30px;
+  height: 30px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2), 0 0 1px 2px  var(--black), inset 0 2px 2px -2px  var(--white), inset 0 0 2px 5px var(--night-rider), inset 0 0 2px 22px  var(--black);
+  border-radius: 50%;
+  padding: 20px;
+  margin: 5px;
+}
+
+.switch2 input {
+  display: none;
+}
+
+.switch2 input:checked + .button .light {
+  animation: flicker 0.2s infinite 0.3s;
+}
+
+.switch2 input:checked + .button .shine {
+  opacity: 1;
+}
+
+.switch2 input:checked + .button .shadow {
+  opacity: 0;
+}
+
+.switch2 .button {
+  transition: all 0.3s cubic-bezier(1, 0, 1, 1);
+  background-color: var(--night-rider);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  position: relative;
+  left: -0.75em;
+  top: -0.79em;
+  cursor: pointer;
+}
+
+.switch2 .light {
+  opacity: 0;
+  animation: light-off 1s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(var(--ch-white), var(--white) 70%, transparent 72%);
+}
+
+.switch2 .dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(transparent 30%, var(--black) 70%);
+  background-size: 10px 10px;
+  border-radius: 50%;
+}
         </style>
 
 </head>
 <body>
 
         <script src="https://fastly.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
+                    <div class="artplayer-app video1"></div>
+                    <div class="wrap">
+                        <div class="back"></div>
+                        <div class="main">
+                        <label class="switch">
+                          <input name="value-radio" type="radio">
+                          <div class="button">
+                            <div class="light"></div>
+                            <div class="dots"></div>
+                          </div>
+                        </label>
+                        <label class="switch1">
+                          <input name="value-radio" checked="" type="radio">
+                          <div class="button">
+                            <div class="light"></div>
+                            <div class="dots"></div>
+                          </div>
+                        </label>
+                        <label class="switch2">
+                          <input name="value-radio" checked="" type="radio">
+                          <div class="button">
+                            <div class="light"></div>
+                            <div class="dots"></div>
+                          </div>
+                        </label>
+                        </div>
+                      </div>
+   
+                    <div class="artplayer-app video2" style="margin-top: 120px;"></div>
     <script>
-    	import Artplayer from 'artplayer';
-const art = new Artplayer({
-    container: '.artplayer-app',
-    url: 'https://media-gzga-fy-person.gz9oss.ctyunxs.cn/PERSONCLOUD/6aaf29d4-c929-4833-8590-4e09b4f8866f.mp4?x-amz-CLIENTTYPEIN=PC&AWSAccessKeyId=0Lg7dAq3ZfHvePP8DKEU&x-amz-userLevel=100&x-amz-limitrate=51200&response-content-type=video/mp4&x-amz-UID=158998601&response-content-disposition=attachment%3Bfilename%3D%221.pro-conservative-up2x%28Av476676469%2CP1%29.mp4%22%3Bfilename*%3DUTF-8%27%271.pro-conservative-up2x%2528Av476676469%252CP1%2529.mp4&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&Signature=Gslk1rMegPMDXTXPuSBdileoTwU%3D&Expires=1689093410&x-amz-FSIZE=184534931&x-amz-UFID=52408157957700476',
+        var radioBtn = document.querySelectorAll('input[name="value-radio"]')[0];
+        var radioBtn1 = document.querySelectorAll('input[name="value-radio"]')[1];
+        var radioBtn2 = document.querySelectorAll('input[name="value-radio"]')[2];
+
+
+radioBtn.addEventListener('change', function() {
+  if(radioBtn.checked){
+    switchURL(0)
+  }
+  
 });
 
+radioBtn1.addEventListener('change', function() {
+  if(radioBtn1.checked){
+    switchURL(1)
+  }
+});
+
+radioBtn2.addEventListener('change', function() {
+  switchURL(2)
+});
+
+        const playlist = [
+            'https://pan.kokutou.top/d/Video/AMV/%5BANK-Raws%5D%20TYPE-MOON%20Fesival%20OP1%20(BDrip%201920x1080%20x264%20FLAC%20Hi10P).mkv',
+            'https://pan.kokutou.top/d/Video/LIVE/%E4%B8%AD%E5%B2%9B%E7%BE%8E%E9%9B%AA-%E6%B0%B8%E8%BF%9C%E7%9A%84%E8%B0%8E%E8%A8%80.mp4',
+            'https://pan.kokutou.top/d/Video/AMV/%E5%AE%9D%E5%B2%9B.mkv',
+            'https://pan.kokutou.top/d/Video/AMV/1.YOASOBI%20%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB(Idol)%20Official%20Music%20Vide(Av227499491%2CP1).mp4'
+        ];
+const art = new Artplayer({
+    container: '.video1',
+    url: 'https://pan.kokutou.top/d/Video/AMV/%5BANK-Raws%5D%20TYPE-MOON%20Fesival%20OP1%20(BDrip%201920x1080%20x264%20FLAC%20Hi10P).mkv',
+    volume: 0.5,
+    isLive: false,
+    muted: false,
+    autoplay: false,
+    pip: true,
+    autoSize: true,
+    autoMini: true,
+    screenshot: true,
+    setting: true,
+    loop: true,
+    flip: true,
+    playbackRate: true,
+    aspectRatio: true,
+    fullscreen: true,
+    fullscreenWeb: true,
+    subtitleOffset: true,
+    miniProgressBar: true,
+    mutex: true,
+    backdrop: true,
+    playsInline: true,
+    autoPlayback: true,
+    airplay: true,
+    theme: '#23ade5',
+    lang: navigator.language.toLowerCase(),
+    moreVideoAttr: {
+        crossOrigin: 'anonymous',
+    },
+});
+const art2 = new Artplayer({
+    container: '.video2',
+    url: 'https://pan.kokutou.top/d/Video/AMV/1.YOASOBI%20%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB(Idol)%20Official%20Music%20Vide(Av227499491%2CP1).mp4',
+    volume: 0.5,
+    isLive: false,
+    muted: false,
+    autoplay: false,
+    pip: true,
+    autoSize: true,
+    autoMini: true,
+    screenshot: true,
+    setting: true,
+    loop: true,
+    flip: true,
+    playbackRate: true,
+    aspectRatio: true,
+    fullscreen: true,
+    fullscreenWeb: true,
+    subtitleOffset: true,
+    miniProgressBar: true,
+    mutex: true,
+    backdrop: true,
+    playsInline: true,
+    autoPlayback: true,
+    airplay: true,
+    theme: '#23ade5',
+    lang: navigator.language.toLowerCase(),
+    moreVideoAttr: {
+        crossOrigin: 'anonymous',
+    },
+});
+
+        function switchURL(index1) {
+            // 获取选择的URL
+            const url = playlist[index1];
+            
+            // 执行切换URL
+            art.switchUrl(url);
+        }
     </script>
-            <div class="artplayer-app"></div>
+
 </body>
 </html>
