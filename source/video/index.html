@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>视频点播页面</title>
+        <style>
+            .artplayer-app {
+                width: 400px;
+                height: 300px;
+            }
+        </style>
+
+</head>
+<body>
+
+        <script src="https://fastly.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
+    <script>
+    	import Artplayer from 'artplayer';
+const art = new Artplayer({
+    container: '.artplayer-app',
+    url: 'https://media-gzga-fy-person.gz9oss.ctyunxs.cn/PERSONCLOUD/6aaf29d4-c929-4833-8590-4e09b4f8866f.mp4?x-amz-CLIENTTYPEIN=PC&AWSAccessKeyId=0Lg7dAq3ZfHvePP8DKEU&x-amz-userLevel=100&x-amz-limitrate=51200&response-content-type=video/mp4&x-amz-UID=158998601&response-content-disposition=attachment%3Bfilename%3D%221.pro-conservative-up2x%28Av476676469%2CP1%29.mp4%22%3Bfilename*%3DUTF-8%27%271.pro-conservative-up2x%2528Av476676469%252CP1%2529.mp4&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&Signature=Gslk1rMegPMDXTXPuSBdileoTwU%3D&Expires=1689093410&x-amz-FSIZE=184534931&x-amz-UFID=52408157957700476',
+});
+
+    </script>
+            <div class="artplayer-app"></div>
+</body>
+</html>
