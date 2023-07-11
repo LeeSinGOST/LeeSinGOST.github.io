@@ -1,12 +1,15 @@
 ---
 title: 更新日志
 date: 2023-07-06 14:08:27
-updated: 2023-07-08 24:13:51
+updated: 2023-07-12 03:08:39
 categories: 
 tags: 
 ---
 # 更新日志
 {% timeline 2023,purple %}
+<!-- timeline 07-12 -->
+**新增** 视频页
+<!-- endtimeline -->
 <!-- timeline 07-07 -->
 配置Github Pages、Cloudflare Pages、Vercel同步部署
 CF反向代理加速Github图床，~~虽然效果好像也不咋地~~

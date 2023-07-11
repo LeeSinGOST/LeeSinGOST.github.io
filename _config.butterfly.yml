@@ -15,8 +15,9 @@ menu:
   分类: /categories/ || fas fa-folder-open
   休闲||fas fa-list:
     追番: /bangumis || fas fa-archive
+    视频: /video/ || fas fa-video
     音乐: /music/ || fas fa-music
-    电影: /movies/ || fas fa-video
+
   #Link: /link/ || fas fa-link
   关于||fas fa-heart:
     更新: /timelines/
