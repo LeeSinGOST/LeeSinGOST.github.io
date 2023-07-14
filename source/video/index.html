@@ -25,7 +25,8 @@
   font-family: Helvetica, sans-serif;
   position: absolute;
   left: 50%;
-  margin-left: -340px;
+  margin-top: 22px;
+  margin-left: -250px;
 
 }
 
@@ -252,15 +253,172 @@
   white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
    <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Kokutou's Blog" type="application/atom+xml">
    
-<meta name="twitter:image" content="https://kokutou.top/images/cover/cover1.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kokutou.top/categories/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'">
- 
+<meta name="twitter:image" content="https://kokutou.top/images/cover/cover1.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kokutou.top/categories/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Cloudflare Worker代理Github图床加速',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-10 22:06:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script>
 </head>
 <body>
-  <script src="https://fastly.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
+  <div class="js-pjax">
+    <script src="https://fastly.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
   <script src="https://fastly.jsdelivr.net/npm/artplayer-plugin-danmuku/dist/artplayer-plugin-danmuku.js"></script>
-  <div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://pan.kokutou.top/d/pic_/avatar/nozomi.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis"><i class="fa-fw fas fa-archive"></i><span> 追番</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/timelines/"><span> 更新</span></a></li><li><a class="site-page child" href="/talking/"><span> 动态</span></a></li><li><a class="site-page child" href="/atom.xml"><span> 订阅</span></a></li><li><a class="site-page child" href="/sitemap.xml"><span> 地图</span></a></li><li><a class="site-page child" href="/about/"><span> 关于</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background: transparent"><nav id="nav"><span id="blog-info"><a href="/" title="Kokutou's Blog"><span class="site-name">Kokutou's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis"><i class="fa-fw fas fa-archive"></i><span> 追番</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/timelines/"><span> 更新</span></a></li><li><a class="site-page child" href="/talking/"><span> 动态</span></a></li><li><a class="site-page child" href="/atom.xml"><span> 订阅</span></a></li><li><a class="site-page child" href="/sitemap.xml"><span> 地图</span></a></li><li><a class="site-page child" href="/about/"><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">视频</h1></div></header><main class="layout" id="content-inner">
-    <div id="page" style="width: 100%">
-      <div class="wrap" style="margin-top: 22px;margin-left: -250px;">
+    </div>
+  <div id="web_bg"></div>
+  <div id="sidebar">
+    <div id="menu-mask"></div>
+    <div id="sidebar-menus">
+      <div class="avatar-img is-center"><img src="https://pan.kokutou.top/d/pic_/avatar/nozomi.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div>
+      <div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis"><i class="fa-fw fas fa-archive"></i><span> 追番</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/timelines/"><span> 更新</span></a></li><li><a class="site-page child" href="/talking/"><span> 动态</span></a></li><li><a class="site-page child" href="/atom.xml"><span> 订阅</span></a></li><li><a class="site-page child" href="/sitemap.xml"><span> 地图</span></a></li><li><a class="site-page child" href="/about/"><span> 关于</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background: transparent"><nav id="nav"><span id="blog-info"><a href="/" title="Kokutou's Blog"><span class="site-name">Kokutou's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis"><i class="fa-fw fas fa-archive"></i><span> 追番</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/timelines/"><span> 更新</span></a></li><li><a class="site-page child" href="/talking/"><span> 动态</span></a></li><li><a class="site-page child" href="/atom.xml"><span> 订阅</span></a></li><li><a class="site-page child" href="/sitemap.xml"><span> 地图</span></a></li><li><a class="site-page child" href="/about/"><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">视频</h1></div></header><main class="layout" id="content-inner">
+    <div id="page" style="width: 100%;">
+      <div class="wrap">
         <div class="back" style="width: 34.4em;"></div>
         <div class="main">
         <label class="switch">
@@ -308,7 +466,7 @@
         </div>
         </div>
       <div class="artplayer-app video1"></div>
-      <div class="wrap" style="margin-top: 42px;margin-left: -250px;">
+      <div class="wrap" style="margin-top: 42px;">
         <div class="back" style="width: 34.4em;"></div>
         <div class="main">
         <label class="switch">
@@ -357,11 +515,220 @@
         </div>
     
           <div class="artplayer-app video2" style="margin-top: 120px;">
-</div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div>
+</div><hr class="custom-hr"/>
+<div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div>
             <i class="fas fa-folder-open"></i>
             </div>
-            </ul></div><div class="js-pjax">
-
+            </ul></div>
+            
+            </div></div></div></div></main>
+              <footer id="footer" style="background: transparent">
+                <div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By leesin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div>
+                <div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script>
+                  <div class="js-pjax">
+                    <script>(()=>{  const init = () => {
+                    twikoo.init(Object.assign({
+                      el: '#twikoo-wrap',
+                      envId: 'https://twikoo.kokutou.top/',
+                      region: 'ap-shanghai',
+                      onCommentLoaded: function () {
+                        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+                      }
+                    }, null))
+                  }
+                
+                  const getCount = () => {
+                    const countELement = document.getElementById('twikoo-count')
+                    if(!countELement) return
+                    twikoo.getCommentsCount({
+                      envId: 'https://twikoo.kokutou.top/',
+                      region: 'ap-shanghai',
+                      urls: [window.location.pathname],
+                      includeReply: false
+                    }).then(function (res) {
+                      countELement.textContent = res[0].count
+                    }).catch(function (err) {
+                      console.error(err);
+                    });
+                  }
+                
+                  const runFn = () => {
+                    init()
+                    GLOBAL_CONFIG_SITE.isPost && getCount()
+                  }
+                
+                  const loadTwikoo = () => {
+                    if (typeof twikoo === 'object') {
+                      setTimeout(runFn,0)
+                      return
+                    } 
+                    getScript('https://fastly.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+                  }
+                
+                  if ('Twikoo' === 'Twikoo' || !true) {
+                    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+                    else loadTwikoo()
+                  } else {
+                    window.loadOtherComment = () => {
+                      loadTwikoo()
+                    }
+                  }
+                })()</script></div><script>window.addEventListener('load', () => {
+                  const changeContent = (content) => {
+                    if (content === '') return content
+                
+                    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+                    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+                    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+                    content = content.replace(/<[^>]+>/g,"") // remove html tag
+                
+                    if (content.length > 150) {
+                      content = content.substring(0,150) + '...'
+                    }
+                    return content
+                  }
+                
+                  const getComment = () => {
+                    const runTwikoo = () => {
+                      twikoo.getRecentComments({
+                        envId: 'https://twikoo.kokutou.top/',
+                        region: 'ap-shanghai',
+                        pageSize: 6,
+                        includeReply: true
+                      }).then(function (res) {
+                        const twikooArray = res.map(e => {
+                          return {
+                            'content': changeContent(e.comment),
+                            'avatar': e.avatar,
+                            'nick': e.nick,
+                            'url': e.url + '#' + e.id,
+                            'date': new Date(e.created).toISOString()
+                          }
+                        })
+                
+                        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+                        generateHtml(twikooArray)
+                      }).catch(function (err) {
+                        const $dom = document.querySelector('#card-newest-comments .aside-list')
+                        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+                      })
+                    }
+                
+                    if (typeof twikoo === 'object') {
+                      runTwikoo()
+                    } else {
+                      getScript('https://fastly.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+                    }
+                  }
+                
+                  const generateHtml = array => {
+                    let result = ''
+                
+                    if (array.length) {
+                      for (let i = 0; i < array.length; i++) {
+                        result += '<div class=\'aside-list-item\'>'
+                
+                        if (true) {
+                          const name = 'src'
+                          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+                        }
+                        
+                        result += `<div class='content'>
+                        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+                        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+                        </div></div>`
+                      }
+                    } else {
+                      result += '没有评论'
+                    }
+                
+                    let $dom = document.querySelector('#card-newest-comments .aside-list')
+                    $dom.innerHTML= result
+                    window.lazyLoadInstance && window.lazyLoadInstance.update()
+                    window.pjax && window.pjax.refresh($dom)
+                  }
+                
+                  const newestCommentInit = () => {
+                    if (document.querySelector('#card-newest-comments .aside-list')) {
+                      const data = saveToLocal.get('twikoo-newest-comments')
+                      if (data) {
+                        generateHtml(JSON.parse(data))
+                      } else {
+                        getComment()
+                      }
+                    }
+                  }
+                
+                  newestCommentInit()
+                  document.addEventListener('pjax:complete', newestCommentInit)
+                })</script><script src="/js/font.js"></script><div class="aplayer no-destroy" data-id="3222203999" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://fastly.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://fastly.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+                
+                var pjax = new Pjax({
+                  elements: 'a:not([target="_blank"])',
+                  selectors: pjaxSelectors,
+                  cacheBust: false,
+                  analytics: false,
+                  scrollRestoration: false
+                })
+                
+                document.addEventListener('pjax:send', function () {
+                
+                  // removeEventListener scroll 
+                  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+                  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+                
+                  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+                  
+                  if (window.aplayers) {
+                    for (let i = 0; i < window.aplayers.length; i++) {
+                      if (!window.aplayers[i].options.fixed) {
+                        window.aplayers[i].destroy()
+                      }
+                    }
+                  }
+                
+                  typeof typed === 'object' && typed.destroy()
+                
+                  //reset readmode
+                  const $bodyClassList = document.body.classList
+                  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+                
+                  typeof disqusjs === 'object' && disqusjs.destroy()
+                })
+                
+                document.addEventListener('pjax:complete', function () {
+                  window.refreshFn()
+                
+                  document.querySelectorAll('script[data-pjax]').forEach(item => {
+                    const newScript = document.createElement('script')
+                    const content = item.text || item.textContent || item.innerHTML || ""
+                    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+                    newScript.appendChild(document.createTextNode(content))
+                    item.parentNode.replaceChild(newScript, item)
+                  })
+                
+                  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+                
+                  typeof panguInit === 'function' && panguInit()
+                
+                  // google analytics
+                  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+                
+                  // baidu analytics
+                  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+                
+                  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+                
+                  // prismjs
+                  typeof Prism === 'object' && Prism.highlightAll()
+                })
+                
+                document.addEventListener('pjax:error', (e) => {
+                  if (e.request.status === 404) {
+                    pjax.loadUrl('/404.html')
+                  }
+                })</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div>
+              
 
     <script>
 
@@ -477,6 +844,6 @@ const art2 = new Artplayer({
             }
         }
     </script>
-
+</div>
 </body>
 </html>
