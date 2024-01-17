@@ -409,6 +409,7 @@
 <body>
   <div class="js-pjax">
     <script src="https://fastly.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
+    <script src="https://pan.kokutou.top/d/tmp/JavascriptSubtitlesOctopus/subtitles-octopus.js"></script>
   <script src="https://fastly.jsdelivr.net/npm/artplayer-plugin-danmuku/dist/artplayer-plugin-danmuku.js"></script>
     </div>
   <div id="web_bg"></div>
@@ -789,6 +790,13 @@ const art = new Artplayer({
             // 弹幕 XML 文件，和 Bilibili 网站的弹幕格式一致
             danmuku: playlist[0].substring(0, playlist[0].lastIndexOf('.'))+'.xml',
         }),
+        artplayerPluginAss({
+			debug: true,
+			fonts: [`https://pan.kokutou.top/d/tmp/JavascriptSubtitlesOctopus/Arial.ttf`],
+			// subUrl: playlist[0].substring(0, playlist[0].lastIndexOf('.'))+'.ass',
+      subUrl: 'https://pan.kokutou.top/d/tmp/JavascriptSubtitlesOctopus/test.ass',
+			workerUrl: `https://pan.kokutou.top/d/tmp/JavascriptSubtitlesOctopus/subtitles-octopus-worker.js`,
+		})
     ],
 });
 const art2 = new Artplayer({
