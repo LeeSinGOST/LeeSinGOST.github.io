@@ -1,5 +1,7 @@
 ---
 title: Cloudflare Worker代理Github图床加速
+date: 2023-07-10 10:56:03
+updated: 2024-04-29 14:43:07
 categories:
   - 项目手册
 tags:
@@ -7,8 +9,6 @@ tags:
   - Cloudflare
   - 图床
 abbrlink: 57472
-date: 2023-07-10 10:56:03
-updated: 2023-07-10 22:06:17
 ---
 # Cloudflare Worker代理Github图床加速
 
@@ -17,10 +17,10 @@ updated: 2023-07-10 22:06:17
 # 效果测试
 
 如下
-![8MB](https://pic.kokutou.space/img/202307101245813.jpg)
+![8MB](https://pic.peko.icu/img/202307101245813.jpg)
 
 
-![2MB](https://pic.kokutou.space/img/202307101258093.jpg)
+![2MB](https://pic.peko.icu/img/202307101258093.jpg)
 
 # 前置条件
 
