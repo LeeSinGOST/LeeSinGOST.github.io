@@ -96,8 +96,8 @@ cover:
   position: both
   # When cover is not set, the default cover is displayed (當沒有設置cover時，默認的封面顯示)
   default_cover:
-    - https://pic.kokutou.space/img/202307071759457.png
-    - https://pic.kokutou.space/img/202307071759448.png
+    - https://pic.peko.icu/img/202307071759457.png
+    - https://pic.peko.icu/img/202307071759448.png
     - /images/cover/cover1.png
     - /images/cover/cover2.png
     - /images/cover/cover3.png
