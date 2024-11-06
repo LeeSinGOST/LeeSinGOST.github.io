@@ -1,12 +1,11 @@
 ---
 title: Git 回退版本
-categories:
-  - 学习
+date: 2023-06-30 22:45:06
+updated: 2024-07-01 24:08:52
+categories: 学习
 tags:
   - Git
 abbrlink: 47779
-date: 2023-06-30 22:45:06
-updated: 2023-06-30 22:48:58
 ---
 
 # Git 回退版本
