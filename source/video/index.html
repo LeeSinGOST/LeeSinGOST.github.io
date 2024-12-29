@@ -822,7 +822,7 @@ const art2 = new Artplayer({
     plugins: [
         artplayerPluginDanmuku({
             // 弹幕 XML 文件，和 Bilibili 网站的弹幕格式一致
-            danmuku: playlist[radioBtn.length-1].substring(0, playlist[radioBtn.length-1].lastIndexOf('.'))+'.xml',
+            danmuku: playlist[radioBtn.length-1].substring(0, playlist[radioBtn.length-1].lastIndexOf('.'))+'.cmt.xml',
         }),
     ],
 });
@@ -832,13 +832,13 @@ const art2 = new Artplayer({
             url = playlist[index1];
             if(index1<6){
               art.plugins.artplayerPluginDanmuku.config({
-                    danmuku: url.substring(0, url.lastIndexOf('.'))+'.xml',
+                    danmuku: url.substring(0, url.lastIndexOf('.'))+'.cmt.xml',
                 });
                 art.switchUrl(url);
             art.plugins.artplayerPluginDanmuku.load();
             }else{
               art2.plugins.artplayerPluginDanmuku.config({
-                    danmuku: url.substring(0, url.lastIndexOf('.'))+'.xml',
+                    danmuku: url.substring(0, url.lastIndexOf('.'))+'.cmt.xml',
                 });
               art2.switchUrl(url);
               art2.plugins.artplayerPluginDanmuku.load();
