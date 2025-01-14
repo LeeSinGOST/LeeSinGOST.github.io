@@ -756,7 +756,7 @@ beautify:
 font:
   global-font-size:
   code-font-size:
-  font-family:
+  font-family: "LXGW WenKai"
   code-font-family:
 
 # Font settings for the site title and site subtitle
@@ -933,6 +933,7 @@ inject:
   head:
     - <link rel="stylesheet" href="/css/myStyle.css">
     - <link rel="stylesheet" href="/css/nav.css">
+    - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css" />
     - <script src="/js/nav.js"></script>
     - <script src="/js/jquery.js"></script>
   bottom:
