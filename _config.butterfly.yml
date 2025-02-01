@@ -53,7 +53,7 @@ favicon: /img/favicon.png
 
 # Avatar (頭像)
 avatar:
-  img: https://pan.kokutou.top/d/pic_/avatar/nozomi.png
+  img: https://pan.2pk.cc/d/pic_/avatar/nozomi.png
   effect: false
 
 # Disable all banner image
@@ -96,8 +96,8 @@ cover:
   position: both
   # When cover is not set, the default cover is displayed (當沒有設置cover時，默認的封面顯示)
   default_cover:
-    - https://pic.peko.icu/img/202307071759457.png
-    - https://pic.peko.icu/img/202307071759448.png
+    - https://pic.2pk.cc/img/202307071759457.png
+    - https://pic.2pk.cc/img/202307071759448.png
     - /images/cover/cover1.png
     - /images/cover/cover2.png
     - /images/cover/cover3.png
@@ -124,7 +124,7 @@ error_img:
 error_404:
   enable: false
   subtitle: 'Page Not Found'
-  background: https://pic.kokutou.space/img/202307071800862.png
+  background: https://pic.2pk.cc/img/202307071800862.png
 
 post_meta:
   page: # Home Page
@@ -183,7 +183,7 @@ toc:
 post_copyright:
   enable: true
   decode: false
-  author_href: https://kokutou.space/
+  author_href: https://2pk.cc/
   license: CC BY-NC-SA 4.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
 
@@ -509,7 +509,7 @@ facebook_comments:
 # Twikoo
 # https://github.com/imaegoo/twikoo
 twikoo:
-  envId: https://twikoo.kokutou.top/
+  envId: https://twikoo.2pk.cc/
   region: ap-shanghai
   visitor: true
   option:
