@@ -1,7 +1,7 @@
 ---
 title: Cloudflare Worker代理Github图床加速
 date: 2023-07-10 10:56:03
-updated: 2024-04-29 14:43:07
+updated: 2025-02-01 19:50:14
 categories:
   - 项目手册
 tags:
@@ -17,10 +17,10 @@ abbrlink: 57472
 # 效果测试
 
 如下
-![8MB](https://pic.peko.icu/img/202307101245813.jpg)
+![8MB](https://pic.2pk.cc/img/202307101245813.jpg)
 
 
-![2MB](https://pic.peko.icu/img/202307101258093.jpg)
+![2MB](https://pic.2pk.cc/img/202307101258093.jpg)
 
 # 前置条件
 
