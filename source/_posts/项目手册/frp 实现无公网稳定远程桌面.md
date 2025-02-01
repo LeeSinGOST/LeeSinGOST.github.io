@@ -1,11 +1,11 @@
 ---
 title: 使用frp通过云服务器搭建稳定远程桌面
-cover: https://pic.peko.icu/img/202307071755649.png
+date: 2023-07-06 19:47:11
+updated: 2025-02-01 18:18:16
+cover: https://pic.2pk.cc/img/202307071755649.png
 categories:
   - 项目手册
 abbrlink: 13317
-date: 2023-07-06 19:47:11
-updated: 2023-07-07 23:41:44
 tags:
 ---
 # 使用frp通过云服务器搭建稳定远程桌面
