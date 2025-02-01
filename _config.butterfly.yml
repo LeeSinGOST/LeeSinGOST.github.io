@@ -53,7 +53,7 @@ favicon: /img/favicon.png
 
 # Avatar (頭像)
 avatar:
-  img: https://pan.2pk.cc/d/pic_/avatar/nozomi.png
+  img: /img/avatar.jpg
   effect: false
 
 # Disable all banner image
