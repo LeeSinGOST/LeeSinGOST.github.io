@@ -76,6 +76,7 @@ code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
   - "video/index.html"
+  - "bgm/index.html"
 
 # Writing
 new_post_name: :title.md # File name of new posts
