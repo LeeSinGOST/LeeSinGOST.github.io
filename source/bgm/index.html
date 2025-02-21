@@ -1,163 +1,201 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的动画观看记录</title>
+    <title>我的动画收藏</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            font-size: 25px; /* 整体字体放大 */
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 25px;
             text-align: center;
-        }
-        .anime-list {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        .anime-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: #fff;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .anime-item img {
-            width: 160px;
-            height: 220px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        .anime-title {
-            font-size: 18px;
+            font-size: 35px; /* 标题更大 */
             font-weight: bold;
-            margin-bottom: 5px;
         }
-        .anime-score {
-            font-size: 14px;
-            color: #888;
-            margin-bottom: 5px;
+        .switch-buttons {
+            text-align: center;
+            margin: 35px 0;
         }
-        .anime-summary {
-            font-size: 12px;
-            color: #555;
-            text-align: justify;
-        }
-        .buttons {
-            margin-bottom: 20px;
-        }
-        .buttons button {
-            margin: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
+        .switch-buttons button {
+            padding: 16px 38px;
+            margin: 0 15px;
+            font-size: 20px; /* 按钮字体更大 */
+            font-weight: bold;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            cursor: pointer;
             background-color: #007BFF;
             color: white;
-            transition: background 0.3s;
+            transition: all 0.2s ease;
         }
-        .buttons button:hover {
+        .switch-buttons button:hover {
             background-color: #0056b3;
         }
-        .pagination {
+        .switch-buttons .active {
+            background-color: #FF4500;
+        }
+        .anime-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); /* 让单个卡片更宽 */
+            gap: 50px;
+            padding: 50px;
+            justify-content: center;
+        }
+        .anime-item {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s;
+            max-width: 500px;
+            margin: auto;
+        }
+        .anime-item:hover {
+            transform: scale(1.03);
+        }
+        .anime-item img {
+            width: 100%;
+            height: 550px; /* 海报更长 */
+            object-fit: cover;
+        }
+        .anime-info {
+            padding: 25px; /* 增加间距 */
+        }
+        .anime-info h3 {
+            margin: 0;
+            font-size: 30px; /* 标题更大 */
+            font-weight: bold;
+        }
+        .anime-info p {
+            font-size: 22px; /* 简介字体更大 */
+            color: #555;
+            margin-top: 12px;
+            line-height: 1.8;
+        }
+        .anime-info .tags {
+            margin-top: 12px;
+            font-size: 16px;
+            color: #888;
+        }
+        .score {
+            font-size: 20px;
+            color: #f39c12;
             margin-top: 20px;
+            font-weight: bold;
+        }
+        .pagination {
+            text-align: center;
+            margin: 70px 0;
         }
         .pagination button {
-            padding: 10px 15px;
-            margin: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
+            padding: 16px 35px;
+            margin: 0 12px;
             background-color: #28a745;
             color: white;
-            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 20px; /* 分页按钮字体加大 */
+            transition: background 0.2s;
         }
         .pagination button:hover {
-            background-color: #218838;
+            background-color: #1e7e34;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>我的动画观看记录</h2>
-        <div class="buttons">
-            <button onclick="changeType(1)">想看的</button>
-            <button onclick="changeType(2)">看过的</button>
-            <button onclick="changeType(3)">正在看的</button>
-        </div>
-        <div id="animeList" class="anime-list"></div>
-        <div class="pagination">
-            <button onclick="changePage(-1)">上一页</button>
-            <button onclick="changePage(1)">下一页</button>
-        </div>
+    <header>
+        <h1>我正在看的动画</h1>
+    </header>
+
+    <div class="switch-buttons">
+        <button id="btn1" onclick="changeType(1)">想看</button>
+        <button id="btn2" onclick="changeType(2)">看过</button>
+        <button id="btn3" onclick="changeType(3)" class="active">正在看</button>
     </div>
+
+    <div id="anime-list" class="anime-container">
+        <!-- 动画列表会动态插入到这里 -->
+    </div>
+
+    <div class="pagination">
+        <button id="prevPage" onclick="changePage(-1)">上一页</button>
+        <button id="nextPage" onclick="changePage(1)">下一页</button>
+    </div>
+
     <script>
-        let currentType = 3;
-        let offset = 0;
+        let currentType = 3; // 默认显示 "正在看"
+        let currentPage = 0;
         const limit = 30;
 
-        async function fetchAnimeList() {
-            const response = await fetch(`https://api.bgm.tv/v0/users/544956/collections?subject_type=2&type=${currentType}&limit=${limit}&offset=${offset}`);
+        // 获取数据并更新界面
+        async function fetchAnimeData() {
+            const response = await fetch(`https://api.bgm.tv/v0/users/544956/collections?subject_type=2&type=${currentType}&limit=${limit}&offset=${currentPage * limit}`);
             const data = await response.json();
-            const listContainer = document.getElementById('animeList');
-            listContainer.innerHTML = '';
-            
+
+            const animeListContainer = document.getElementById('anime-list');
+            animeListContainer.innerHTML = ''; // 清空之前的内容
+
             data.data.forEach(anime => {
-                const item = document.createElement('div');
-                item.classList.add('anime-item');
-                
-                const img = document.createElement('img');
-                img.src = anime.subject.images.medium;
-                img.alt = anime.subject.name;
-                
-                const title = document.createElement('div');
-                title.classList.add('anime-title');
-                title.textContent = anime.subject.name_cn || anime.subject.name;
-                
-                const score = document.createElement('div');
-                score.classList.add('anime-score');
-                score.textContent = `评分: ${anime.subject.score || 'N/A'}`;
-                
-                const summary = document.createElement('div');
-                summary.classList.add('anime-summary');
-                summary.textContent = anime.subject.short_summary ? anime.subject.short_summary.substring(0, 100) + '...' : '暂无简介';
-                
-                item.appendChild(img);
-                item.appendChild(title);
-                item.appendChild(score);
-                item.appendChild(summary);
-                listContainer.appendChild(item);
+                const animeElement = document.createElement('div');
+                animeElement.classList.add('anime-item');
+
+                // 绑定点击事件，跳转到动画详情页面
+                animeElement.onclick = () => {
+                    window.open(`https://bgm.tv/subject/${anime.subject_id}`, '_blank');
+                };
+
+                animeElement.innerHTML = `
+                    <img src="${anime.subject.images.large}" alt="${anime.subject.name}">
+                    <div class="anime-info">
+                        <h3>${anime.subject.name_cn || anime.subject.name}</h3>
+                        <p>${anime.subject.short_summary}</p>
+                        <div class="tags">${anime.subject.tags.map(tag => tag.name).join(', ')}</div>
+                        <div class="score">评分: ${anime.subject.score}</div>
+                    </div>
+                `;
+                animeListContainer.appendChild(animeElement);
             });
+
+            // 根据数据长度调整分页按钮的可用状态
+            document.getElementById('prevPage').disabled = currentPage === 0;
+            document.getElementById('nextPage').disabled = data.data.length < limit;
         }
 
+        // 切换动画类型，并高亮选中的按钮
         function changeType(type) {
             currentType = type;
-            offset = 0;
-            fetchAnimeList();
+            currentPage = 0; // 重置为第一页
+            fetchAnimeData();
+
+            // 移除所有按钮的 "active" 类
+            document.getElementById('btn1').classList.remove('active');
+            document.getElementById('btn2').classList.remove('active');
+            document.getElementById('btn3').classList.remove('active');
+
+            // 给当前选中的按钮添加 "active" 类
+            document.getElementById(`btn${type}`).classList.add('active');
         }
 
+        // 切换页面，并回到顶部
         function changePage(direction) {
-            offset += direction * limit;
-            if (offset < 0) offset = 0;
-            fetchAnimeList();
+            currentPage += direction;
+            fetchAnimeData();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        fetchAnimeList();
+        // 初始加载数据
+        fetchAnimeData();
     </script>
 </body>
 </html>
