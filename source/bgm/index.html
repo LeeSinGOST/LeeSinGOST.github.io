@@ -115,13 +115,13 @@
 </head>
 <body>
     <header>
-        <h1>我正在看的动画</h1>
+        <h1>我的动画收藏</h1>
     </header>
 
     <div class="switch-buttons">
         <button id="btn1" onclick="changeType(1)">想看</button>
-        <button id="btn2" onclick="changeType(2)">看过</button>
-        <button id="btn3" onclick="changeType(3)" class="active">正在看</button>
+        <button id="btn2" onclick="changeType(2)" class="active">看过</button>
+        <button id="btn3" onclick="changeType(3)">正在看</button>
     </div>
 
     <div id="anime-list" class="anime-container">
@@ -134,7 +134,7 @@
     </div>
 
     <script>
-        let currentType = 3; // 默认显示 "正在看"
+        let currentType = 2; // 默认显示 "正在看"
         let currentPage = 0;
         const limit = 30;
 
