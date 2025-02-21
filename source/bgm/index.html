@@ -11,105 +11,105 @@
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
-            font-size: 25px; /* 整体字体放大 */
         }
         header {
             background-color: #222;
             color: #fff;
-            padding: 25px;
+            padding: 20px;
             text-align: center;
-            font-size: 35px; /* 标题更大 */
-            font-weight: bold;
         }
         .switch-buttons {
             text-align: center;
-            margin: 35px 0;
+            margin: 30px 0;
         }
         .switch-buttons button {
-            padding: 16px 38px;
+            padding: 12px 30px;
             margin: 0 15px;
-            font-size: 20px; /* 按钮字体更大 */
+            font-size: 16px;
             font-weight: bold;
             border: none;
-            border-radius: 8px;
+            border-radius: 30px;
             cursor: pointer;
-            background-color: #007BFF;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        /* 修改为单色按钮背景 */
+        .switch-buttons button {
+            background-color: #3498db;
             color: white;
-            transition: all 0.2s ease;
         }
         .switch-buttons button:hover {
-            background-color: #0056b3;
+            transform: scale(1.1);
         }
+        /* 选中的按钮样式 */
         .switch-buttons .active {
-            background-color: #FF4500;
+            background-color: #ff5e62;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(255, 94, 98, 0.5);
         }
         .anime-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); /* 让单个卡片更宽 */
-            gap: 50px;
-            padding: 50px;
-            justify-content: center;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 30px;
         }
         .anime-item {
             background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.2s;
-            max-width: 500px;
-            margin: auto;
         }
         .anime-item:hover {
-            transform: scale(1.03);
+            transform: scale(1.05);
         }
         .anime-item img {
             width: 100%;
-            height: 550px; /* 海报更长 */
+            height: 450px; /* 增加海报高度 */
             object-fit: cover;
         }
         .anime-info {
-            padding: 25px; /* 增加间距 */
+            padding: 20px;
         }
         .anime-info h3 {
             margin: 0;
-            font-size: 30px; /* 标题更大 */
-            font-weight: bold;
+            font-size: 20px;
+            line-height: 1.4;
         }
         .anime-info p {
-            font-size: 22px; /* 简介字体更大 */
+            font-size: 15px;
             color: #555;
-            margin-top: 12px;
-            line-height: 1.8;
+            margin-top: 10px;
+            line-height: 1.6;
         }
         .anime-info .tags {
-            margin-top: 12px;
-            font-size: 16px;
+            margin-top: 10px;
+            font-size: 14px;
             color: #888;
         }
         .score {
-            font-size: 20px;
+            font-size: 18px;
             color: #f39c12;
-            margin-top: 20px;
-            font-weight: bold;
+            margin-top: 15px;
         }
         .pagination {
             text-align: center;
-            margin: 70px 0;
+            margin: 50px 0;
         }
         .pagination button {
-            padding: 16px 35px;
-            margin: 0 12px;
-            background-color: #28a745;
+            padding: 12px 24px;
+            margin: 0 10px;
+            background-color: #3498db;
             color: white;
             border: none;
             cursor: pointer;
-            border-radius: 8px;
-            font-size: 20px; /* 分页按钮字体加大 */
-            transition: background 0.2s;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background 0.3s;
         }
         .pagination button:hover {
-            background-color: #1e7e34;
+            background-color: #2980b9;
         }
     </style>
 </head>
