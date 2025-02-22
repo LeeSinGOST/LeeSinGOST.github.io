@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>影像带</title>
+        <style>
+            .artplayer-app {
+            width: 100%;
+            height: 720px;
+            z-index: 10;
+            position: relative;
+            margin-top: 100px;
+            }            
+   /*Design Inspired by @ykadosh on Codepen*/
+
+.wrap {
+  --black: #000000;
+  --ch-black: #141414;
+  --eer-black: #1b1b1b;
+  --night-rider: #2e2e2e;
+  --white: #ffffff;
+  --af-white: #f3f3f3;
+  --ch-white: #e1e1e1;
+  font-family: Helvetica, sans-serif;
+  position: absolute;
+  left: 50%;
+  margin-top: 22px;
+  margin-left: -250px;
+
+}
+
+.back {
+  position: absolute;
+  width: 17.4em;
+  height: 5.6em;
+  margin-top: -0.8em;
+  margin-left: -0.77em;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+  background-color: #171717;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+.main {
+  display: flex;
+  width: 240px;
+  height: 100px;
+}
+
+.switch {
+  display: block;
+  position: relative;
+  background-color: black;
+  width: 70px;
+  height: 70px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2), 0 0 1px 2px  var(--black), inset 0 2px 2px -2px  var(--white), inset 0 0 2px 5px var(--night-rider), inset 0 0 2px 22px  var(--black);
+  border-radius: 50%;
+  padding: 20px;
+  margin: 5px;
+}
+
+.switch input {
+  display: none;
+}
+
+.switch input:checked + .button .light {
+  animation: flicker 0.2s infinite 0.3s;
+}
+
+.switch input:checked + .button .shine {
+  opacity: 1;
+}
+
+.switch input:checked + .button .shadow {
+  opacity: 0;
+}
+
+.switch .button {
+  transition: all 0.3s cubic-bezier(1, 0, 1, 1);
+  background-color: var(--night-rider);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  position: relative;
+  left: -0.75em;
+  top: -0.79em;
+  cursor: pointer;
+}
+
+.switch .light {
+  opacity: 0;
+  animation: light-off 1s; 
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(var(--ch-white), var(--white) 70%, transparent 72%);
+}
+
+.switch .dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(transparent 30%, var(--black) 70%);
+  background-size: 10px 10px;
+  border-radius: 50%;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes light-off {
+  0% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0;
+  }
+}
+
+.switch1 {
+  display: block;
+  position: relative;
+  background-color: var(--black);
+  width: 70px ;
+  height: 70px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2), 0 0 1px 2px  var(--black), inset 0 2px 2px -2px  var(--white), inset 0 0 2px 5px var(--night-rider), inset 0 0 2px 22px  var(--black);
+  border-radius: 50%;
+  padding: 20px;
+  margin: 5px;
+}
+
+.switch1 input {
+  display: none;
+}
+
+.switch1 input:checked + .button .light {
+  animation: flicker 0.2s infinite 0.3s;
+}
+
+.switch1 input:checked + .button .shine {
+  opacity: 1;
+}
+
+.switch1 input:checked + .button .shadow {
+  opacity: 0;
+}
+
+.switch1 .button {
+  transition: all 0.3s cubic-bezier(1, 0, 1, 1);
+  background-color: var(--night-rider);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  position: relative;
+  left: -0.75em;
+  top: -0.79em;
+  cursor: pointer;
+}
+
+.switch1 .light {
+  opacity: 0;
+  animation: light-off 1s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(var(--ch-white), var(--white) 70%, transparent 72%);
+}
+
+.switch1 .dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(transparent 30%, var(--black) 70%);
+  background-size: 10px 10px;
+  border-radius: 50%;
+}
+
+.switch2 {
+  display: block;
+  position: relative;
+  background-color: var(--black);
+  width: 70px;
+  height: 70px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2), 0 0 1px 2px  var(--black), inset 0 2px 2px -2px  var(--white), inset 0 0 2px 5px var(--night-rider), inset 0 0 2px 22px  var(--black);
+  border-radius: 50%;
+  padding: 20px;
+  margin: 5px;
+}
+
+.switch2 input {
+  display: none;
+}
+
+.switch2 input:checked + .button .light {
+  animation: flicker 0.2s infinite 0.3s;
+}
+
+.switch2 input:checked + .button .shine {
+  opacity: 1;
+}
+
+.switch2 input:checked + .button .shadow {
+  opacity: 0;
+}
+
+.switch2 .button {
+  transition: all 0.3s cubic-bezier(1, 0, 1, 1);
+  background-color: var(--night-rider);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  position: relative;
+  left: -0.75em;
+  top: -0.79em;
+  cursor: pointer;
+}
+
+.switch2 .light {
+  opacity: 0;
+  animation: light-off 1s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(var(--ch-white), var(--white) 70%, transparent 72%);
+}
+
+.switch2 .dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(transparent 30%, var(--black) 70%);
+  background-size: 10px 10px;
+  border-radius: 50%;
+}
+        </style>
+<link rel="stylesheet" href="/css/myStyle.css"><link rel="stylesheet" href="/css/nav.css"><script src="/js/nav.js"></script><script src="/js/jquery.js"></script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+   <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Kokutou's Blog" type="application/atom+xml">
+   
+<meta name="twitter:image" content="https://2pk.cc/images/cover/cover1.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://2pk.cc/categories/index.html"><link rel="preconnect" href="//fastly.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Cloudflare Worker代理Github图床加速',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-10 22:06:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script>
+</head>
+<body>
+  <div class="js-pjax">
+    <script src="https://fastly.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
+
+  <script src="https://fastly.jsdelivr.net/npm/artplayer-plugin-danmuku/dist/artplayer-plugin-danmuku.js"></script>
+    </div>
+  <div id="web_bg"></div>
+  <div id="sidebar">
+    <div id="menu-mask"></div>
+    <div id="sidebar-menus">
+      <div class="avatar-img is-center"><img src="https://2pk.cc/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div>
+      <div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis"><i class="fa-fw fas fa-archive"></i><span> 追番</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/timelines/"><span> 更新</span></a></li><li><a class="site-page child" href="/talking/"><span> 动态</span></a></li><li><a class="site-page child" href="/atom.xml"><span> 订阅</span></a></li><li><a class="site-page child" href="/sitemap.xml"><span> 地图</span></a></li><li><a class="site-page child" href="/about/"><span> 关于</span></a></li></ul></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background: transparent"><nav id="nav"><span id="blog-info"><a href="/" title="Kokutou's Blog"><span class="site-name">Kokutou's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis"><i class="fa-fw fas fa-archive"></i><span> 追番</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/timelines/"><span> 更新</span></a></li><li><a class="site-page child" href="/talking/"><span> 动态</span></a></li><li><a class="site-page child" href="/atom.xml"><span> 订阅</span></a></li><li><a class="site-page child" href="/sitemap.xml"><span> 地图</span></a></li><li><a class="site-page child" href="/about/"><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">视频</h1></div></header><main class="layout" id="content-inner">
+    <div id="page" style="width: 100%;">
+      <div class="wrap">
+        <div class="back" style="width: 34.4em;"></div>
+        <div class="main">
+        <label class="switch">
+          <input name="value-radio" checked="true" type="radio">
+          <div class="button">
+            <div class="light"></div>
+            <div class="dots"></div>
+          </div>
+        </label>
+        <label class="switch1">
+          <input name="value-radio" checked="" type="radio">
+          <div class="button">
+            <div class="light"></div>
+            <div class="dots"></div>
+          </div>
+        </label>
+        <label class="switch2">
+          <input name="value-radio" checked="" type="radio">
+          <div class="button">
+            <div class="light"></div>
+            <div class="dots"></div>
+          </div>
+        </label>
+        <label class="switch">
+          <input name="value-radio" checked="" type="radio">
+          <div class="button">
+            <div class="light"></div>
+            <div class="dots"></div>
+          </div>
+        </label>
+        <label class="switch1">
+          <input name="value-radio" checked="" type="radio">
+          <div class="button">
+            <div class="light"></div>
+            <div class="dots"></div>
+          </div>
+        </label>
+        <label class="switch2">
+          <input name="value-radio" checked="" type="radio">
+          <div class="button">
+            <div class="light"></div>
+            <div class="dots"></div>
+          </div>
+        </label>
+        </div>
+        </div>
+      <div class="artplayer-app video1"></div>
+      <div class="wrap" style="margin-top: 42px;">
+        <div class="back" style="width: 34.4em;"></div>
+        <div class="main">
+        <label class="switch">
+          <input name="value-radio" checked="" type="radio">
+          <div class="button">
+            <div class="light"></div>
+            <div class="dots"></div>
+          </div>
+        </label>
+        <label class="switch1">
+          <input name="value-radio" checked="" type="radio">
+          <div class="button">
+            <div class="light"></div>
+            <div class="dots"></div>
+          </div>
+        </label>
+        <label class="switch2">
+          <input name="value-radio" checked="" type="radio">
+          <div class="button">
+            <div class="light"></div>
+            <div class="dots"></div>
+          </div>
+        </label>
+        <label class="switch">
+          <input name="value-radio" checked="" type="radio">
+          <div class="button">
+            <div class="light"></div>
+            <div class="dots"></div>
+          </div>
+        </label>
+        <label class="switch1">
+          <input name="value-radio" checked="" type="radio">
+          <div class="button">
+            <div class="light"></div>
+            <div class="dots"></div>
+          </div>
+        </label>
+        <label class="switch2">
+          <input name="value-radio" checked="" type="radio">
+          <div class="button">
+            <div class="light"></div>
+            <div class="dots"></div>
+          </div>
+        </label>
+        </div>
+        </div>
+    
+          <div class="artplayer-app video2" style="margin-top: 120px;">
+</div><hr class="custom-hr"/>
+<div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div>
+            <i class="fas fa-folder-open"></i>
+            </div>
+            </ul></div>
+            
+            </div></div></div></div></main>
+              <footer id="footer" style="background: transparent">
+                <div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By leesin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div>
+                <div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script>
+                  <div class="js-pjax">
+                    <script>(()=>{  const init = () => {
+                    twikoo.init(Object.assign({
+                      el: '#twikoo-wrap',
+                      envId: 'https://twikoo.2pk.cc/',
+                      region: 'ap-shanghai',
+                      onCommentLoaded: function () {
+                        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+                      }
+                    }, null))
+                  }
+                
+                  const getCount = () => {
+                    const countELement = document.getElementById('twikoo-count')
+                    if(!countELement) return
+                    twikoo.getCommentsCount({
+                      envId: 'https://twikoo.2pk.cc/',
+                      region: 'ap-shanghai',
+                      urls: [window.location.pathname],
+                      includeReply: false
+                    }).then(function (res) {
+                      countELement.textContent = res[0].count
+                    }).catch(function (err) {
+                      console.error(err);
+                    });
+                  }
+                
+                  const runFn = () => {
+                    init()
+                    GLOBAL_CONFIG_SITE.isPost && getCount()
+                  }
+                
+                  const loadTwikoo = () => {
+                    if (typeof twikoo === 'object') {
+                      setTimeout(runFn,0)
+                      return
+                    } 
+                    getScript('https://fastly.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+                  }
+                
+                  if ('Twikoo' === 'Twikoo' || !true) {
+                    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+                    else loadTwikoo()
+                  } else {
+                    window.loadOtherComment = () => {
+                      loadTwikoo()
+                    }
+                  }
+                })()</script></div><script>window.addEventListener('load', () => {
+                  const changeContent = (content) => {
+                    if (content === '') return content
+                
+                    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+                    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+                    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+                    content = content.replace(/<[^>]+>/g,"") // remove html tag
+                
+                    if (content.length > 150) {
+                      content = content.substring(0,150) + '...'
+                    }
+                    return content
+                  }
+                
+                  const getComment = () => {
+                    const runTwikoo = () => {
+                      twikoo.getRecentComments({
+                        envId: 'https://twikoo.2pk.cc/',
+                        region: 'ap-shanghai',
+                        pageSize: 6,
+                        includeReply: true
+                      }).then(function (res) {
+                        const twikooArray = res.map(e => {
+                          return {
+                            'content': changeContent(e.comment),
+                            'avatar': e.avatar,
+                            'nick': e.nick,
+                            'url': e.url + '#' + e.id,
+                            'date': new Date(e.created).toISOString()
+                          }
+                        })
+                
+                        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+                        generateHtml(twikooArray)
+                      }).catch(function (err) {
+                        const $dom = document.querySelector('#card-newest-comments .aside-list')
+                        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+                      })
+                    }
+                
+                    if (typeof twikoo === 'object') {
+                      runTwikoo()
+                    } else {
+                      getScript('https://fastly.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+                    }
+                  }
+                
+                  const generateHtml = array => {
+                    let result = ''
+                
+                    if (array.length) {
+                      for (let i = 0; i < array.length; i++) {
+                        result += '<div class=\'aside-list-item\'>'
+                
+                        if (true) {
+                          const name = 'src'
+                          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+                        }
+                        
+                        result += `<div class='content'>
+                        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+                        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+                        </div></div>`
+                      }
+                    } else {
+                      result += '没有评论'
+                    }
+                
+                    let $dom = document.querySelector('#card-newest-comments .aside-list')
+                    $dom.innerHTML= result
+                    window.lazyLoadInstance && window.lazyLoadInstance.update()
+                    window.pjax && window.pjax.refresh($dom)
+                  }
+                
+                  const newestCommentInit = () => {
+                    if (document.querySelector('#card-newest-comments .aside-list')) {
+                      const data = saveToLocal.get('twikoo-newest-comments')
+                      if (data) {
+                        generateHtml(JSON.parse(data))
+                      } else {
+                        getComment()
+                      }
+                    }
+                  }
+                
+                  newestCommentInit()
+                  document.addEventListener('pjax:complete', newestCommentInit)
+                })</script><script src="/js/font.js"></script><div class="aplayer no-destroy" data-id="3222203999" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://fastly.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://fastly.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+                
+                var pjax = new Pjax({
+                  elements: 'a:not([target="_blank"])',
+                  selectors: pjaxSelectors,
+                  cacheBust: false,
+                  analytics: false,
+                  scrollRestoration: false
+                })
+                
+                document.addEventListener('pjax:send', function () {
+                
+                  // removeEventListener scroll 
+                  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+                  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+                
+                  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+                  
+                  if (window.aplayers) {
+                    for (let i = 0; i < window.aplayers.length; i++) {
+                      if (!window.aplayers[i].options.fixed) {
+                        window.aplayers[i].destroy()
+                      }
+                    }
+                  }
+                
+                  typeof typed === 'object' && typed.destroy()
+                
+                  //reset readmode
+                  const $bodyClassList = document.body.classList
+                  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+                
+                  typeof disqusjs === 'object' && disqusjs.destroy()
+                })
+                
+                document.addEventListener('pjax:complete', function () {
+                  window.refreshFn()
+                
+                  document.querySelectorAll('script[data-pjax]').forEach(item => {
+                    const newScript = document.createElement('script')
+                    const content = item.text || item.textContent || item.innerHTML || ""
+                    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+                    newScript.appendChild(document.createTextNode(content))
+                    item.parentNode.replaceChild(newScript, item)
+                  })
+                
+                  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+                
+                  typeof panguInit === 'function' && panguInit()
+                
+                  // google analytics
+                  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+                
+                  // baidu analytics
+                  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+                
+                  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+                
+                  // prismjs
+                  typeof Prism === 'object' && Prism.highlightAll()
+                })
+                
+                document.addEventListener('pjax:error', (e) => {
+                  if (e.request.status === 404) {
+                    pjax.loadUrl('/404.html')
+                  }
+                })</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div>
+              
+
+    <script>
+
+        const playlist = [
+          'https://tp.2pk.cc/d/Video/Micro/loundraw/%E3%80%90%E3%83%95%E3%83%AB%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%80%91%EF%BC%BA%E4%BC%9A%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%20%C3%97%20loundraw%20%C3%97%20FLAT%20STUDIO%E3%80%80%E5%8F%97%E9%A8%93%E7%94%9F%E5%BF%9C%E6%8F%B4%E3%83%A0%E3%83%BC%E3%83%93%E3%83%BC%E3%80%8E%E3%81%B5%E3%81%9F%E3%82%8A%E5%88%86%E3%81%AE%E8%A8%BC%E6%98%8E%E3%80%8F.mp4',
+          'https://tp.2pk.cc/d/BiliBili/%E9%9F%B3%E4%B9%90/%E3%80%904K60FPS%E3%80%91%E4%BA%94%E6%9C%88%E5%A4%A9%E3%80%81%E4%BC%8D%E4%BD%B0%E3%80%8A%E6%8C%AA%E5%A8%81%E7%9A%84%E6%A3%AE%E6%9E%97%E3%80%8B%E6%A2%A6%E5%B9%BB%E8%81%94%E5%8A%A8%E7%8E%B0%E5%9C%BA%EF%BC%81%E5%A4%AA%E5%97%A8%E4%BA%86%E5%90%A7%EF%BC%81.mp4', 
+          'https://tp.2pk.cc/d/Video/AMV/%E5%AE%9D%E5%B2%9B.mkv',
+          'https://tp.2pk.cc/d/BiliBili/%E9%9F%B3%E4%B9%90/LiSA%C3%97Uru%20-%20%E5%86%8D%E4%BC%9A%20(produced%20by%20Ayase)%20-%20THE%20FIRST%20TAKE.mp4',      
+          'https://tp.2pk.cc/d/Video/AMV/%5BANK-Raws%5D%20TYPE-MOON%20Fesival%20OP1%20(BDrip%201920x1080%20x264%20FLAC%20Hi10P).mkv',
+          'https://tp.2pk.cc/d/Video/MV/%E6%A2%A6%E9%86%92%E4%BA%86%EF%BC%8C%E4%BD%A0%E8%B5%B0%E4%BA%86(Av746639897%2CP1).mp4',
+          'https://tp.2pk.cc/d/Video/LIVE/YOASOBI/heartbeat_x264.mkv',
+          'https://tp.2pk.cc/d/BiliBili/%E6%9C%AC%E5%9C%B0%E5%90%8C%E6%AD%A5%E6%94%B6%E8%97%8F%E5%A4%B9/%5B%E4%B8%AD%E6%97%A5%E5%8F%8C%E8%AF%AD%5D%20%E6%B0%B4%E6%BF%91%E7%A5%88%20%E6%97%85%E3%81%AE%E9%80%94%E4%B8%AD%20%E4%B8%8D%E6%8F%92%E7%94%B5%E7%8E%B0%E5%9C%BA%E7%89%88.mp4',
+          'https://tp.2pk.cc/d/Video/LIVE/%E4%B8%AD%E5%B2%9B%E7%BE%8E%E9%9B%AA-%E6%B0%B8%E8%BF%9C%E7%9A%84%E8%B0%8E%E8%A8%80.mp4',
+          'https://tp.2pk.cc/d/Video/LIVE/Animelo%20Summer%20Live/best/Suara%20-%20Kimi%20ga%20Tame.mkv',
+          'https://tp.2pk.cc/d/Video/LIVE/Animelo%20Summer%20Live/best/TrySail%20-%20Adrenaline!.mkv',
+          'https://tp.2pk.cc/d/Video/LIVE/T-Square/Open%20The%2035th%20Gate%20(Live).mkv',
+        ];
+
+        var radioBtn = document.querySelectorAll('input[name="value-radio"]');
+        for(let i=0; i<radioBtn.length; i++) {
+          radioBtn[i].addEventListener('change', function() {
+            if(radioBtn[i].checked){
+              switchURL(i)
+    }
+  });
+}
+
+
+const art = new Artplayer({
+    container: '.video1',
+    url: playlist[0],
+    volume: 0.5,
+    isLive: false,
+    muted: false,
+    autoplay: false,
+    pip: true,
+    autoSize: true,
+    autoMini: false,
+    screenshot: true,
+    setting: true,
+    loop: true,
+    flip: true,
+    playbackRate: true,
+    aspectRatio: true,
+    fullscreen: true,
+    fullscreenWeb: true,
+    subtitleOffset: true,
+    miniProgressBar: true,
+    mutex: true,
+    backdrop: true,
+    playsInline: true,
+    autoPlayback: true,
+    airplay: true,
+    theme: '#23ade5',
+    lang: navigator.language.toLowerCase(),
+    plugins: [
+        artplayerPluginDanmuku({
+            // 弹幕 XML 文件，和 Bilibili 网站的弹幕格式一致
+            danmuku: playlist[0].substring(0, playlist[0].lastIndexOf('.'))+'.cmt.xml',
+        }),
+    ],
+});
+const art2 = new Artplayer({
+    container: '.video2',
+    url: playlist[radioBtn.length-1],
+    volume: 0.5,
+    isLive: false,
+    muted: false,
+    autoplay: false,
+    pip: true,
+    autoSize: true,
+    autoMini: false,
+    screenshot: true,
+    setting: true,
+    loop: true,
+    flip: true,
+    playbackRate: true,
+    aspectRatio: true,
+    fullscreen: true,
+    fullscreenWeb: true,
+    subtitleOffset: true,
+    miniProgressBar: true,
+    mutex: true,
+    backdrop: true,
+    playsInline: true,
+    autoPlayback: true,
+    airplay: true,
+    theme: '#23ade5',
+    lang: navigator.language.toLowerCase(),
+    plugins: [
+        artplayerPluginDanmuku({
+            // 弹幕 XML 文件，和 Bilibili 网站的弹幕格式一致
+            danmuku: playlist[radioBtn.length-1].substring(0, playlist[radioBtn.length-1].lastIndexOf('.'))+'.cmt.xml',
+        }),
+    ],
+});
+
+        function switchURL(index1) {
+            // 获取选择的URL
+            url = playlist[index1];
+            if(index1<6){
+              art.plugins.artplayerPluginDanmuku.config({
+                    danmuku: url.substring(0, url.lastIndexOf('.'))+'.cmt.xml',
+                });
+                art.switchUrl(url);
+            art.plugins.artplayerPluginDanmuku.load();
+            }else{
+              art2.plugins.artplayerPluginDanmuku.config({
+                    danmuku: url.substring(0, url.lastIndexOf('.'))+'.cmt.xml',
+                });
+              art2.switchUrl(url);
+              art2.plugins.artplayerPluginDanmuku.load();
+            }
+        }
+    </script>
+</div>
+</body>
+</html>

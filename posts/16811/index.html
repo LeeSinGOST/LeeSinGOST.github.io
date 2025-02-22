@@ -1,0 +1,419 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>使用Github Actions构建Docker并推送镜像 | Kokutou's Blog</title><meta name="author" content="leesin"><meta name="copyright" content="leesin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="使用Github Actions构建Docker并推送镜像Github ActionsGitHub Actions 是一个持续集成和持续交付 (CI&#x2F;CD) 平台，可让您自动化构建、测试和部署管道，直接从 GitHub 部署代码。您可以创建工作流来构建和测试存储库的每个拉取请求，或将合并的拉取请求部署到生产环境。 GitHub Actions 不仅限于 DevOps，还允许您在存储库中发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Github Actions构建Docker并推送镜像">
+<meta property="og:url" content="https://kokutou.top/posts/16811/index.html">
+<meta property="og:site_name" content="Kokutou&#39;s Blog">
+<meta property="og:description" content="使用Github Actions构建Docker并推送镜像Github ActionsGitHub Actions 是一个持续集成和持续交付 (CI&#x2F;CD) 平台，可让您自动化构建、测试和部署管道，直接从 GitHub 部署代码。您可以创建工作流来构建和测试存储库的每个拉取请求，或将合并的拉取请求部署到生产环境。 GitHub Actions 不仅限于 DevOps，还允许您在存储库中发">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kokutou.top/images/cover/cover12.jpg">
+<meta property="article:published_time" content="2023-07-10T07:43:46.000Z">
+<meta property="article:modified_time" content="2023-07-10T13:58:55.000Z">
+<meta property="article:author" content="leesin">
+<meta property="article:tag" content="Github">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kokutou.top/images/cover/cover12.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kokutou.top/posts/16811/index.html"><link rel="preconnect" href="//fastly.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '使用Github Actions构建Docker并推送镜像',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-10 21:58:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/myStyle.css"><link rel="stylesheet" href="/css/nav.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css" /><script src="/js/nav.js"></script><script src="/js/jquery.js"></script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Kokutou's Blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis"><i class="fa-fw fas fa-archive"></i><span> 追番</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/timelines/"><span> 更新</span></a></li><li><a class="site-page child" href="/talking/"><span> 动态</span></a></li><li><a class="site-page child" href="/atom.xml"><span> 订阅</span></a></li><li><a class="site-page child" href="/sitemap.xml"><span> 地图</span></a></li><li><a class="site-page child" href="/about/"><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/cover/cover12.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Kokutou's Blog"><span class="site-name">Kokutou's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis"><i class="fa-fw fas fa-archive"></i><span> 追番</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/timelines/"><span> 更新</span></a></li><li><a class="site-page child" href="/talking/"><span> 动态</span></a></li><li><a class="site-page child" href="/atom.xml"><span> 订阅</span></a></li><li><a class="site-page child" href="/sitemap.xml"><span> 地图</span></a></li><li><a class="site-page child" href="/about/"><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">使用Github Actions构建Docker并推送镜像</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-10T07:43:46.000Z" title="发表于 2023-07-10 15:43:46">2023-07-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-10T13:58:55.000Z" title="更新于 2023-07-10 21:58:55">2023-07-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E6%89%8B%E5%86%8C/">技术手册</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="使用Github Actions构建Docker并推送镜像"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="使用Github-Actions构建Docker并推送镜像"><a href="#使用Github-Actions构建Docker并推送镜像" class="headerlink" title="使用Github Actions构建Docker并推送镜像"></a>使用Github Actions构建Docker并推送镜像</h1><h1 id="Github-Actions"><a href="#Github-Actions" class="headerlink" title="Github Actions"></a>Github Actions</h1><p>GitHub Actions 是一个持续集成和持续交付 (CI&#x2F;CD) 平台，可让您自动化构建、测试和部署管道，直接从 GitHub 部署代码。您可以创建工作流来构建和测试存储库的每个拉取请求，或将合并的拉取请求部署到生产环境。</p>
+<p>GitHub Actions 不仅限于 DevOps，还允许您在存储库中发生其他事件时运行工作流。轻松实现所有软件工作流程的自动化。</p>
+<p>Actions ：登录远程服务器，发布内容到第三方服务、抓取代码、运行测试。</p>
+<h2 id="workflow"><a href="#workflow" class="headerlink" title="workflow"></a>workflow</h2><p>工作流程：持续集成一次运行的过程，就是一个 workflow。</p>
+<h3 id="Job"><a href="#Job" class="headerlink" title="Job"></a>Job</h3><pre><code>任务：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务
+</code></pre>
+<h3 id="Step"><a href="#Step" class="headerlink" title="Step"></a>Step</h3><pre><code>步骤：每个 job 由多个 step 构成，一步步完成
+</code></pre>
+<h3 id="Actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h3><pre><code>动作：每个 step 可以依次执行一个或多个命令（action）
+</code></pre>
+<blockquote>
+<p>参考文档：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.github.com/cn/actions/using-workflows/workflow-syntax-for-github-actions" title="Workflow syntax for GitHub Actions - GitHub Docs">Workflow syntax for GitHub Actions - GitHub Docs</a></p>
+</blockquote>
+<h1 id="详细流程"><a href="#详细流程" class="headerlink" title="详细流程"></a>详细流程</h1><blockquote>
+<p>以我的SpringBoot练手项目个人Pixiv镜像站 <code>MyPix</code> 为例。</p>
+</blockquote>
+<h2 id="Step1-编写Dockerfile"><a href="#Step1-编写Dockerfile" class="headerlink" title="Step1 编写Dockerfile"></a>Step1 编写Dockerfile</h2><p>因为是要构建镜像，所以要先通过Dcokerfile描述下构建流程，由于是SpringBoot项目，所以直接将即将构建好的jar包移进容器再运行jar包即可。</p>
+<p>Dockerfile</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Docker image for springboot file run</span></span><br><span class="line"><span class="comment"># VERSION 0.0.1</span></span><br><span class="line"><span class="comment"># Author: </span></span><br><span class="line"><span class="comment"># 基础镜像使用java</span></span><br><span class="line"><span class="keyword">FROM</span> openjdk:<span class="number">8</span></span><br><span class="line"><span class="comment"># 作者</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> leesin</span><br><span class="line"><span class="comment"># VOLUME 指定了临时文件目录为/tmp。</span></span><br><span class="line"><span class="comment"># 其效果是在主机 /var/lib/docker 目录下创建了一个临时文件，并链接到容器的/tmp</span></span><br><span class="line"><span class="keyword">VOLUME</span><span class="language-bash"> /tmp </span></span><br><span class="line"><span class="comment"># 将jar包添加到容器中并更名为xx.jar</span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> target/pixiv-0.0.1-SNAPSHOT.jar pix.jar </span></span><br><span class="line"><span class="comment"># 运行jar包</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="string">&quot;java&quot;</span>,<span class="string">&quot;-Djava.security.egd=file:/dev/./urandom&quot;</span>,<span class="string">&quot;-jar&quot;</span>,<span class="string">&quot;/pix.jar&quot;</span>]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>直接放在根目录即可</p>
+</blockquote>
+<h2 id="Step2-编写提交之后的workflow"><a href="#Step2-编写提交之后的workflow" class="headerlink" title="Step2 编写提交之后的workflow"></a>Step2 编写提交之后的workflow</h2><p>在项目 <strong>.github&#x2F;workflows</strong> 文件夹中新建main.yml。编写workflow工作流程。</p>
+<blockquote>
+<p>由于是要提交到Docker Hub所以要先去Hub注册账号，将有推送权限的用户名和token存入github仓库的secrets里待下方workflow当变量使用。</p>
+</blockquote>
+<p>以本次为例，大概应该都知道什么意思了</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span> [ <span class="string">master</span> ]</span><br><span class="line">  <span class="attr">pull_request:</span></span><br><span class="line">    <span class="attr">branches:</span> [ <span class="string">master</span> ]</span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="attr">IMAGE_NAME:</span> <span class="string">mypix</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span>   </span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v3</span></span><br><span class="line">      </span><br><span class="line">      <span class="comment">#Java环境</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Set</span> <span class="string">up</span> <span class="string">JDK</span> <span class="number">8</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-java@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">java-version:</span> <span class="string">&#x27;8&#x27;</span></span><br><span class="line">          <span class="attr">distribution:</span> <span class="string">&#x27;zulu&#x27;</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span> <span class="string">with</span> <span class="string">Maven</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">mvn</span> <span class="string">clean</span> <span class="string">package</span> <span class="string">-DskipTests</span></span><br><span class="line">        </span><br><span class="line">      <span class="comment"># 登录Docker Hub</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Login</span> <span class="string">to</span> <span class="string">Docker</span> <span class="string">Hub</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">docker/login-action@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">username:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.USERNAME</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">password:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.ACCESS_TOKEN</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          </span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Set</span> <span class="string">up</span> <span class="string">Docker</span> <span class="string">Buildx</span></span><br><span class="line">        <span class="attr">id:</span> <span class="string">buildx</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">docker/setup-buildx-action@v1</span></span><br><span class="line">        </span><br><span class="line">      <span class="comment"># build 镜像并push到中央仓库中，下方注意Dockerfile路径</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span> <span class="string">and</span> <span class="string">push</span></span><br><span class="line">        <span class="attr">id:</span> <span class="string">docker_build</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">docker/build-push-action@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">context:</span> <span class="string">./</span></span><br><span class="line">          <span class="attr">file:</span> <span class="string">./Dockerfile</span></span><br><span class="line">          <span class="attr">push:</span> <span class="literal">true</span></span><br><span class="line">          <span class="attr">tags:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.USERNAME</span> <span class="string">&#125;&#125;/mypix:latest</span></span><br><span class="line">          </span><br><span class="line">	   <span class="comment">#可选：保留jar包artifact</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Upload</span> <span class="string">JAR</span> <span class="string">file</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/upload-artifact@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">Mypix</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">target/*.jar</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>不出意外的话，每次提交项目到Github的时候会触发Actions运行workflow工作流，将项目打包成jar包，再通过Dockerfile流程将jar包构造成Docker镜像发送至DockerHub保存。</p>
+<blockquote>
+<p>由于只是发布镜像，所以至此结束。</p>
+</blockquote>
+<h1 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h1><blockquote>
+<p>顺便讲下本项目的部署方法</p>
+</blockquote>
+<p>如果有需要的话仍可直接在上方<strong>SSH连接</strong>个人服务器进行项目部署。<br>需提前写好启动脚本，然后通过脚本启动，即可实现实时部署。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#push后，用ssh连接服务器执行start.sh脚本    </span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">SSH</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">fifsky/ssh-action@master</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">command:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          sh start.sh</span></span><br><span class="line"><span class="string"></span>        <span class="attr">host:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.HOST</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">user:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.USER</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">key:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.PRIVATE_KEY&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>由于需要配置挺多环境参数，所以使用docker-compose部署。</p>
+<p>编写docker-compose.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">pixiv:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">&#x27;kokutou/mypix:latest&#x27;</span>      <span class="comment">#pull镜像</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">globalcookie=</span>                 <span class="comment">#guest，pixiv的cookie</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mycookie=</span>                     <span class="comment">#leesin，pixiv的cookie</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">password=</span>                     <span class="comment">#账号名是leesin,密码自设，默认password</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">guestpassword=</span>                <span class="comment">#账号名是guest，密码自设，默认password</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">qqnum=xxx</span>                     <span class="comment">#做着玩的,随便填充</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">pushurl=xxx</span>                   <span class="comment">#做着玩的,随便填充</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">&#x27;8084:8084&#x27;</span>                <span class="comment">#本机：容器</span></span><br><span class="line">    <span class="attr">pull_policy:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">mypix</span></span><br></pre></td></tr></table></figure>
+
+<p>进入以上yml目录运行docker-compose up -d即可</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://2pk.cc/">leesin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://kokutou.top/posts/16811/">https://kokutou.top/posts/16811/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kokutou.top" target="_blank">Kokutou's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Github/">Github</a><a class="post-meta__tags" href="/tags/SpringBoot/">SpringBoot</a><a class="post-meta__tags" href="/tags/Docker/">Docker</a></div><div class="post_share"><div class="social-share" data-image="/images/cover/cover12.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://fastly.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/49046/" title="软笔"><img class="cover" src="/images/cover/cover11.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">软笔</div></div></a></div><div class="next-post pull-right"><a href="/posts/57472/" title="Cloudflare Worker代理Github图床加速"><img class="cover" src="/images/cover/cover2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Cloudflare Worker代理Github图床加速</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/57472/" title="Cloudflare Worker代理Github图床加速"><img class="cover" src="/images/cover/cover2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-10</div><div class="title">Cloudflare Worker代理Github图床加速</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">leesin</div><div class="author-info__description">小孩子不懂事做着玩的</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/LeeSinGOST"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcomeeee!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Github-Actions%E6%9E%84%E5%BB%BADocker%E5%B9%B6%E6%8E%A8%E9%80%81%E9%95%9C%E5%83%8F"><span class="toc-number">1.</span> <span class="toc-text">使用Github Actions构建Docker并推送镜像</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Github-Actions"><span class="toc-number">2.</span> <span class="toc-text">Github Actions</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#workflow"><span class="toc-number">2.1.</span> <span class="toc-text">workflow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Job"><span class="toc-number">2.1.1.</span> <span class="toc-text">Job</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Step"><span class="toc-number">2.1.2.</span> <span class="toc-text">Step</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Actions"><span class="toc-number">2.1.3.</span> <span class="toc-text">Actions</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">详细流程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Step1-%E7%BC%96%E5%86%99Dockerfile"><span class="toc-number">3.1.</span> <span class="toc-text">Step1 编写Dockerfile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step2-%E7%BC%96%E5%86%99%E6%8F%90%E4%BA%A4%E4%B9%8B%E5%90%8E%E7%9A%84workflow"><span class="toc-number">3.2.</span> <span class="toc-text">Step2 编写提交之后的workflow</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2"><span class="toc-number">4.</span> <span class="toc-text">项目部署</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/8693/" title="SSH免密登录，powershell连接"><img src="/images/cover/cover1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SSH免密登录，powershell连接"/></a><div class="content"><a class="title" href="/posts/8693/" title="SSH免密登录，powershell连接">SSH免密登录，powershell连接</a><time datetime="2024-11-06T01:01:18.000Z" title="发表于 2024-11-06 09:01:18">2024-11-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/49046/" title="软笔"><img src="/images/cover/cover11.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="软笔"/></a><div class="content"><a class="title" href="/posts/49046/" title="软笔">软笔</a><time datetime="2024-04-29T05:58:32.000Z" title="发表于 2024-04-29 13:58:32">2024-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/16811/" title="使用Github Actions构建Docker并推送镜像"><img src="/images/cover/cover12.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用Github Actions构建Docker并推送镜像"/></a><div class="content"><a class="title" href="/posts/16811/" title="使用Github Actions构建Docker并推送镜像">使用Github Actions构建Docker并推送镜像</a><time datetime="2023-07-10T07:43:46.000Z" title="发表于 2023-07-10 15:43:46">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/57472/" title="Cloudflare Worker代理Github图床加速"><img src="/images/cover/cover2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cloudflare Worker代理Github图床加速"/></a><div class="content"><a class="title" href="/posts/57472/" title="Cloudflare Worker代理Github图床加速">Cloudflare Worker代理Github图床加速</a><time datetime="2023-07-10T02:56:03.000Z" title="发表于 2023-07-10 10:56:03">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/17821/" title="订阅式自动追番1.1 - Flexget + Aria2 + Emby"><img src="/images/cover/cover1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="订阅式自动追番1.1 - Flexget + Aria2 + Emby"/></a><div class="content"><a class="title" href="/posts/17821/" title="订阅式自动追番1.1 - Flexget + Aria2 + Emby">订阅式自动追番1.1 - Flexget + Aria2 + Emby</a><time datetime="2023-07-08T16:25:09.000Z" title="发表于 2023-07-09 00:25:09">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By leesin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.2pk.cc/',
+      region: 'ap-shanghai',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.2pk.cc/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.textContent = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://fastly.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.2pk.cc/',
+        region: 'ap-shanghai',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://fastly.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script src="/js/font.js"></script><div class="aplayer no-destroy" data-id="3222203999" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://fastly.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://fastly.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

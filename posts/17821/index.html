@@ -1,0 +1,439 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>订阅式自动追番1.1 - Flexget + Aria2 + Emby | Kokutou's Blog</title><meta name="author" content="leesin"><meta name="copyright" content="leesin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="订阅式自动追番1.1 - Flexget + Aria2 + Emby实现效果 截至发文仍在使用的追番模式，从部署流程来说还是比较繁琐的，当时也没怎么做功课，各个方面也存在很多优化空间，而且针对萌番组定制的，但鉴于是1.0方案和综合使用追了三四个季度番来说效果也不错，笔记记录一下部署流程。   1.1 稍微解耦了下  从萌番组 (bangumi.moe)订阅番剧，然后就坐等服务器下载-&gt;刮削">
+<meta property="og:type" content="article">
+<meta property="og:title" content="订阅式自动追番1.1 - Flexget + Aria2 + Emby">
+<meta property="og:url" content="https://kokutou.top/posts/17821/index.html">
+<meta property="og:site_name" content="Kokutou&#39;s Blog">
+<meta property="og:description" content="订阅式自动追番1.1 - Flexget + Aria2 + Emby实现效果 截至发文仍在使用的追番模式，从部署流程来说还是比较繁琐的，当时也没怎么做功课，各个方面也存在很多优化空间，而且针对萌番组定制的，但鉴于是1.0方案和综合使用追了三四个季度番来说效果也不错，笔记记录一下部署流程。   1.1 稍微解耦了下  从萌番组 (bangumi.moe)订阅番剧，然后就坐等服务器下载-&gt;刮削">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kokutou.top/images/cover/cover1.png">
+<meta property="article:published_time" content="2023-07-08T16:25:09.000Z">
+<meta property="article:modified_time" content="2023-07-10T05:23:25.000Z">
+<meta property="article:author" content="leesin">
+<meta property="article:tag" content="Emby">
+<meta property="article:tag" content="追番">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kokutou.top/images/cover/cover1.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kokutou.top/posts/17821/index.html"><link rel="preconnect" href="//fastly.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://fastly.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '订阅式自动追番1.1 - Flexget + Aria2 + Emby',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-10 13:23:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/myStyle.css"><link rel="stylesheet" href="/css/nav.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css" /><script src="/js/nav.js"></script><script src="/js/jquery.js"></script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Kokutou's Blog" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis"><i class="fa-fw fas fa-archive"></i><span> 追番</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/timelines/"><span> 更新</span></a></li><li><a class="site-page child" href="/talking/"><span> 动态</span></a></li><li><a class="site-page child" href="/atom.xml"><span> 订阅</span></a></li><li><a class="site-page child" href="/sitemap.xml"><span> 地图</span></a></li><li><a class="site-page child" href="/about/"><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/cover/cover1.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Kokutou's Blog"><span class="site-name">Kokutou's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis"><i class="fa-fw fas fa-archive"></i><span> 追番</span></a></li><li><a class="site-page child" href="/video/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-heart"></i><span> 关于</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/timelines/"><span> 更新</span></a></li><li><a class="site-page child" href="/talking/"><span> 动态</span></a></li><li><a class="site-page child" href="/atom.xml"><span> 订阅</span></a></li><li><a class="site-page child" href="/sitemap.xml"><span> 地图</span></a></li><li><a class="site-page child" href="/about/"><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">订阅式自动追番1.1 - Flexget + Aria2 + Emby</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-08T16:25:09.000Z" title="发表于 2023-07-09 00:25:09">2023-07-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-10T05:23:25.000Z" title="更新于 2023-07-10 13:23:25">2023-07-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE%E6%89%8B%E5%86%8C/">项目手册</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="订阅式自动追番1.1 - Flexget + Aria2 + Emby"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="订阅式自动追番1-1-Flexget-Aria2-Emby"><a href="#订阅式自动追番1-1-Flexget-Aria2-Emby" class="headerlink" title="订阅式自动追番1.1 - Flexget + Aria2 + Emby"></a>订阅式自动追番1.1 - Flexget + Aria2 + Emby</h1><h1 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h1><blockquote>
+<p>截至发文仍在使用的追番模式，从部署流程来说还是比较繁琐的，当时也没怎么做功课，各个方面也存在很多优化空间，而且针对萌番组定制的，但鉴于是1.0方案和综合使用追了三四个季度番来说效果也不错，笔记记录一下部署流程。</p>
+</blockquote>
+<blockquote>
+<p>1.1 稍微解耦了下</p>
+</blockquote>
+<p>从<a target="_blank" rel="noopener external nofollow noreferrer" href="https://bangumi.moe/">萌番组 (bangumi.moe)</a><strong>订阅番剧</strong>，然后就坐等服务器<strong>下载</strong>-&gt;<strong>刮削</strong>-&gt;<strong>Emby</strong>观看。</p>
+<p>其余还实现了<strong>RSS番剧更新</strong>和<strong>Aria2下载完成</strong>的<strong>QQ消息推送</strong>，配合Emby弹幕观看，还是挺舒服的，本文先不讲这些。</p>
+<h1 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h1><p>追番自由，蓝狗必备！</p>
+<h1 id="所需工具"><a href="#所需工具" class="headerlink" title="所需工具"></a>所需工具</h1><h3 id="运作载体："><a href="#运作载体：" class="headerlink" title="运作载体："></a>运作载体：</h3><p>云服务器：没有的话用自己电脑也行，问题不大。本文使用的是<strong>Ubuntu 18</strong><br>               云服务器的话可随时待机下载，随时随地不限设备登录 EMBY观看。</p>
+<h3 id="信息源"><a href="#信息源" class="headerlink" title="信息源"></a>信息源</h3><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://bangumi.moe/">萌番组</a>：提供bt种子以及<strong>番剧信息</strong>，用到<strong>RSS订阅</strong></p>
+<h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><p>Flexget：<strong>获取RSS更新</strong>触发下载器自动下载，配置下载规则<br>Aria2：下载器，只管下<br>Python脚本：维护番剧库，将下载的番剧整理成EMBY能正确匹配的样子。<br>EMBY：在线刮削，海报墙和在线播放</p>
+<blockquote>
+<p>从工具上往下看，基本就知道运作流程了。</p>
+</blockquote>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><blockquote>
+<p>服务器这块就不说了，不讲究。</p>
+</blockquote>
+<h2 id="Step-1-萌番组配置"><a href="#Step-1-萌番组配置" class="headerlink" title="Step 1 - 萌番组配置"></a>Step 1 - 萌番组配置</h2><blockquote>
+<p>突然想起萌番组被墙了些时日了，不过我是境外服务器也不耽误，境内的话估计要么代理要么反向代理。</p>
+</blockquote>
+<ol>
+<li><strong>注册登录之后筛选订阅</strong>，一通订阅之后如下图，因为涉及到空间和带宽流量，筛选尽可能的要细。</li>
+</ol>
+<p>看看我的<br><img src="/images/91fc1e789b27e45235df893e541612a7.png"></p>
+<ol start="2">
+<li><strong>提取用户Cookie</strong></li>
+</ol>
+<blockquote>
+<p>说明一下，按照正常来说本应不需要提取用户cookie，直接用个人订阅RSS即可获取所有订阅，后边在Flexget发现如果要实现每部番剧精细化管理，还是用每部番剧对应的RSS订阅比较好。<br>比如<a target="_blank" rel="noopener external nofollow noreferrer" href="https://bangumi.moe/search/**615bb91fd7f73dd4ed5c4405**+**58a9c1e6f5dc363606ab42ed**%EF%BC%8C%E9%80%9A%E8%BF%87%E9%93%BE%E6%8E%A5%E9%87%8C%E5%8A%A0%E7%B2%97%E4%BD%93%E7%9A%84%E6%A0%87%E7%AD%BE%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E8%8E%B7%E5%8F%96%E7%95%AA%E5%89%A7%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF%EF%BC%8C%E6%AD%A4%E5%A4%84%E4%BB%A3%E6%9B%BF%E4%BA%86%E6%9C%AC%E5%BA%94%E8%BF%9E%E6%8E%A5tmdb%E8%8E%B7%E5%8F%96%E7%9A%84%E4%BF%A1%E6%81%AF%E3%80%82">https://bangumi.moe/search/**615bb91fd7f73dd4ed5c4405**+**58a9c1e6f5dc363606ab42ed**，通过链接里加粗体的标签字符串，获取番剧详细信息，此处代替了本应连接tmdb获取的信息。</a></p>
+</blockquote>
+<p>如图所示，在查看自己订阅信息的时候会加载出my的信息，复制右下处Cookie值备用，不过哪的cookie应该都一样，随便了。<br><img src="/images/c31e35a0ace45fd6b4f62d89aae706ac.png"></p>
+<h2 id="Step-2-Flexget配置"><a href="#Step-2-Flexget配置" class="headerlink" title="Step 2 - Flexget配置"></a>Step 2 - Flexget配置</h2><p>安装这块参考 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.locmjj.com/361.html">#教程#Aria2 rss订阅下载</a><br>以及文档 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://wiki.ukenn.top/seedbox-wiki-1/untitled-1">Flexget 安装&amp;配置</a><br>注意要设置定时任务获取更新。<br>安装的坑 #有空再更新 ；；；</p>
+<p>软件在这里用到的是动态配置文件，需要用脚本随时修改配置文件以跟上订阅项目更新。<br>更新配置文件的Python程序如下，写的有点糙，<del>能跑就行</del>，注释有空再说。<del>后边如果有优化方案之后可能也不需要这个了</del></p>
+<h3 id="UpdateConfig-py-更新项目时被UpdateRSS-sh调用"><a href="#UpdateConfig-py-更新项目时被UpdateRSS-sh调用" class="headerlink" title="UpdateConfig.py(更新项目时被UpdateRSS.sh调用)"></a>UpdateConfig.py(更新项目时被<a href="#UpdateRSS.sh">UpdateRSS.sh</a>调用)</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#！/user/bin/python3</span></span><br><span class="line"><span class="comment">## 更新flexget配置文件</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> yaml</span><br><span class="line"></span><br><span class="line">abpath = os.path.dirname(os.path.abspath(__file__))</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(abpath+<span class="string">&#x27;/auto_config.yml&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    file_content = f.read()</span><br><span class="line">content = yaml.load(file_content, yaml.FullLoader)</span><br><span class="line">url = content[<span class="string">&#x27;bgm&#x27;</span>][<span class="string">&#x27;url&#x27;</span>]</span><br><span class="line">cookie = content[<span class="string">&#x27;bgm&#x27;</span>][<span class="string">&#x27;cookie&#x27;</span>]</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;user-agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;referer&#x27;</span>: url,</span><br><span class="line">    <span class="string">&#x27;Cookie&#x27;</span>: cookie</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> content[<span class="string">&quot;bgm&quot;</span>][<span class="string">&quot;mirror&quot;</span>]:</span><br><span class="line">    url = content[<span class="string">&quot;bgm&quot;</span>][<span class="string">&quot;mirror&quot;</span>]</span><br><span class="line"></span><br><span class="line">aria_path = content[<span class="string">&quot;aria2&quot;</span>][<span class="string">&quot;path&quot;</span>]</span><br><span class="line">aria_ip = content[<span class="string">&quot;aria2&quot;</span>][<span class="string">&quot;ip&quot;</span>]</span><br><span class="line">aria_port = content[<span class="string">&quot;aria2&quot;</span>][<span class="string">&quot;port&quot;</span>]</span><br><span class="line">aria_secret = content[<span class="string">&quot;aria2&quot;</span>][<span class="string">&quot;secret&quot;</span>]</span><br><span class="line">flexget_path = content[<span class="string">&quot;flexget&quot;</span>][<span class="string">&quot;path&quot;</span>]</span><br><span class="line">flexget_webui = content[<span class="string">&quot;flexget&quot;</span>][<span class="string">&quot;webui&quot;</span>]</span><br><span class="line">rej_reg = content[<span class="string">&quot;flexget&quot;</span>][<span class="string">&quot;reject&quot;</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_rss</span>():</span><br><span class="line"></span><br><span class="line">    rssurl= url + <span class="string">&#x27;api/user/subscribe/collections&#x27;</span></span><br><span class="line">    rss = requests.get(rssurl, headers=headers)</span><br><span class="line">    rsstr= json.loads(rss.text)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> rsstr <span class="keyword">and</span> content[<span class="string">&quot;QQBot&quot;</span>][<span class="string">&quot;QQ&quot;</span>]:</span><br><span class="line">        bot_qq = content[<span class="string">&quot;QQBot&quot;</span>][<span class="string">&quot;QQ&quot;</span>]</span><br><span class="line">        bot_url = content[<span class="string">&quot;QQBot&quot;</span>][<span class="string">&quot;url&quot;</span>]</span><br><span class="line">        bot_path = content[<span class="string">&quot;QQBot&quot;</span>][<span class="string">&quot;path&quot;</span>]</span><br><span class="line">        purl = bot_url+bot_path</span><br><span class="line">        data = &#123;<span class="string">&#x27;id&#x27;</span>: <span class="built_in">str</span>(bot_qq), <span class="string">&#x27;content&#x27;</span>: <span class="string">&#x27;cookie可能已失效！&#x27;</span>, <span class="string">&#x27;from&#x27;</span>: <span class="string">&#x27;萌番组&#x27;</span>&#125;</span><br><span class="line">        r = requests.post(purl, json=data)</span><br><span class="line">        exit(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> rsstr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_name</span>(<span class="params">rss</span>):</span><br><span class="line"></span><br><span class="line">    name = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    rssinfo= url + <span class="string">&#x27;api/tag/fetch&#x27;</span></span><br><span class="line">    data = &#123;<span class="string">&quot;_ids&quot;</span>: rss&#125;</span><br><span class="line">    info = requests.post(rssinfo, json=data, headers=headers)</span><br><span class="line">    infostr = json.loads(info.text)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(infostr)):</span><br><span class="line">        <span class="keyword">if</span> infostr[i][<span class="string">&#x27;type&#x27;</span>] == <span class="string">&#x27;bangumi&#x27;</span>:</span><br><span class="line">            names = infostr[i][<span class="string">&#x27;locale&#x27;</span>]</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;zh_cn&#x27;</span> <span class="keyword">in</span> names.keys():</span><br><span class="line">                name = names[<span class="string">&#x27;zh_cn&#x27;</span>]</span><br><span class="line">            <span class="keyword">elif</span> <span class="string">&#x27;zh_tw&#x27;</span> <span class="keyword">in</span> names.keys():</span><br><span class="line">                name = names[<span class="string">&#x27;zh_tw&#x27;</span>]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                name = infostr[i][<span class="string">&#x27;name&#x27;</span>]</span><br><span class="line">            <span class="keyword">return</span> name</span><br><span class="line">    <span class="keyword">return</span> name</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">make_yml</span>(<span class="params">rsstr, name</span>):</span><br><span class="line">    in_aria2 = <span class="string">&#x27;      server: &#x27;</span>+aria_ip+<span class="string">&#x27;\n      port: &#x27;</span>+<span class="built_in">str</span>(aria_port)+<span class="string">&#x27;\n      secret: &quot;&#x27;</span>+aria_secret+<span class="string">&#x27;&quot;\n      path: &quot;&#x27;</span>+aria_path+name+<span class="string">&#x27;&quot;\n\n&#x27;</span></span><br><span class="line">    rss = url + <span class="string">&#x27;rss/tags/&#x27;</span> + <span class="string">&#x27;+&#x27;</span>.join(rsstr)</span><br><span class="line">    f = <span class="built_in">open</span>(flexget_path+<span class="string">&#x27;config.yml&#x27;</span>, <span class="string">&#x27;a+&#x27;</span>, encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    f.writelines(<span class="string">&#x27;  &#x27;</span>+name+<span class="string">&#x27;:\n&#x27;</span>)</span><br><span class="line">    f.writelines(<span class="string">&#x27;    rss: &#x27;</span>+rss+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    f.writelines(<span class="string">&#x27;    if:\n&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> rej_reg:</span><br><span class="line">        f.writelines(<span class="string">&#x27;      - &quot;\&#x27;&#x27;</span> + i + <span class="string">&#x27;\&#x27; in title&quot;: reject\n&#x27;</span>)</span><br><span class="line">    f.writelines(<span class="string">&#x27;      - &quot;\&#x27;[\&#x27;&quot;: accept\n&#x27;</span>)</span><br><span class="line"><span class="comment">#    f.writelines(&#x27;    accept_all: yes\n&#x27;)</span></span><br><span class="line">    f.writelines(<span class="string">&#x27;    aria2:\n&#x27;</span>)</span><br><span class="line">    f.writelines(in_aria2)</span><br><span class="line">    f.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    temp = <span class="string">&#x27;templates:\n  gener:\n    free_space:\n      path: /root/aria2\n      space: 1024000\n&#x27;</span></span><br><span class="line">    f = <span class="built_in">open</span>(flexget_path+<span class="string">&#x27;config.yml&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    f.writelines(<span class="string">&#x27;tasks: \n&#x27;</span>)</span><br><span class="line">    f.close()</span><br><span class="line">    rsstr = get_rss()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(rsstr)):</span><br><span class="line">        name = get_name(rsstr[i])</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(name) == <span class="number">0</span> <span class="keyword">or</span> <span class="built_in">len</span>(rsstr) == <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;noname&quot;</span>)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="built_in">print</span>(name)</span><br><span class="line">        make_yml(rsstr[i], name)</span><br><span class="line">    f = <span class="built_in">open</span>(flexget_path+<span class="string">&#x27;config.yml&#x27;</span>, <span class="string">&#x27;a+&#x27;</span>, encoding = <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    f.writelines(<span class="string">&#x27;web_server:\n&#x27;</span>)</span><br><span class="line">    f.writelines(<span class="string">&#x27;  port: &#x27;</span>+<span class="built_in">str</span>(flexget_webui)+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    f.writelines(<span class="string">&#x27;  web_ui: yes\n&#x27;</span>)</span><br><span class="line">    f.writelines(<span class="string">&#x27;schedules: no\n&#x27;</span>)</span><br><span class="line">    f.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        main()</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(e)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>由于flexget的一些特性，需要手动删除lock文件才能使用动态配置文件。故有下面脚本，更新配置直接运行下方脚本就行，不过也不用手动，后边要配置定时任务执行此脚本。</p>
+<h3 id="UpdateRSS-sh"><a href="#UpdateRSS-sh" class="headerlink" title="UpdateRSS.sh"></a>UpdateRSS.sh</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"><span class="comment">#自行修改路径，此处py文件为上方py脚本</span></span><br><span class="line">python3 /root/UpdateConfig.py </span><br><span class="line"><span class="comment">#flexget默认安装路径</span></span><br><span class="line"><span class="built_in">rm</span> -f /root/.flexget/.config-lock</span><br><span class="line">/usr/local/bin/flexget execute</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加crontab任务"><a href="#添加crontab任务" class="headerlink" title="添加crontab任务"></a>添加crontab任务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e      #选择编辑器之后添加定时内容</span><br></pre></td></tr></table></figure>
+<p><strong>内容参考</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*/5 * * * * /usr/local/bin/flexget --cron execute</span><br><span class="line">0 */6 * * * /root/autobgm/Updaterss.sh</span><br></pre></td></tr></table></figure>
+<p><strong>意思</strong><br>5分钟检查一次RSS更新 （RSS检测频率，争对已有订阅）<br>6个小时刷新一下配置文件（例如添加了新的订阅）</p>
+<h2 id="Step-3-Aria2安装"><a href="#Step-3-Aria2安装" class="headerlink" title="Step 3 - Aria2安装"></a>Step 3 - Aria2安装</h2><p>建议一键脚本，直接一步到位。<br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/P3TERX/aria2.sh">P3TERX&#x2F;aria2.sh: Aria2 一键安装管理脚本 增强版 (github.com)</a><br>直接 wget -N git.io&#x2F;aria2.sh &amp;&amp; chmod +x aria2.sh<br>再运行脚本 .&#x2F;aria2.sh</p>
+<p>安装且配置好密钥之后需要在aria2安装目录自带的clean.sh脚本添加东西，该脚本会默认在下载任务结束后运行。</p>
+<h3 id="clean-sh"><a href="#clean-sh" class="headerlink" title="clean.sh"></a>clean.sh</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">CHECK_CORE_FILE</span></span>() &#123;</span><br><span class="line">    CORE_FILE=<span class="string">&quot;<span class="subst">$(dirname $0)</span>/core&quot;</span></span><br><span class="line">    <span class="keyword">if</span> [[ -f <span class="string">&quot;<span class="variable">$&#123;CORE_FILE&#125;</span>&quot;</span> ]]; <span class="keyword">then</span></span><br><span class="line">        . <span class="string">&quot;<span class="variable">$&#123;CORE_FILE&#125;</span>&quot;</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;!!! core file does not exist !!!&quot;</span></span><br><span class="line">        <span class="built_in">exit</span> 1</span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#自定义</span></span><br><span class="line"><span class="function"><span class="title">PUSHTOQQ</span></span>()&#123;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> ! <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$&#123;TASK_FILE_NAME&#125;</span>&quot;</span> | grep -q -E <span class="string">&#x27;\.torrent$&#x27;</span>;<span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">    /usr/bin/python3 /root/autobgm/QQPush.py <span class="string">&quot;<span class="variable">$&#123;DOWNLOAD_DIR&#125;</span>&quot;</span> <span class="string">&quot;<span class="variable">$&#123;TASK_FILE_NAME&#125;</span>&quot;</span>;<span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CHECK_CORE_FILE <span class="string">&quot;<span class="variable">$@</span>&quot;</span></span><br><span class="line">CHECK_PARAMETER <span class="string">&quot;<span class="variable">$@</span>&quot;</span></span><br><span class="line">CHECK_FILE_NUM</span><br><span class="line">CHECK_SCRIPT_CONF</span><br><span class="line">GET_TASK_INFO</span><br><span class="line">GET_DOWNLOAD_DIR</span><br><span class="line">CONVERSION_PATH</span><br><span class="line"><span class="comment">#运行自定义</span></span><br><span class="line">PUSHTOQQ                    </span><br><span class="line">CLEAN_UP</span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+
+<p>到这里基本就行了。</p>
+<blockquote>
+<p>可添加下载完删种脚本，以及下载完推送。</p>
+</blockquote>
+<h2 id="Step-4-py脚本维护番剧库"><a href="#Step-4-py脚本维护番剧库" class="headerlink" title="Step 4 - py脚本维护番剧库"></a>Step 4 - py脚本维护番剧库</h2><p>如果一切顺利的话，此时番剧库已经可以接受更新并分类下载进各自的文件夹了。此时为了能匹配EMBY所以还得写个脚本维护此库。<br>注释再说，能跑就行。。。</p>
+<h3 id="bgminfo-py"><a href="#bgminfo-py" class="headerlink" title="bgminfo.py"></a>bgminfo.py</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#！/user/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="keyword">import</span> yaml</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">abpath = os.path.dirname(os.path.abspath(__file__))</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(abpath+<span class="string">&#x27;/auto_config.yml&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    file_content = f.read()</span><br><span class="line">content = yaml.load(file_content, yaml.FullLoader)</span><br><span class="line">path = content[<span class="string">&#x27;aria2&#x27;</span>][<span class="string">&#x27;path&#x27;</span>]</span><br><span class="line"></span><br><span class="line">pattern0 = re.<span class="built_in">compile</span>(<span class="string">r&#x27;Season (\d+)&#x27;</span>)</span><br><span class="line">pattern1 = re.<span class="built_in">compile</span>(<span class="string">r&#x27;\[(\d+)\]&#x27;</span>)</span><br><span class="line">pattern2 = re.<span class="built_in">compile</span>(<span class="string">r&#x27;\[(\d+)v&#x27;</span>)</span><br><span class="line">pattern5 = re.<span class="built_in">compile</span>(<span class="string">r&#x27;\[(\d+)集&#x27;</span>)</span><br><span class="line">pattern3 = re.<span class="built_in">compile</span>(<span class="string">r&#x27;第(\d+)話&#x27;</span>)</span><br><span class="line">pattern4 = re.<span class="built_in">compile</span>(<span class="string">r&#x27;S\d+E(\d+)&#x27;</span>)</span><br><span class="line">pattern6 = re.<span class="built_in">compile</span>(<span class="string">r&#x27;- (\d+) &#x27;</span>)</span><br><span class="line">patternlist = [pattern1, pattern2, pattern3, pattern4, pattern5, pattern6]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find_ep</span>(<span class="params">file</span>):</span><br><span class="line">    <span class="keyword">for</span> pattern <span class="keyword">in</span> patternlist:</span><br><span class="line">        ep = re.findall(pattern, file)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(ep) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">int</span>(ep[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find_maxep</span>(<span class="params">path3</span>):</span><br><span class="line">    maxep = -<span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(path3):</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            </span><br><span class="line">            ep = find_ep(file)</span><br><span class="line">            <span class="keyword">if</span> ep &gt; maxep:</span><br><span class="line">                maxep = ep</span><br><span class="line">            </span><br><span class="line">    maxep = <span class="built_in">str</span>(maxep).zfill(<span class="number">2</span>)           </span><br><span class="line">    <span class="keyword">return</span> maxep</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find_season</span>(<span class="params">path</span>):</span><br><span class="line">    maxss = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">dir</span> <span class="keyword">in</span> os.listdir(path):</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(path+<span class="built_in">dir</span>):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        seasonn = re.findall(pattern0, <span class="built_in">dir</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(seasonn) == <span class="number">1</span> <span class="keyword">and</span> seasonn[<span class="number">0</span>].isdigit() <span class="keyword">and</span> <span class="built_in">int</span>(seasonn[<span class="number">0</span>]) &gt; maxss:</span><br><span class="line">            maxss = <span class="built_in">int</span>(seasonn[<span class="number">0</span>])</span><br><span class="line">    season = <span class="built_in">str</span>(maxss).zfill(<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> season</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">rename</span>(<span class="params">title, bgminfo</span>):</span><br><span class="line">    list1 = [<span class="string">&#x27;.mkv&#x27;</span>, <span class="string">&#x27;.MKV&#x27;</span>, <span class="string">&#x27;.mp4&#x27;</span>]</span><br><span class="line">    season = bgminfo[<span class="string">&#x27;season&#x27;</span>].zfill(<span class="number">2</span>)</span><br><span class="line">    path2 = path + title + <span class="string">&#x27;/Season &#x27;</span> + season</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path2):</span><br><span class="line">        os.mkdir(path2)</span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> os.listdir(path+title):</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(path+title+file):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        ext = os.path.splitext(file)[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> ext <span class="keyword">in</span> list1:</span><br><span class="line">            ep = find_ep(file)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> ep == -<span class="number">1</span>:</span><br><span class="line">                desfile = title + <span class="string">&#x27; - S&#x27;</span> + season + <span class="string">&#x27;E&#x27;</span> + <span class="built_in">str</span>(ep).zfill(<span class="number">2</span>) +ext</span><br><span class="line"></span><br><span class="line">                src = path+title+<span class="string">&#x27;/&#x27;</span>+file</span><br><span class="line">                des = path2+<span class="string">&#x27;/&#x27;</span>+desfile</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    os.remove(des)</span><br><span class="line">                <span class="keyword">except</span> OSError:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line">                </span><br><span class="line">                <span class="built_in">print</span>(src+ <span class="string">&#x27;------------&gt;&#x27;</span>+  des)</span><br><span class="line">                shutil.move(src, des) </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    bgm_info = &#123;&#125;</span><br><span class="line">    data = json.loads(json.dumps(bgm_info))</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">dir</span> <span class="keyword">in</span> os.listdir(path): </span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(path+<span class="built_in">dir</span>):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">            </span><br><span class="line">        maxep = find_maxep(path+<span class="built_in">dir</span>)</span><br><span class="line">        info = &#123;<span class="string">&#x27;title&#x27;</span>: <span class="built_in">dir</span>, <span class="string">&#x27;year&#x27;</span>: <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;maxep&#x27;</span>: maxep, <span class="string">&#x27;season&#x27;</span>: <span class="string">&#x27;&#x27;</span>&#125;</span><br><span class="line">        <span class="keyword">if</span> os.path.exists(path+<span class="string">&#x27;bgminfo.json&#x27;</span>):                </span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(path+<span class="string">&#x27;bgminfo.json&#x27;</span>,<span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> g:</span><br><span class="line">                bginfo = json.load(g)</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">dir</span> <span class="keyword">in</span> bginfo:</span><br><span class="line">                    season = find_season(path+<span class="built_in">dir</span>)  </span><br><span class="line">                    info[<span class="string">&#x27;season&#x27;</span>] = season</span><br><span class="line">                    data[<span class="built_in">dir</span>] = info</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">                </span><br><span class="line">                info[<span class="string">&#x27;season&#x27;</span>] = bginfo[<span class="built_in">dir</span>][<span class="string">&#x27;season&#x27;</span>]</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> bginfo[<span class="built_in">dir</span>][<span class="string">&#x27;year&#x27;</span>] == <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">                    info[<span class="string">&#x27;year&#x27;</span>] = bginfo[<span class="built_in">dir</span>][<span class="string">&#x27;year&#x27;</span>]</span><br><span class="line">               <span class="comment">#     if not dir == newtitle:</span></span><br><span class="line">                <span class="comment">#        src = os.path.join(path, dir)</span></span><br><span class="line">                 <span class="comment">#       des = os.path.join(path, newtitle)</span></span><br><span class="line">                  <span class="comment">#      os.rename(src,des)</span></span><br><span class="line">                   <span class="comment">#     flag = 1</span></span><br><span class="line">                    <span class="comment">#    data[newtitle] = info</span></span><br><span class="line">       <span class="comment"># if not flag == 1:</span></span><br><span class="line">        data[<span class="built_in">dir</span>] = info</span><br><span class="line">    result = json.dumps(data, ensure_ascii=<span class="literal">False</span>, indent=<span class="number">4</span>)</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(path+<span class="string">&#x27;bgminfo.json&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, newline=<span class="string">&#x27;\n&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(result)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(sys.argv) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">for</span> title <span class="keyword">in</span> data:</span><br><span class="line">            rename(title, data[title])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        title = sys.argv[<span class="number">1</span>]</span><br><span class="line">        rename(title,data[title])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Step-5-配置文件"><a href="#Step-5-配置文件" class="headerlink" title="Step 5 - 配置文件"></a>Step 5 - 配置文件</h2><h3 id="autobgm-yml"><a href="#autobgm-yml" class="headerlink" title="autobgm.yml"></a>autobgm.yml</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">bgm:</span> <span class="comment">#萌番组</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">https://bangumi.moe/</span></span><br><span class="line">  <span class="attr">mirror:</span>  <span class="comment">#镜像url</span></span><br><span class="line">  <span class="attr">cookie:</span> <span class="comment">#yourcookie</span></span><br><span class="line"><span class="attr">flexget:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">/root/.flexget/</span>  <span class="comment">#配置目录</span></span><br><span class="line">  <span class="attr">webui:</span> <span class="number">8666</span>      <span class="comment">#webui端口</span></span><br><span class="line">  <span class="attr">reject:</span>           <span class="comment">#过滤规则</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;[cht&#x27;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;720p&#x27;</span></span><br><span class="line">  <span class="attr">secret:</span>          <span class="comment">#webui登录密码好像也没用到</span></span><br><span class="line"><span class="attr">aria2:</span></span><br><span class="line">  <span class="attr">ip:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>            <span class="comment">#本机</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">6800</span>               <span class="comment">#端口</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">/root/aria2/bgmoe/</span> <span class="comment">#番剧库路径</span></span><br><span class="line">  <span class="attr">secret:</span>         <span class="comment">#密钥</span></span><br><span class="line"><span class="attr">QQBot:</span>    <span class="comment">#推送用的，不填</span></span><br><span class="line">  <span class="attr">QQ:</span></span><br><span class="line">  <span class="attr">url:</span> </span><br><span class="line">  <span class="attr">path:</span> </span><br></pre></td></tr></table></figure>
+<p>没说明可不填皆必填，</p>
+<h3 id="启动UpdateRSS-sh"><a href="#启动UpdateRSS-sh" class="headerlink" title="启动UpdateRSS.sh"></a>启动UpdateRSS.sh</h3><p>将以上所有文件放入同个文件夹中，如本文是在（&#x2F;root&#x2F;autobgm&#x2F;)，运行UpdateRSS.sh即可。</p>
+<p>不出意外的话这是你的文件目录，脚本会自动生成json记录更新番剧信息。<br><img src="/images/0592bcf89f8c5d347e37f2c4f0ce3606.png"><br>以及<br><img src="/images/0defd78c49e62d570fef34945fb501c0.png"></p>
+<h2 id="Step-6-EMBY配置"><a href="#Step-6-EMBY配置" class="headerlink" title="Step 6 - EMBY配置"></a>Step 6 - EMBY配置</h2><p>ε&#x3D;(´ο｀*)))唉，默认会了吧，安装之后把你的番剧库添加进媒体库就行了，其他等着自动扫描就行了，最多遇到点网络问题连不上tmdb，那个改改host就行。<br>上效果图吧<br><img src="/images/e9094d01c0d597f17ca0c093cb941c60.png"></p>
+<h1 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h1><ol>
+<li>部署麻烦，逻辑也挺乱</li>
+<li>萌番组的cookie几个月会过期一次得手动更新</li>
+<li>萌番组有些字幕组的番剧标签上的有点随便，几个季度混在一起</li>
+<li>默认第一季，若不是第一季的话得手动去bgminfo.json修改季度信息</li>
+<li>绑定了萌番组</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://2pk.cc/">leesin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://kokutou.top/posts/17821/">https://kokutou.top/posts/17821/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kokutou.top" target="_blank">Kokutou's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Emby/">Emby</a><a class="post-meta__tags" href="/tags/%E8%BF%BD%E7%95%AA/">追番</a></div><div class="post_share"><div class="social-share" data-image="/images/cover/cover1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://fastly.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/57472/" title="Cloudflare Worker代理Github图床加速"><img class="cover" src="/images/cover/cover2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Cloudflare Worker代理Github图床加速</div></div></a></div><div class="next-post pull-right"><a href="/posts/13317/" title="使用frp通过云服务器搭建稳定远程桌面"><img class="cover" src="https://pic.2pk.cc/img/202307071755649.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">使用frp通过云服务器搭建稳定远程桌面</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">leesin</div><div class="author-info__description">小孩子不懂事做着玩的</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/LeeSinGOST"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcomeeee!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A2%E9%98%85%E5%BC%8F%E8%87%AA%E5%8A%A8%E8%BF%BD%E7%95%AA1-1-Flexget-Aria2-Emby"><span class="toc-number">1.</span> <span class="toc-text">订阅式自动追番1.1 - Flexget + Aria2 + Emby</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C"><span class="toc-number">2.</span> <span class="toc-text">实现效果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%84%8F%E4%B9%89"><span class="toc-number">3.</span> <span class="toc-text">意义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%80%E9%9C%80%E5%B7%A5%E5%85%B7"><span class="toc-number">4.</span> <span class="toc-text">所需工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E4%BD%9C%E8%BD%BD%E4%BD%93%EF%BC%9A"><span class="toc-number">4.0.1.</span> <span class="toc-text">运作载体：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%BA%90"><span class="toc-number">4.0.2.</span> <span class="toc-text">信息源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6"><span class="toc-number">4.0.3.</span> <span class="toc-text">软件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">5.</span> <span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-1-%E8%90%8C%E7%95%AA%E7%BB%84%E9%85%8D%E7%BD%AE"><span class="toc-number">5.1.</span> <span class="toc-text">Step 1 - 萌番组配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-2-Flexget%E9%85%8D%E7%BD%AE"><span class="toc-number">5.2.</span> <span class="toc-text">Step 2 - Flexget配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#UpdateConfig-py-%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE%E6%97%B6%E8%A2%ABUpdateRSS-sh%E8%B0%83%E7%94%A8"><span class="toc-number">5.2.1.</span> <span class="toc-text">UpdateConfig.py(更新项目时被UpdateRSS.sh调用)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UpdateRSS-sh"><span class="toc-number">5.2.2.</span> <span class="toc-text">UpdateRSS.sh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0crontab%E4%BB%BB%E5%8A%A1"><span class="toc-number">5.2.3.</span> <span class="toc-text">添加crontab任务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-3-Aria2%E5%AE%89%E8%A3%85"><span class="toc-number">5.3.</span> <span class="toc-text">Step 3 - Aria2安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#clean-sh"><span class="toc-number">5.3.1.</span> <span class="toc-text">clean.sh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-4-py%E8%84%9A%E6%9C%AC%E7%BB%B4%E6%8A%A4%E7%95%AA%E5%89%A7%E5%BA%93"><span class="toc-number">5.4.</span> <span class="toc-text">Step 4 - py脚本维护番剧库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bgminfo-py"><span class="toc-number">5.4.1.</span> <span class="toc-text">bgminfo.py</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-5-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">5.5.</span> <span class="toc-text">Step 5 - 配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#autobgm-yml"><span class="toc-number">5.5.1.</span> <span class="toc-text">autobgm.yml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8UpdateRSS-sh"><span class="toc-number">5.5.2.</span> <span class="toc-text">启动UpdateRSS.sh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-6-EMBY%E9%85%8D%E7%BD%AE"><span class="toc-number">5.6.</span> <span class="toc-text">Step 6 - EMBY配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">6.</span> <span class="toc-text">缺点</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/8693/" title="SSH免密登录，powershell连接"><img src="/images/cover/cover1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SSH免密登录，powershell连接"/></a><div class="content"><a class="title" href="/posts/8693/" title="SSH免密登录，powershell连接">SSH免密登录，powershell连接</a><time datetime="2024-11-06T01:01:18.000Z" title="发表于 2024-11-06 09:01:18">2024-11-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/49046/" title="软笔"><img src="/images/cover/cover11.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="软笔"/></a><div class="content"><a class="title" href="/posts/49046/" title="软笔">软笔</a><time datetime="2024-04-29T05:58:32.000Z" title="发表于 2024-04-29 13:58:32">2024-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/16811/" title="使用Github Actions构建Docker并推送镜像"><img src="/images/cover/cover12.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用Github Actions构建Docker并推送镜像"/></a><div class="content"><a class="title" href="/posts/16811/" title="使用Github Actions构建Docker并推送镜像">使用Github Actions构建Docker并推送镜像</a><time datetime="2023-07-10T07:43:46.000Z" title="发表于 2023-07-10 15:43:46">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/57472/" title="Cloudflare Worker代理Github图床加速"><img src="/images/cover/cover2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Cloudflare Worker代理Github图床加速"/></a><div class="content"><a class="title" href="/posts/57472/" title="Cloudflare Worker代理Github图床加速">Cloudflare Worker代理Github图床加速</a><time datetime="2023-07-10T02:56:03.000Z" title="发表于 2023-07-10 10:56:03">2023-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/17821/" title="订阅式自动追番1.1 - Flexget + Aria2 + Emby"><img src="/images/cover/cover1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="订阅式自动追番1.1 - Flexget + Aria2 + Emby"/></a><div class="content"><a class="title" href="/posts/17821/" title="订阅式自动追番1.1 - Flexget + Aria2 + Emby">订阅式自动追番1.1 - Flexget + Aria2 + Emby</a><time datetime="2023-07-08T16:25:09.000Z" title="发表于 2023-07-09 00:25:09">2023-07-09</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By leesin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://fastly.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.2pk.cc/',
+      region: 'ap-shanghai',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.2pk.cc/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.textContent = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://fastly.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://twikoo.2pk.cc/',
+        region: 'ap-shanghai',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://fastly.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script src="/js/font.js"></script><div class="aplayer no-destroy" data-id="3222203999" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://fastly.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://fastly.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://fastly.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
