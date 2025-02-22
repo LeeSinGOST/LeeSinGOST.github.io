@@ -17,6 +17,21 @@
             color: #fff;
             padding: 20px;
             text-align: center;
+            position: relative;
+        }
+        header input {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 5px 15px;
+            font-size: 16px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: border 0.3s;
+        }
+        header input:focus {
+            border-color: #3498db;
         }
         .tag-container {
             text-align: center;
@@ -72,6 +87,7 @@
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.2s;
+            position: relative;
         }
         .anime-item:hover {
             transform: scale(1.05);
@@ -83,6 +99,7 @@
         }
         .anime-info {
             padding: 20px;
+            padding-bottom: 50px; /* 保证评分能够吸附在底部 */
         }
         .anime-info h3 {
             margin: 0;
@@ -101,34 +118,127 @@
         .score {
             font-size: 18px;
             color: #f39c12;
-            margin-top: 15px;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
         }
         .pagination {
             text-align: center;
             margin: 50px 0;
         }
-        .pagination button {
-            padding: 12px 24px;
-            margin: 0 10px;
+        .pagination span {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 2px;
+            background-color: #ecf0f1;
+            color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .pagination span:hover {
+            background-color: #bdc3c7;
+        }
+        .pagination .active-page {
             background-color: #3498db;
             color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
+            font-weight: bold;
         }
-        .pagination button:hover {
-            background-color: #2980b9;
+        /* 模糊遮罩 */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
         }
+
+        /* 强调色 */
+        .highlight-rate {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            opacity: 0.7;
+        }
+        .highlight-10 {
+            background-color: #f1c40f; /* 金色 */
+        }
+        .highlight-9 {
+            background-color: #9b59b6; /* 紫色 */
+        }
+        .highlight-8 {
+            background-color: #3498db; /* 蓝色 */
+        }
+
+        /* 提示文本 */
+        .no-username-message {
+            text-align: center;
+            font-size: 18px;
+            color: #e74c3c;
+            margin-top: 50px;
+        }
+        .user-info {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#user-details {
+    color: #333;
+}
+
+#user-nickname {
+    font-size: 16px;
+    margin: 0;
+    font-weight: bold;
+}
+
+#user-sign {
+    font-size: 12px;
+    color: #777;
+}
+
     </style>
 </head>
 <body>
-    <header>
-        <h1 id="header-title">我看过的动画</h1>
-    </header>
+<header>
+    <h1 id="header-title">我看过的动画</h1>
+    <input type="text" id="username-input" placeholder="请输入用户名" onblur="saveUsername()" />
+    <!-- 用户信息容器 -->
+    <div id="user-info" class="user-info" style="display: none;">
+        <img id="user-avatar" class="user-avatar" src="" alt="用户头像">
+        <div id="user-details">
+            <h3 id="user-nickname"></h3>
+            <p id="user-sign"></p>
+        </div>
+    </div>
+</header>
+    <!-- 提示消息 -->
+    <div id="no-username-message" class="no-username-message" style="display:none;">
+        请先输入用户名后再加载数据。
+    </div>
 
     <div class="tag-container" id="hot-tags">
-        <!-- 热门标签会动态插入这里 -->
+        <!-- 热门标签会动态插入到这里 -->
     </div>
 
     <div class="switch-buttons">
@@ -139,93 +249,182 @@
 
     <div id="anime-list" class="anime-container"></div>
 
-    <div class="pagination">
-        <button id="prevPage" onclick="changePage(-1)">上一页</button>
-        <button id="nextPage" onclick="changePage(1)">下一页</button>
+    <div class="pagination" id="pagination">
+        <!-- 页码动态插入 -->
+    </div>
+
+    <!-- 模糊遮罩 -->
+    <div class="loading-overlay" id="loading-overlay">
+        <span>加载中...</span>
     </div>
 
     <script>
-        let currentType = 2;
+        let currentType = 2; // 默认显示看过类型
         let currentPage = 0;
-        const limit = 30;
+        let totalPages = 1;
+        const limit = 35;
         let currentTag = "";
-        const domain = "https://bpi.2pk.cc"
-        function getApiUrl() {
-            let baseUrl = "";
-            if (currentType === 1) {
-                baseUrl = `${domain}/collections/wish?limit=${limit}&offset=${currentPage * limit}`;
-            } else if (currentType === 2) {
-                baseUrl = `${domain}/collections/watched?limit=${limit}&offset=${currentPage * limit}`;
-            } else {
-                baseUrl = `${domain}/collections/watching?limit=${limit}&offset=${currentPage * limit}`;
-            }
+        let username = localStorage.getItem("username") || "";
+        const domain = "https://bpi.2pk.cc";
 
-            // 如果有 tag 筛选，添加到 URL
-            return currentTag ? `${baseUrl}&tag=${currentTag}` : baseUrl;
+        document.getElementById("username-input").value = username;
+
+        // 检查用户名并决定是否加载数据
+        function checkUsernameAndLoadData() {
+            if (!username) {
+        document.getElementById("no-username-message").style.display = 'block';
+        return;
+    }
+    document.getElementById("no-username-message").style.display = 'none';
+    fetchUserInfo(); // 获取并显示用户信息
+    fetchAnimeData(); // 加载动画数据
         }
-        async function fetchAnimeData() {
-            const response = await fetch(getApiUrl());
+
+        function saveUsername() {
+            username = document.getElementById("username-input").value.trim();
+            if (username) {
+                localStorage.setItem("username", username);
+                checkUsernameAndLoadData();
+            }
+        }
+// 获取用户信息并更新页面
+async function fetchUserInfo() {
+    if (!username) return;
+
+    try {
+        const response = await fetch(`https://api.bgm.tv/v0/users/${username}`);
+        if (response.ok) {
             const data = await response.json();
-            const animeListContainer = document.getElementById('anime-list');
-            animeListContainer.innerHTML = '';
+            // 如果获取到用户信息，更新页面
+            if (data) {
+                document.getElementById("username-input").style.display = "none"; // 隐藏输入框
+                document.getElementById("user-info").style.display = "flex"; // 显示用户信息
 
-            data.data.forEach(anime => {
-                const animeElement = document.createElement('div');
-                animeElement.classList.add('anime-item');
+                document.getElementById("user-avatar").src = data.avatar.large;
+                document.getElementById("user-nickname").textContent = data.nickname;
+                document.getElementById("user-sign").textContent = data.sign || "暂无签名";
+            }
+        } else {
+            console.error("无法获取用户信息");
+        }
+    } catch (error) {
+        console.error("请求失败:", error);
+    }
+}
 
-                animeElement.ondblclick = () => {
-                    window.open(`https://bgm.tv/subject/${anime.subject_id}`, '_blank');
-                };
+// 保存用户名并加载用户信息
+function saveUsername() {
+    username = document.getElementById("username-input").value.trim();
+    if (username) {
+        localStorage.setItem("username", username);
+        fetchUserInfo(); // 获取用户信息
+        checkUsernameAndLoadData(); // 检查用户名并加载数据
+    }
+}
+        function getApiUrl() {
+            let baseUrl = `${domain}/collections/${username}/${currentType === 1 ? "wish" : currentType === 2 ? "watched" : "watching"}`;
+            let url = `${baseUrl}?limit=${limit}&offset=${currentPage * limit}`;
+            if (currentTag) url += `&tag=${encodeURIComponent(currentTag)}`;
+            return url;
+        }
 
-                const tagsHtml = anime.subject.tags.map(tag => 
-                    `<span class="tag" onclick="filterByTag('${tag.name}')">${tag.name}</span>`
-                ).join('');
+        async function fetchAnimeData() {
+            document.getElementById('loading-overlay').style.display = 'flex';  // 显示加载遮罩
+            try {
+                const response = await fetch(getApiUrl());
+                if (!response.ok) {
+                    throw new Error('网络响应失败'); // 如果响应状态不为200，抛出错误
+                }
+                const data = await response.json();
+                totalPages = Math.ceil(data.total / limit);
+                document.getElementById("anime-list").innerHTML = data.data.map(anime => {
+                    let rateClass = "";
+                    if (anime.rate === 10) rateClass = "highlight-10";
+                    else if (anime.rate === 9) rateClass = "highlight-9";
+                    else if (anime.rate === 8) rateClass = "highlight-8";
 
-                animeElement.innerHTML = `
-                    <img src="${anime.subject.images.large}" alt="${anime.subject.name}">
-                    <div class="anime-info">
-                        <h3>${anime.subject.name_cn || anime.subject.name}</h3>
-                        <p>${anime.subject.short_summary}</p>
-                        <div class="tags">${tagsHtml}</div>
-                        <div class="score">评分: ${anime.subject.score}</div>
-                    </div>
-                `;
-                animeListContainer.appendChild(animeElement);
-            });
-
-            document.getElementById('header-title').textContent = currentTag ? `当前筛选: ${currentTag}` : (currentType === 1 ? "我想看的动画" : currentType === 2 ? "我看过的动画" : "我正在看的动画");
+                    return `
+                        <div class="anime-item" ondblclick="window.open('https://bgm.tv/subject/${anime.subject_id}', '_blank')">
+                            <img src="${anime.subject.images.large}" alt="${anime.subject.name}">
+                            <div class="anime-info">
+                                <h3>${anime.subject.name_cn || anime.subject.name}</h3>
+                                <p>${anime.subject.short_summary}</p>
+                                <div class="tags">${anime.subject.tags.map(tag => `<span class="tag" onclick="filterByTag('${tag.name}')">${tag.name}</span>`).join('')}</div>
+                                <div class="score">评分: ${anime.subject.score}</div>
+                            </div>
+                            <div class="highlight-rate ${rateClass}"></div>
+                        </div>
+                    `;
+                }).join('');
+                renderPagination();
+                document.getElementById('loading-overlay').style.display = 'none';  // 隐藏加载遮罩
+                document.getElementById('header-title').textContent = currentTag ? `当前筛选: ${currentTag}` : (currentType === 1 ? "我想看的动画" : currentType === 2 ? "我看过的动画" : "我正在看的动画");
+            } catch (error) {
+                console.error('数据加载失败:', error); // 输出错误信息
+                // 这里可以添加用户友好的错误提示
+            } finally {
+                document.getElementById('loading-overlay').style.display = 'none';  // 隐藏加载遮罩
+            }
         }
 
         async function fetchHotTags() {
-            const response = await fetch(`${domain}/collections/mytags?limit=10&offset=0`);
+            const response = await fetch(`${domain}/collections/${username}/mytags?limit=10&offset=0`);
             const data = await response.json();
-            const hotTagsContainer = document.getElementById("hot-tags");
-
-            hotTagsContainer.innerHTML = data.mytags.map(tag => 
+            document.getElementById("hot-tags").innerHTML = data.mytags.map(tag => 
                 `<span class="tag" onclick="filterByTag('${tag.name}')">${tag.name}</span>`
             ).join('');
         }
 
+        function renderPagination() {
+            let paginationHtml = "";
+
+            if (currentPage > 0) {
+                paginationHtml += `<span onclick="changePage(${currentPage - 1})">上一页</span>`;
+            }
+
+            for (let i = 0; i < totalPages; i++) {
+                paginationHtml += `<span class="${i === currentPage ? "active-page" : ""}" onclick="changePage(${i})">${i + 1}</span>`;
+            }
+
+            if (currentPage < totalPages - 1) {
+                paginationHtml += `<span onclick="changePage(${currentPage + 1})">下一页</span>`;
+            }
+
+            document.getElementById("pagination").innerHTML = paginationHtml;
+        }
+
         function changeType(type) {
-            currentType = type;
-            currentPage = 0;
-            currentTag = "";
-            fetchAnimeData();
+            currentType = type; // 更新当前类型
+            currentPage = 0;    // 重置当前页码
+            currentTag = "";    // 清空当前标签
+            fetchAnimeData();   // 重新加载动画数据
+            updateButtonState(); // 更新按钮状态
+        }
+
+        function updateButtonState() {
+            // 移除所有按钮的 active 类
+            document.querySelectorAll('.switch-buttons button').forEach(button => {
+                button.classList.remove('active');
+            });
+            // 为当前类型的按钮添加 active 类
+            document.getElementById(`btn${currentType}`).classList.add('active');
+        }
+
+        function changePage(page) {
+            if (page < 0 || page >= totalPages) return; // 确保页码有效
+            currentPage = page;
+            fetchAnimeData(); // 重新加载数据
         }
 
         function filterByTag(tag) {
-            currentTag = tag;
-            fetchAnimeData();
+            currentTag = tag; // 更新当前标签
+            currentPage = 0; // 重置当前页码
+            fetchAnimeData(); // 重新加载动画数据
         }
+        
 
-        function changePage(direction) {
-            currentPage += direction;
-            fetchAnimeData();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        fetchAnimeData();
-        fetchHotTags();
+        checkUsernameAndLoadData(); // 页面加载时检查用户名
+        fetchHotTags(); // 加载热门标签
     </script>
 </body>
 </html>
